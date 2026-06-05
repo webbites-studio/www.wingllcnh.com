@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,30 @@
     <!-- Google Fonts: Inter and Playfair Display for refined luxury typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         /* --- DESIGN SYSTEM & BRAND IDENTITY --- */
         :root {
-            --bg-color: #100f0c;
-            --bg-soft: rgba(22, 20, 17, 0.82);
-            --bg-panel: rgba(22, 20, 17, 0.96);
-            --text-main: #f8f2e8;
-            --text-muted: #c8b798;
-            --border-color: rgba(210, 177, 110, 0.16);
-            --accent-gold: #d4b16e;   /* Stronger luxury accent */
-            --accent-soft: rgba(212, 177, 110, 0.14);
-            --font-tracking: 0.22em; /* Elegant uppercase tracking */
+            --bg-color: #1a1612;
+            --bg-soft: rgba(35, 30, 25, 0.85);
+            --bg-panel: rgba(40, 35, 30, 0.92);
+            --text-main: #fdf8f0;
+            --text-muted: #d4c5a9;
+            --border-color: rgba(212, 177, 110, 0.25);
+            --border-highlight: rgba(212, 177, 110, 0.5);
+            --accent-gold: #e8c78a;
+            --accent-gold-bright: #f4d9a6;
+            --accent-rose: #c77d84;
+            --accent-teal: #6ba5a5;
+            --accent-soft: rgba(212, 177, 110, 0.18);
+            --font-tracking: 0.22em;
             --grid-gap: 44px;
+            --transition-elegant: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-luxury: 0 30px 90px rgba(0, 0, 0, 0.3), 0 10px 40px rgba(212, 177, 110, 0.15);
+            --shadow-elevation: 0 40px 120px rgba(0, 0, 0, 0.4), 0 15px 50px rgba(212, 177, 110, 0.2);
         }
 
         * {
@@ -38,20 +48,67 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.05);
+            }
+        }
+
         body {
-            padding-top: 90px; /* Offset for fixed header */
-            background-color: var(--bg-color);
-            background-image: radial-gradient(circle at top left, rgba(212,177,110,0.08), transparent 18%),
-                              radial-gradient(circle at bottom right, rgba(255,255,255,0.06), transparent 16%),
-                              linear-gradient(180deg, rgba(10, 9, 8, 0.96), rgba(22, 20, 17, 0.96));
+            padding-top: 90px;
+            background: linear-gradient(135deg, #1a1612, #25211c, #1a1612, #221d18);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(232, 199, 138, 0.18), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(199, 125, 132, 0.15), transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(107, 165, 165, 0.12), transparent 40%);
+            animation: glowPulse 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body>* {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-container {
             opacity: 0;
-            animation: fadeInUp 1.2s ease forwards;
-            animation-delay: 0.2s;
+            animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.3s;
         }
 
         .hero-image-frame {
@@ -63,7 +120,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 40%, rgba(255,255,255,0.02));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 40%, rgba(255, 255, 255, 0.02));
             pointer-events: none;
             transform: translate3d(-20%, -20%, 0);
             opacity: 0.8;
@@ -79,7 +136,7 @@
 
         section {
             padding: 120px 4%;
-            border-bottom: 1px solid rgba(212,177,110,0.12);
+            border-bottom: 1px solid rgba(212, 177, 110, 0.12);
             opacity: 0;
             transform: translateY(24px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -92,17 +149,7 @@
 
         .section-header h2 {
             position: relative;
-            overflow: hidden;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 70px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, rgba(212,177,110,0.8), transparent);
+            overflow: visible;
         }
 
         .event-row {
@@ -112,7 +159,7 @@
         .event-row:hover {
             transform: translateX(8px);
             background: rgba(28, 26, 22, 0.88);
-            box-shadow: 0 36px 90px rgba(0,0,0,0.32);
+            box-shadow: 0 36px 90px rgba(0, 0, 0, 0.32);
         }
 
         .tier-card {
@@ -122,7 +169,7 @@
 
         .tier-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 40px 110px rgba(0,0,0,0.32);
+            box-shadow: 0 40px 110px rgba(0, 0, 0, 0.32);
         }
 
         .directory-item {
@@ -131,8 +178,8 @@
 
         .directory-item:hover {
             transform: translateY(-6px);
-            border-color: rgba(212,177,110,0.28);
-            box-shadow: 0 40px 110px rgba(0,0,0,0.35);
+            border-color: rgba(212, 177, 110, 0.28);
+            box-shadow: 0 40px 110px rgba(0, 0, 0, 0.35);
         }
 
         .gallery-item {
@@ -142,19 +189,21 @@
 
         .gallery-item:hover {
             transform: translateY(-6px) scale(1.01);
-            border-color: rgba(212,177,110,0.24);
-            box-shadow: 0 28px 90px rgba(0,0,0,0.20);
+            border-color: rgba(212, 177, 110, 0.24);
+            box-shadow: 0 28px 90px rgba(0, 0, 0, 0.20);
         }
 
         .gallery-modal {
             position: fixed;
             inset: 0;
-            background: rgba(12,12,12,0.95);
+            background: rgba(8, 8, 8, 0.97);
+            backdrop-filter: blur(20px);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 2100;
             padding: 20px;
+            animation: fadeIn 0.4s ease;
         }
 
         .gallery-modal.active {
@@ -163,26 +212,30 @@
 
         .gallery-modal-inner {
             position: relative;
-            max-width: min(90vw, 1000px);
+            max-width: min(90vw, 1100px);
             width: 100%;
             max-height: 90vh;
             overflow: hidden;
-            border-radius: 24px;
-            background: rgba(10, 10, 10, 0.95);
-            box-shadow: 0 30px 120px rgba(0,0,0,0.5);
+            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(15, 14, 12, 0.98), rgba(10, 9, 8, 0.98));
+            box-shadow: var(--shadow-elevation);
+            border: 1px solid var(--border-highlight);
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .gallery-modal-inner img {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 24px;
+            border-radius: 30px;
         }
 
         .gallery-modal .modal-close {
-            color: #fff;
-            right: 20px;
-            top: 20px;
+            color: var(--accent-gold);
+            background: rgba(10, 9, 8, 0.9);
+            backdrop-filter: blur(10px);
+            right: 25px;
+            top: 25px;
             z-index: 5;
         }
 
@@ -236,6 +289,7 @@
                 opacity: 0;
                 transform: translateY(26px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -243,7 +297,13 @@
         }
 
         /* --- TYPOGRAPHY --- */
-        h1, h2, h3, .nav-link, .label, button, .tag {
+        h1,
+        h2,
+        h3,
+        .nav-link,
+        .label,
+        button,
+        .tag {
             text-transform: uppercase;
             letter-spacing: var(--font-tracking);
             font-weight: 300;
@@ -263,15 +323,16 @@
             left: 0;
             width: 100%;
             height: 90px;
-            background-color: rgba(16, 15, 12, 0.92);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(212,177,110,0.12);
+            background: linear-gradient(180deg, rgba(26, 22, 18, 0.95), rgba(22, 20, 17, 0.92));
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 4%;
+            padding: 0 5%;
             z-index: 1000;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(232, 199, 138, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.05);
         }
 
         .logo {
@@ -283,11 +344,16 @@
         }
 
         .logo-image {
-            width: 72px;
-            height: auto;
+            height: 60px;
+            width: auto;
             display: block;
             object-fit: contain;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 20px rgba(232, 199, 138, 0.3));
+            transition: filter 0.4s ease;
+        }
+
+        .logo:hover .logo-image {
+            filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(232, 199, 138, 0.5));
         }
 
         .logo-text {
@@ -305,7 +371,7 @@
         }
 
         .logo-text span {
-            font-size: 0.65rem;
+            font-size: 0.9rem;
             font-weight: 400;
             color: var(--text-muted);
             text-transform: uppercase;
@@ -319,19 +385,40 @@
 
         .nav-link {
             text-decoration: none;
-            color: rgba(200, 183, 136, 0.88);
-            font-size: 0.8rem;
-            transition: color 0.3s ease;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            padding: 8px 0;
         }
 
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-gold);
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-bright));
+            box-shadow: 0 0 10px var(--accent-gold);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-gold-bright);
+            text-shadow: 0 0 20px rgba(232, 199, 138, 0.5);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
         }
 
         /* --- BASE CONTENT SECTIONS --- */
         section {
             padding: 120px 4%;
-            border-bottom: 1px solid rgba(212,177,110,0.12);
+            border-bottom: 1px solid rgba(212, 177, 110, 0.12);
         }
 
         .section-header {
@@ -377,11 +464,17 @@
 
         .hero-text h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.6rem;
+            font-size: 3.8rem;
             line-height: 1.05;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
             font-weight: 400;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.02em;
+            background: linear-gradient(135deg, #fdf8f0, #e8c78a, #fdf8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
         }
 
         .hero-text p {
@@ -394,22 +487,62 @@
         .hero-image-frame {
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(255,245,225,0.12), rgba(18,16,13,0.62));
-            border: 1px solid rgba(212,177,110,0.18);
+            background: linear-gradient(135deg, rgba(232, 199, 138, 0.2), rgba(40, 35, 30, 0.8));
+            border: 1px solid var(--border-highlight);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            border-radius: 28px;
-            box-shadow: 0 40px 90px rgba(0,0,0,0.22);
+            border-radius: 32px;
+            box-shadow: var(--shadow-luxury), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: var(--transition-elegant);
+        }
+
+        .hero-image-frame:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-elevation), 0 0 80px rgba(232, 199, 138, 0.25);
+        }
+
+        .hero-image-frame::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--accent-gold), transparent 40%, var(--accent-gold-bright));
+            opacity: 0;
+            border-radius: 32px;
+            transition: opacity 0.6s ease;
+            z-index: -1;
+        }
+
+        .hero-image-frame:hover::before {
+            opacity: 0.3;
+        }
+
+        .hero-image-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 50%, rgba(212, 177, 110, 0.05));
+            pointer-events: none;
+            border-radius: 32px;
         }
 
         .hero-image-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 28px;
+            border-radius: 30px;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-image-frame:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-elevation);
+        }
+
+        .hero-image-frame:hover img {
+            transform: scale(1.08) rotate(0.5deg);
         }
 
         /* --- SECTION 2: ABOUT (THE MANIFESTO) --- */
@@ -436,20 +569,42 @@
         .event-row {
             display: grid;
             grid-template-columns: 1.5fr 3fr 1.5fr 1.5fr;
-            padding: 32px 30px;
-            border-bottom: 1px solid rgba(212,177,110,0.14);
+            padding: 38px 36px;
+            border-bottom: 1px solid var(--border-color);
             align-items: center;
-            gap: 22px;
-            transition: transform 0.25s ease, border-color 0.3s ease, background 0.3s ease;
-            background: rgba(18, 16, 13, 0.74);
-            border-radius: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 24px 70px rgba(0,0,0,0.24);
+            gap: 26px;
+            transition: var(--transition-elegant);
+            background: linear-gradient(135deg, rgba(40, 35, 30, 0.8), rgba(35, 30, 25, 0.85));
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 2px 15px rgba(232, 199, 138, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .event-row:hover {
-            transform: translateX(4px);
-            border-bottom-color: rgba(28,26,22,0.18);
+            transform: translateX(12px) scale(1.01);
+            border-color: var(--border-highlight);
+            background: linear-gradient(135deg, rgba(50, 42, 35, 0.95), rgba(42, 37, 32, 0.92));
+            box-shadow: var(--shadow-elevation), 0 0 50px rgba(232, 199, 138, 0.2);
+        }
+
+        .event-row:hover::before {
+            opacity: 1;
         }
 
         .event-date {
@@ -485,29 +640,64 @@
         }
 
         .tier-card {
-            border: 1px solid rgba(212,177,110,0.16);
-            padding: 50px;
-            background-color: rgba(18, 16, 13, 0.85);
+            border: 1px solid var(--border-color);
+            padding: 55px;
+            background: linear-gradient(135deg, rgba(40, 35, 30, 0.85), rgba(35, 30, 25, 0.9));
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 450px;
-            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 28px;
-            box-shadow: 0 30px 90px rgba(0,0,0,0.24);
+            min-height: 480px;
+            transition: var(--transition-elegant);
+            border-radius: 32px;
+            box-shadow: var(--shadow-luxury), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), var(--accent-gold-bright), var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            box-shadow: 0 0 20px var(--accent-gold);
         }
 
         .tier-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-elevation), 0 0 60px rgba(232, 199, 138, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(50, 42, 35, 0.9), rgba(42, 37, 32, 0.95));
         }
 
-        .tier-card:hover {
-            border-color: var(--text-main);
+        .tier-card:hover::before {
+            opacity: 1;
         }
 
         .tier-card.premium {
             border-color: var(--accent-gold);
+            background: linear-gradient(135deg, rgba(50, 42, 35, 0.9), rgba(40, 35, 30, 0.95));
+            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.5), 0 0 80px rgba(232, 199, 138, 0.2), inset 0 1px 0 rgba(232, 199, 138, 0.1);
             position: relative;
+        }
+
+        .tier-card.premium::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--accent-gold), transparent, var(--accent-gold-bright));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
         }
 
         .tier-card.premium .tag {
@@ -553,17 +743,38 @@
         }
 
         .directory-item {
-            border: 1px solid rgba(212,177,110,0.16);
+            border: 1px solid var(--border-color);
             aspect-ratio: 1 / 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            padding: 20px;
-            background-color: rgba(18, 16, 13, 0.94);
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(18, 16, 13, 0.96), rgba(12, 11, 9, 0.98));
+            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
-            border-radius: 28px;
-            box-shadow: 0 28px 80px rgba(0,0,0,0.30);
+            border-radius: 32px;
+            box-shadow: var(--shadow-luxury);
+            transition: var(--transition-elegant);
+        }
+
+        .directory-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 177, 110, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .directory-item:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-elevation), 0 0 60px rgba(232, 199, 138, 0.25);
+        }
+
+        .directory-item:hover::before {
+            opacity: 1;
         }
 
         .directory-item img {
@@ -574,7 +785,7 @@
             margin-bottom: 16px;
             border-radius: 20px;
             filter: saturate(0.95) contrast(1.05);
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .directory-item h4 {
@@ -600,16 +811,30 @@
 
         .gallery-item {
             aspect-ratio: 4 / 3;
-            background-color: rgba(255,255,255,0.04);
-            border: 1px solid rgba(212,177,110,0.14);
+            background: linear-gradient(135deg, rgba(40, 35, 30, 0.7), rgba(35, 30, 25, 0.85));
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.65rem;
             letter-spacing: var(--font-tracking);
-            color: rgba(255,255,255,0.72);
+            color: rgba(255, 255, 255, 0.72);
             padding: 0;
             overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            transition: var(--transition-elegant);
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(232, 199, 138, 0.25), rgba(199, 125, 132, 0.15), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: 1;
         }
 
         .gallery-item img {
@@ -617,6 +842,21 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-elevation), 0 0 60px rgba(232, 199, 138, 0.3);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15) rotate(1deg);
         }
 
         .gallery-item.tall {
@@ -637,7 +877,7 @@
         .event-details-btn.btn {
             background-color: transparent;
             color: var(--accent-gold);
-            border: 1px solid rgba(212,177,110,0.16);
+            border: 1px solid rgba(212, 177, 110, 0.16);
             padding: 10px 20px;
             font-size: 0.75rem;
             letter-spacing: 0.16em;
@@ -646,7 +886,7 @@
         }
 
         .event-details-btn.btn:hover {
-            background-color: rgba(212,177,110,0.12);
+            background-color: rgba(212, 177, 110, 0.12);
             color: var(--accent-gold);
             opacity: 1;
         }
@@ -654,7 +894,8 @@
         .event-modal {
             position: fixed;
             inset: 0;
-            background: rgba(17, 17, 17, 0.92);
+            background: rgba(10, 9, 8, 0.96);
+            backdrop-filter: blur(20px);
             color: #ffffff;
             display: none;
             align-items: center;
@@ -662,6 +903,17 @@
             padding: 40px 20px;
             z-index: 2000;
             overflow-y: auto;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .event-modal.active {
@@ -669,13 +921,39 @@
         }
 
         .event-modal-inner {
-            width: min(980px, 100%);
+            width: min(1000px, 100%);
             max-height: min(90vh, 100%);
-            background: #111;
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(135deg, rgba(18, 16, 13, 0.98), rgba(12, 11, 9, 0.98));
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border: 1px solid var(--border-highlight);
+            border-radius: 32px;
             overflow: auto;
             position: relative;
+            box-shadow: var(--shadow-elevation);
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-modal-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
         }
 
         .event-modal-content h2 {
@@ -693,15 +971,28 @@
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 25px;
+            right: 25px;
             border: none;
-            background: transparent;
-            color: #fff;
-            font-size: 2rem;
+            background: rgba(212, 177, 110, 0.1);
+            color: var(--accent-gold);
+            font-size: 1.8rem;
             cursor: pointer;
             line-height: 1;
-            padding: 0;
+            padding: 8px 16px;
+            border-radius: 50%;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+        }
+
+        .modal-close:hover {
+            background: rgba(212, 177, 110, 0.2);
+            color: var(--accent-gold-bright);
+            transform: rotate(90deg);
         }
 
         /* --- SECTION 7: REVIEWS --- */
@@ -756,99 +1047,193 @@
             margin-bottom: 12px;
         }
 
-        form input, form select {
+        form input,
+        form select {
             border: none;
             border-bottom: 1px solid var(--border-color);
-            padding: 10px 0;
+            padding: 12px 0;
             outline: none;
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
             color: var(--text-main);
             background: transparent;
-            transition: border-color 0.3s ease;
+            transition: var(--transition-smooth);
+            position: relative;
         }
 
-        form input:focus {
-            border-bottom: 1px solid var(--text-main);
+        form input:focus,
+        form select:focus {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 11px;
+        }
+
+        form input::placeholder {
+            color: var(--text-subtle);
+            opacity: 0.6;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-bright));
+            transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        .form-group:focus-within::after {
+            width: 100%;
         }
 
         /* BUTTON LAYOUTS */
-        button, .btn {
+        button,
+        .btn {
             display: inline-block;
-            background-color: var(--accent-gold);
-            color: #111;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-bright), var(--accent-gold));
+            background-size: 200% 200%;
+            color: #0a0908;
             border: none;
-            padding: 18px 45px;
-            font-size: 0.8rem;
+            padding: 20px 50px;
+            font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             width: fit-content;
             border-radius: 999px;
-            box-shadow: 0 22px 50px rgba(0,0,0,0.25);
-            letter-spacing: 0.16em;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 40px rgba(232, 199, 138, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.18em;
             text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
         }
 
-        button:hover, .btn:hover {
-            opacity: 0.95;
-            transform: translateY(-1px);
+        button::before,
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-gold-bright), var(--accent-gold));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        button:hover,
+        .btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            background-position: 100% 50%;
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.4), 0 0 70px rgba(232, 199, 138, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        button:hover::before,
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        button>*,
+        .btn>* {
+            position: relative;
+            z-index: 1;
         }
 
         .btn-outline {
-            background-color: transparent;
-            color: var(--text-muted);
-            border: 1px solid rgba(212,177,110,0.16);
-            box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+            background: linear-gradient(135deg, rgba(40, 35, 30, 0.6), rgba(35, 30, 25, 0.7));
+            color: var(--accent-gold);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+        }
+
+        .btn-outline::before {
+            background: linear-gradient(135deg, rgba(212, 177, 110, 0.15), rgba(232, 199, 138, 0.15));
         }
 
         .btn-outline:hover {
-            background-color: rgba(212,177,110,0.12);
-            color: var(--accent-gold);
-            opacity: 1;
+            color: var(--accent-gold-bright);
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, rgba(232, 199, 138, 0.2), rgba(244, 217, 166, 0.15));
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 50px rgba(232, 199, 138, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px) scale(1.05);
         }
 
         /* --- FOOTER --- */
         footer {
-            padding: 60px 4%;
+            padding: 70px 5%;
             text-align: center;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: var(--font-tracking);
-            color: var(--text-muted);
+            color: var(--text-subtle);
             border-top: 1px solid var(--border-color);
+            background: linear-gradient(180deg, transparent, rgba(10, 9, 8, 0.6));
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0.4;
         }
 
         /* --- RESPONSIVE CALIBRATIONS --- */
         @media (max-width: 992px) {
-            .hero-container, .about-layout, .membership-grid, .reviews-layout, .contact-layout {
+
+            .hero-container,
+            .about-layout,
+            .membership-grid,
+            .reviews-layout,
+            .contact-layout {
                 grid-template-columns: 1fr;
             }
-            .directory-grid { grid-template-columns: repeat(2, 1fr); }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .event-row { grid-template-columns: 1fr 1fr; gap: 15px; }
-            #home { height: auto; padding: 100px 4%; }
-            .hero-image-frame { height: 350px; }
+
+            .directory-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .event-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            #home {
+                height: auto;
+                padding: 100px 4%;
+            }
+
+            .hero-image-frame {
+                height: 350px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- STICKY LUXURY HEADER -->
     <header>
         <a href="#home" class="logo" aria-label="WWI Networking Group logo">
-            <svg class="logo-image" viewBox="0 0 260 260" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                <rect width="260" height="260" fill="#000" rx="18"/>
-                <text x="30" y="82" font-family="'Playfair Display', serif" font-size="82" font-weight="700" letter-spacing="-10" fill="#fff">W</text>
-                <text x="104" y="82" font-family="'Playfair Display', serif" font-size="82" font-weight="700" letter-spacing="-10" fill="#fff">W</text>
-                <text x="188" y="82" font-family="'Playfair Display', serif" font-size="82" font-weight="700" fill="#fff">I</text>
-                <rect x="0" y="102" width="260" height="38" fill="#000"/>
-                <text x="130" y="129" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" letter-spacing="0.35em" fill="#fff">NETWORKING GROUP</text>
-                <text x="30" y="218" font-family="'Playfair Display', serif" font-size="82" font-weight="700" letter-spacing="-10" fill="#fff">W</text>
-                <text x="104" y="218" font-family="'Playfair Display', serif" font-size="82" font-weight="700" letter-spacing="-10" fill="#fff">W</text>
-                <text x="188" y="218" font-family="'Playfair Display', serif" font-size="82" font-weight="700" fill="#fff">I</text>
-            </svg>
+            <img src="images/logo.png" alt="WWI Networking Group" class="logo-image">
+            <div class="logo-text">
+                <span>World's Influencers Networking Group LLC</span>
+            </div>
         </a>
         <nav>
             <a href="#about" class="nav-link">About</a>
@@ -865,11 +1250,13 @@
         <div class="hero-container">
             <div class="hero-text">
                 <h1>Where Curated Strategy Meets High-Energy Connection.</h1>
-                <p>A refined, luxury business network engineered exclusively for forward-thinking entrepreneurs, executives, and innovators who reject standard corporate formulas.</p>
+                <p>A refined, luxury business network engineered exclusively for forward-thinking entrepreneurs,
+                    executives, and innovators who reject standard corporate formulas.</p>
                 <a href="#connect" class="btn">Request Invitation</a>
             </div>
             <div class="hero-image-frame">
-                <img src="https://images.unsplash.com/photo-1762517141861-acd7a11c7d42?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="WING networking event">
+                <img src="https://images.unsplash.com/photo-1762517141861-acd7a11c7d42?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
+                    alt="WING networking event">
             </div>
         </div>
     </section>
@@ -882,11 +1269,15 @@
         </div>
         <div class="about-layout">
             <div class="about-statement">
-                We believe that business networking should feel like walking into an elite boutique club—high style, atmospheric locations, and unscripted, powerful room caliber.
+                We believe that business networking should feel like walking into an elite boutique club—high style,
+                atmospheric locations, and unscripted, powerful room caliber.
             </div>
             <div>
-                <p style="margin-bottom: 20px;">We intentionally step away from awkward pitches, stiff name tags, and ordinary conference spaces. Our soirées are strictly hosted in curated environments—modern art galleries, bespoke private gardens, and design-forward lounges.</p>
-                <p>We blend uncompromising visual elegance with open, dynamic, and collaborative fun. Here, business assets grow because genuine relationships come first.</p>
+                <p style="margin-bottom: 20px;">We intentionally step away from awkward pitches, stiff name tags, and
+                    ordinary conference spaces. Our soirées are strictly hosted in curated environments—modern art
+                    galleries, bespoke private gardens, and design-forward lounges.</p>
+                <p>We blend uncompromising visual elegance with open, dynamic, and collaborative fun. Here, business
+                    assets grow because genuine relationships come first.</p>
             </div>
         </div>
     </section>
@@ -900,24 +1291,30 @@
         <div class="events-list">
             <!-- Event 1 -->
             <div class="event-row">
-                <div class="event-date">June 15, 2026</div>
+                <div class="event-date">June 10, 2026</div>
                 <div class="event-title">
-                    <h3>Café O'Shea's Caife & Tae</h3>
-                    <p>Join local business networkers for a relaxed morning of coffee, conversation, and meaningful connections. This is a welcoming space to meet other local professionals, share what you do, exchange ideas, and build genuine relationships within the community. Whether you’re growing a business, exploring collaborations, or simply looking to connect with like-minded people, come as you are and enjoy an easy, friendly start to your day.</p>
-                    <button type="button" class="event-details-btn btn btn-outline" data-event="cafe">View details</button>
+                    <h3>Buckleys Backery & Cafe</h3>
+                    <p>A relaxed morning of coffee, conversation, and meaningful connections. <button type="button"
+                            class="event-details-btn" data-event="cafe">View details</button></p>
                 </div>
-                <div class="event-value event-venue">Amherst, NH                <button type="button" class="event-details-btn btn btn-outline" data-event="bridgerton">View details</button>                <button type="button" class="event-details-btn btn btn-outline" data-event="bridgerton">View details</button>                <button type="button" class="event-details-btn btn btn-outline" data-event="bridgerton">View details</button></div>
-                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a></div>
+                <div class="event-value event-venue">Merrimack, NH</div>
+                <div><a href="https://www.eventbrite.com/e/morning-coffee-connection-community-tickets-1991197859399"
+                        target="_blank" rel="noopener noreferrer" class="btn btn-outline"
+                        style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
             </div>
             <!-- Event 2 -->
             <div class="event-row">
                 <div class="event-date">June 20, 2026</div>
                 <div class="event-title">
                     <h3>Bridgerton Garden Experience</h3>
-                    <p>An elegant private soirée for ambitious, stylish women. <button type="button" class="event-details-btn" data-event="bridgerton">View details</button></p>
+                    <p>An elegant private soirée for ambitious, stylish women. <button type="button"
+                            class="event-details-btn" data-event="bridgerton">View details</button></p>
                 </div>
                 <div class="event-value event-venue">Manchester, NH</div>
-                <div><a href="https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">Buy tickets</a></div>
+                <div><a href="https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator"
+                        target="_blank" rel="noopener noreferrer" class="btn btn-outline"
+                        style="padding: 10px 20px; font-size: 0.65rem;">Buy tickets</a></div>
             </div>
             <!-- Event 3 -->
             <div class="event-row">
@@ -927,30 +1324,19 @@
                     <p>Curated champagne pairing, and light jazz.</p>
                 </div>
                 <div class="event-value event-venue">Manchester, NH</div>
-                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">Register</a></div>
+                <div><a href="#connect" class="btn btn-outline"
+                        style="padding: 10px 20px; font-size: 0.65rem;">Register</a></div>
             </div>
         </div>
         <div class="event-modal" id="event-modal" aria-hidden="true">
             <div class="event-modal-inner" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
                 <button type="button" class="modal-close event-close" aria-label="Close event details">&times;</button>
                 <div class="event-modal-content">
-                    <span class="label">Bridgerton Garden Experience</span>
-                    <h2 id="event-modal-title">Step into an evening of elegance, connection, and inspiration</h2>
-                    <p>Step into an evening of elegance, connection, and inspiration at our exclusive Bridgerton Garden Experience — a refined social soirée designed for ambitious, stylish, and inspiring women. Set within a beautifully curated private venue in Manchester, NH, this immersive experience blends luxury, creativity, and meaningful networking in an atmosphere inspired by the charm of an English royal garden.</p>
-                    <p>What to expect: 
-                        • ✨ Exquisite Bridgerton-inspired décor and ambiance 
-                        • 🧵 A sophisticated accessories workshop presented by our featured partner, Raisa’s Sewing & Accessories 
-                        • 🥂 Champagne and elegant light refreshments 
-                        • 📸 A beautifully styled photo experience 
-                        • 🎻 Romantic music and an intimate high-society atmosphere 
-                        • 🤝 Meaningful conversations and connections with like-minded women.</p>
-                    <p><strong>Dress Code:</strong> Elegant & Chic — timeless glamour, pearls, flowing dresses, and refined sophistication. Embrace your inner queen with fascinators, elegant tea hats, lace gloves, satin gloves, and vintage-inspired accessories.</p>
-                    <p><strong>Tickets:</strong> 
-                        Early Access — $65 (through June 3); 
-                        General Admission — $95 (after June 3). 
-                        Location details shared with confirmed attendees only.</p>
-                    <p><a href="https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 12px 32px; font-size: 0.85rem;">Purchase tickets on Eventbrite</a></p>
-                    <p><strong>Refund policy:</strong> Full refunds available for cancellations made at least 7 days prior. Within 7 days, tickets are non-refundable but may be transferred with prior notice. If the organizer cancels, a full refund or credit will be issued.</p>
+                    <span class="label" id="event-modal-label"></span>
+                    <h2 id="event-modal-title"></h2>
+                    <div id="event-modal-copy"></div>
+                    <p><a href="#" id="event-modal-action" class="btn btn-outline"
+                            style="padding: 12px 32px; font-size: 0.85rem;"></a></p>
                 </div>
             </div>
         </div>
@@ -974,21 +1360,25 @@
             <div class="tier-card">
                 <div>
                     <h3 class="tier-name">The Preview Pass</h3>
-                    <div class="tier-price">FREE <span style="font-size: 0.9rem; color: var(--text-muted);">/ month</span></div>
+                    <div class="tier-price">FREE <span style="font-size: 0.9rem; color: var(--text-muted);">/
+                            month</span></div>
                     <ul class="tier-perks">
-                        <li>Email Notifications about Monthly events</li>                    </ul>
+                        <li>Email Notifications about Monthly events</li>
+                    </ul>
                 </div>
                 <a href="#connect" class="btn btn-outline" style="width: 100%;">Apply For Pass</a>
             </div>
-             <!-- Tier 2 -->
+            <!-- Tier 2 -->
             <div class="tier-card">
                 <div>
                     <h3 class="tier-name">The Collective Pass</h3>
-                    <div class="tier-price">$39 <span style="font-size: 0.9rem; color: var(--text-muted);">/ month</span></div>
+                    <div class="tier-price">$39 <span style="font-size: 0.9rem; color: var(--text-muted);">/
+                            month</span></div>
                     <ul class="tier-perks">
                         <li>Discounted entry to all Monthly Soirées</li>
                         <li>Access to the Private Digital Member Index</li>
-                        <li>Strategic introductions to local founders</li>                    </ul>
+                        <li>Strategic introductions to local founders</li>
+                    </ul>
                 </div>
                 <a href="#connect" class="btn btn-outline" style="width: 100%;">Apply For Pass</a>
             </div>
@@ -997,13 +1387,14 @@
                 <span class="tag">Most Coveted</span>
                 <div>
                     <h3 class="tier-name">The Private Circle (VIP)</h3>
-                    <div class="tier-price">$149 <span style="font-size: 0.9rem; color: var(--text-muted);">/ month</span></div>
+                    <div class="tier-price">$149 <span style="font-size: 0.9rem; color: var(--text-muted);">/
+                            month</span></div>
                     <ul class="tier-perks">
                         <li>All Collective tier benefits included</li>
                         <li>Dedicated Spotlight Feature on the website frontpage</li>
                         <li>Quarterly private executive dinners with Keynote Speakers</li>
-                        <li>Quarterly private executive dinners with Keynote Speakers</li>
-                        <li>A dedicated premium video feature profiling you and your brand logo on the network's homepage for high-level traffic exposure.</li>
+                        <li>A dedicated premium video feature profiling you and your brand logo on the network's
+                            homepage for high-level traffic exposure.</li>
                     </ul>
                 </div>
                 <a href="#connect" class="btn" style="width: 100%;">Apply For VIP Status</a>
@@ -1019,14 +1410,16 @@
         </div>
         <div class="directory-grid">
             <div class="directory-item">
-                <img src="https://media.licdn.com/dms/image/v2/D4E03AQFZaA1prOa0cw/profile-displayphoto-crop_800_800/B4EZst4HGqIUAI-/0/1766001245456?e=1781740800&v=beta&t=-Yc57YCr3cwfCtQaPOT7uW3-MmSIS-mtVuG2HYk_FsM" alt="Natalia Markelova">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQFZaA1prOa0cw/profile-displayphoto-crop_800_800/B4EZst4HGqIUAI-/0/1766001245456?e=1781740800&v=beta&t=-Yc57YCr3cwfCtQaPOT7uW3-MmSIS-mtVuG2HYk_FsM"
+                    alt="Natalia Markelova">
                 <div>
                     <h4>Natalia Markelova</h4>
                     <p>Founder, Web Developer</p>
                 </div>
             </div>
             <div class="directory-item">
-                <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-19/624247139_18553814230033560_9090203965788948873_n.jpg?_nc_cat=103&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MTEuQzMifQ%3D%3D&_nc_ohc=oUM69LYTXLYQ7kNvwF_yRuW&_nc_oc=AdooKgSyz1oj9uSkGVifiHQ-KbvZCqTpd-79GR1VE0Q3IGL1QXOYMdd9ylue97lTq-w&_nc_zt=24&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=5ya_VGfKiZIAFw1eRuCIOQ&_nc_ss=7b6a8&oh=00_Af-IKajNrHaeDdSTJHwY4ysiLqpCr1LCWhExQHU0mCWUPQ&oe=6A282A8A" alt="Kateryna Demers">
+                <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-19/624247139_18553814230033560_9090203965788948873_n.jpg?_nc_cat=103&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MTEuQzMifQ%3D%3D&_nc_ohc=oUM69LYTXLYQ7kNvwF_yRuW&_nc_oc=AdooKgSyz1oj9uSkGVifiHQ-KbvZCqTpd-79GR1VE0Q3IGL1QXOYMdd9ylue97lTq-w&_nc_zt=24&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=5ya_VGfKiZIAFw1eRuCIOQ&_nc_ss=7b6a8&oh=00_Af-IKajNrHaeDdSTJHwY4ysiLqpCr1LCWhExQHU0mCWUPQ&oe=6A282A8A"
+                    alt="Kateryna Demers">
                 <div>
                     <h4>Kateryna Demers</h4>
                     <p>Realtor</p>
@@ -1042,11 +1435,21 @@
             <h2>The Social Archive</h2>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1762517104454-c80a756f25d3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Luxury women networking event"></div>
-            <div class="gallery-item"><img src="https://plus.unsplash.com/premium_photo-1723773614061-03914c8d1334?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Elegant women at a network event"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1561928070-590b9c48f0bb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Champagne toast at a luxury event"></div>
-            <div class="gallery-item"><img src="https://plus.unsplash.com/premium_photo-1706005684813-bb175669291a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Luxury networking lounge decor"></div>
-            <div class="gallery-item"><img src="https://plus.unsplash.com/premium_photo-1667514648343-f36fe9b8654e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Outdoor garden evening soirée"></div>
+            <div class="gallery-item tall"><img
+                    src="https://images.unsplash.com/photo-1762517104454-c80a756f25d3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
+                    alt="Luxury women networking event"></div>
+            <div class="gallery-item"><img
+                    src="https://plus.unsplash.com/premium_photo-1723773614061-03914c8d1334?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
+                    alt="Elegant women at a network event"></div>
+            <div class="gallery-item"><img
+                    src="https://images.unsplash.com/photo-1561928070-590b9c48f0bb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
+                    alt="Champagne toast at a luxury event"></div>
+            <div class="gallery-item"><img
+                    src="https://plus.unsplash.com/premium_photo-1706005684813-bb175669291a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
+                    alt="Luxury networking lounge decor"></div>
+            <div class="gallery-item"><img
+                    src="https://plus.unsplash.com/premium_photo-1667514648343-f36fe9b8654e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
+                    alt="Outdoor garden evening soirée"></div>
         </div>
     </section>
 
@@ -1058,11 +1461,15 @@
         </div>
         <div class="reviews-layout">
             <div class="review-card">
-                <div class="review-text">"This network transformed how I look at collaborative growth. The events feel like high-end holiday socials, yet the business closed from these connections surpasses any corporate mixer I've ever attended."</div>
+                <div class="review-text">"This network transformed how I look at collaborative growth. The events feel
+                    like high-end holiday socials, yet the business closed from these connections surpasses any
+                    corporate mixer I've ever attended."</div>
                 <div class="review-author">— Sarah Jenkins, Creative Principal</div>
             </div>
             <div class="review-card">
-                <div class="review-text">"Uncompromisingly beautiful locations, exceptional guest caliber, and an energy that is completely addictive. The Exchange masterfully blends luxury structure with pure, authentic fun."</div>
+                <div class="review-text">"Uncompromisingly beautiful locations, exceptional guest caliber, and an energy
+                    that is completely addictive. The Exchange masterfully blends luxury structure with pure, authentic
+                    fun."</div>
                 <div class="review-author">— Kate Miller, Venture Partner</div>
             </div>
         </div>
@@ -1076,18 +1483,27 @@
         </div>
         <div class="contact-layout">
             <div>
-                <p style="color: var(--text-muted); margin-bottom: 25px;">To guard the high-caliber environment of our network rooms, membership and individual event entry require code approval.</p>
-                <p style="color: var(--text-muted);">Please log your business coordinates. Our network coordinator will review your profile and reach out within 48 hours.</p>
+                <p style="color: var(--text-muted); margin-bottom: 25px;">To guard the high-caliber environment of our
+                    network rooms, membership and individual event entry require code approval.</p>
+                <p style="color: var(--text-muted);">Please log your business coordinates. Our network coordinator will
+                    review your profile and reach out within 48 hours.</p>
                 <p style="color: var(--text-muted);">Email us at: wingllcnh@gmail.com</p>
                 <div class="social-links">
-                    <p><span class="social-icon">🌐</span>Website: <a href="https://www.wingllcnh.com" target="_blank" rel="noopener noreferrer"><strong>www.wingllcnh.com</strong></a></p>
-                    <p><span class="social-icon">📘</span>Facebook: <a href="https://www.facebook.com/profile.php?id=100092039947752" target="_blank" rel="noopener noreferrer"><strong>facebook.com/wingllcnh</strong></a></p>
-                    <p><span class="social-icon">📷</span>Instagram: <a href="https://www.instagram.com/wingllcnh" target="_blank" rel="noopener noreferrer"><strong>instagram.com/wingllcnh</strong></a></p>
-                    <p><span class="social-icon">🔗</span>LinkedIn: <a href="https://www.linkedin.com/company/wingllc" target="_blank" rel="noopener noreferrer"><strong>linkedin.com/company/wingllc</strong></a></p>
+                    <p><span class="social-icon">🌐</span>Website: <a href="https://www.wingllcnh.com" target="_blank"
+                            rel="noopener noreferrer"><strong>www.wingllcnh.com</strong></a></p>
+                    <p><span class="social-icon">📘</span>Facebook: <a
+                            href="https://www.facebook.com/profile.php?id=100092039947752" target="_blank"
+                            rel="noopener noreferrer"><strong>facebook.com/wingllcnh</strong></a></p>
+                    <p><span class="social-icon">📷</span>Instagram: <a href="https://www.instagram.com/wingllcnh"
+                            target="_blank" rel="noopener noreferrer"><strong>instagram.com/wingllcnh</strong></a></p>
+                    <p><span class="social-icon">🔗</span>LinkedIn: <a href="https://www.linkedin.com/company/wingllc"
+                            target="_blank" rel="noopener noreferrer"><strong>linkedin.com/company/wingllc</strong></a>
+                    </p>
                 </div>
             </div>
             <div>
-                <form onsubmit="event.preventDefault(); alert('Application logged successfully. Our network coordinator will reach out shortly.'); this.reset();">
+                <form
+                    onsubmit="event.preventDefault(); alert('Application logged successfully. Our network coordinator will reach out shortly.'); this.reset();">
                     <div class="form-group">
                         <label for="fullname">Full Name</label>
                         <input type="text" id="fullname" required autocomplete="name">
@@ -1102,11 +1518,13 @@
                     </div>
                     <div class="form-group">
                         <label for="instagram">Instagram link</label>
-                        <input type="url" id="instagram" placeholder="https://www.instagram.com/yourprofile" autocomplete="url">
+                        <input type="url" id="instagram" placeholder="https://www.instagram.com/yourprofile"
+                            autocomplete="url">
                     </div>
                     <div class="form-group">
                         <label for="facebook">Facebook link</label>
-                        <input type="url" id="facebook" placeholder="https://www.facebook.com/yourprofile" autocomplete="url">
+                        <input type="url" id="facebook" placeholder="https://www.facebook.com/yourprofile"
+                            autocomplete="url">
                     </div>
                     <div class="form-group">
                         <label for="website">Website</label>
@@ -1176,31 +1594,65 @@
         const eventDetails = {
             bridgerton: {
                 label: 'Bridgerton Garden Experience',
-                title: 'Step into an evening of elegance, connection, and inspiration',
+                title: 'An Evening of Refinement, Connection, and Creative Artistry',
                 copy: `
-                    <p>Step into an evening of elegance, connection, and inspiration at our exclusive Bridgerton Garden Experience — a refined social soirée designed for ambitious, stylish, and inspiring women. Set within a beautifully curated private venue in Manchester, NH, this immersive experience blends luxury, creativity, and meaningful networking in an atmosphere inspired by the charm of an English royal garden.</p>
-                    <p>What to expect:
-                        • ✨ Exquisite Bridgerton-inspired décor and ambiance
-                        • 🧵 A sophisticated accessories workshop presented by our featured partner, Raisa’s Sewing & Accessories
-                        • 🥂 Champagne and elegant light refreshments
-                        • 📸 A beautifully styled photo experience
-                        • 🎻 Romantic music and an intimate high-society atmosphere
-                        • 🤝 Meaningful conversations and connections with like-minded women.</p>
-                    <p><strong>Dress Code:</strong> Elegant & Chic — timeless glamour, pearls, flowing dresses, and refined sophistication. Embrace your inner queen with fascinators, elegant tea hats, lace gloves, satin gloves, and vintage-inspired accessories.</p>
-                    <p><strong>Tickets:</strong> Early Access — $65 (through June 3); General Admission — $95 (after June 3). Location details shared with confirmed attendees only.</p>
-                    <p><strong>Refund policy:</strong> Full refunds available for cancellations made at least 7 days prior. Within 7 days, tickets are non-refundable but may be transferred with prior notice. If the organizer cancels, a full refund or credit will be issued.</p>
+                    <p>You are cordially invited to step into a world of timeless elegance at the exclusive <strong>Bridgerton Garden Experience</strong>—a distinguished social soirée meticulously curated for the ambitious, the stylish, and the inspiring woman.</p>
+                    <p>Hosted within a private estate in Manchester, New Hampshire, this immersive evening harmoniously blends the splendor of an English royal garden with modern luxury and affluent networking.</p>
+                    
+                    <h3>The Experience</h3>
+                    <ul>
+                        <li><strong>Regal Ambiance:</strong> Immerse yourself in breathtaking, Bridgerton-inspired décor designed to transport you to Mayfair's peak social season.</li>
+                        <li><strong>The Artisanal Workshop:</strong> A sophisticated bespoke brooch-making masterclass, elegantly presented by our premier partner, <strong>Raisa's Sewing & Accessories</strong>.</li>
+                        <li><strong>Curated Confections:</strong> Indulge in crisp champagne and an array of exquisite, light refreshments.</li>
+                        <li><strong>The Portrait Pavilion:</strong> A beautifully styled, professional photographic experience to capture your timeless elegance.</li>
+                        <li><strong>Symphonic Romance:</strong> Melodic, romantic strains echoing through an intimate, high-society atmosphere.</li>
+                        <li><strong>Elite Networking:</strong> Cultivate meaningful, lasting alliances with a curated community of like-minded women.</li>
+                    </ul>
+                    
+                    <p><em>This evening is an intentional celebration of modern femininity, confidence, and creative community—designed specifically for women who command ambition and appreciate the finer things in life.</em></p>
+                    
+                    <h3>Masterclass & Guest Speakers</h3>
+                    <p>We are delighted to feature insightful presentations from our esteemed partners:</p>
+                    <ol>
+                        <li><strong>Raisa's Sewing & Accessories</strong> (<a href="http://www.raisasewing.com/" target="_blank" rel="noopener noreferrer">raisasewing.com</a>) — Elevating your personal style with an exclusive, hands-on workshop in luxury brooch design.</li>
+                        <li><strong>Body & Sole Wellness Spa</strong> (<a href="http://bodyandsolewellnessspa.com/" target="_blank" rel="noopener noreferrer">bodyandsolewellnessspa.com</a>) — An intimate, vital conversation surrounding divine feminine longevity, women's holistic health, and navigating menopause with grace.</li>
+                    </ol>
+                    
+                    <h3>Attire: Haute Couture & Timeless Elegance</h3>
+                    <p>We request the honor of your presence in your finest sartorial expressions. Think flowing silhouettes, lustrous pearls, and unapologetic glamour. To fully embrace the Regency aesthetic, guests are highly encouraged to adorn themselves in fascinators, structured tea hats, delicate lace or satin gloves, and vintage-inspired heirlooms. Arrive ready to embody your inner queen.</p>
+                    
+                    <h3>Registration & Investment</h3>
+                    <p>To maintain the intimacy of this gathering, guest capacity is strictly limited.</p>
+                    <ul>
+                        <li><strong>Early Access Registry:</strong> $65 <em>(Available through June 3)</em></li>
+                        <li><strong>General Admission:</strong> $95 <em>(Available after June 3)</em></li>
+                    </ul>
+                    <p><strong>Reservations & Payment:</strong> Venmo @Natalie-Markelova</p>
+                    <p><strong>Location:</strong> A private estate in Manchester, NH. <em>(The secret address shall be unveiled exclusively to confirmed dignitaries.)</em></p>
+                    
+                    <p><strong>Partnerships & Collaborations:</strong> For brand alignment and sponsorship opportunities, please submit your inquiry via our <a href="https://forms.gle/fxwmMju72eQkzayGA" target="_blank" rel="noopener noreferrer">Curation Form</a>.</p>
+                    
+                    <h3>The Fine Print</h3>
+                    <p><strong>Refund Policy:</strong> Accommodations for a full refund are gladly extended for cancellations requested at least 7 days prior to the gala. Within the 7-day window, tickets become non-refundable but may be seamlessly transferred to another guest with prior written notice. Should the organizers postpone or cancel the affair, a full restitution or future credit will be promptly issued.</p>
+                    
+                    <h3>About us</h3>
+                    <p><strong>✨ About World's Influencers Networking Group</strong></p>
+                    <p>World's Influencers Networking Group LLC is a curated business and social community created to bring together ambitious entrepreneurs, professionals, creatives, and inspiring women who value meaningful connections, personal growth, and elevated experiences.</p>
+                    <p>Our events are designed to combine networking, education, luxury, and community in an elegant and welcoming atmosphere where relationships turn into collaborations, friendships, and opportunities.</p>
+                    <p>Through exclusive gatherings, speakers, workshops, and social experiences, we create a space where influential and like-minded individuals can connect, share knowledge, support one another, and grow both personally and professionally.</p>
+                    <p>We believe networking should feel inspiring, authentic, empowering — and unforgettable.</p>
                 `,
                 actionText: 'Purchase tickets on Eventbrite',
                 actionHref: 'https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator'
             },
             cafe: {
-                label: 'Café O\'Shea\'s Caife & Tae',
+                label: 'Buckleys Bakery & Cafe',
                 title: 'Morning Coffee, Connection & Community',
                 copy: `
                     <p>Join local business networkers for a relaxed morning of coffee, conversation, and meaningful connections. This is a welcoming space to meet other local professionals, share what you do, exchange ideas, and build genuine relationships within the community.</p>
                     <p>Whether you’re growing a business, exploring collaborations, or simply looking to connect with like-minded people, come as you are and enjoy an easy, friendly start to your day.</p>
-                    <p><strong>When:</strong> June 15, 2026 at 11:00 AM</p>
-                    <p><strong>Where:</strong> 135 NH-101A, Amherst, NH 03031</p>
+                    <p><strong>When:</strong> June 10, 2026 at 10 AM</p>
+                    <p><strong>Where:</strong> 436 Daniel Webster Hwy, Merrimack, NH 03031</p>
                 `,
                 actionText: 'Request your seat',
                 actionHref: '#connect'
@@ -1273,4 +1725,5 @@
         });
     </script>
 </body>
+
 </html>
