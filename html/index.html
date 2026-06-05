@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The WING LLC | Elite Business Collective</title>
+    <!-- Google Fonts: Inter and Playfair Display for refined luxury typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM & BRAND IDENTITY --- */
+        :root {
+            --bg-color: #100f0c;
+            --bg-soft: rgba(22, 20, 17, 0.82);
+            --bg-panel: rgba(22, 20, 17, 0.96);
+            --text-main: #f8f2e8;
+            --text-muted: #c8b798;
+            --border-color: rgba(210, 177, 110, 0.16);
+            --accent-gold: #d4b16e;   /* Stronger luxury accent */
+            --accent-soft: rgba(212, 177, 110, 0.14);
+            --font-tracking: 0.22em; /* Elegant uppercase tracking */
+            --grid-gap: 44px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            padding-top: 90px; /* Offset for fixed header */
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top left, rgba(212,177,110,0.08), transparent 18%),
+                              radial-gradient(circle at bottom right, rgba(255,255,255,0.06), transparent 16%),
+                              linear-gradient(180deg, rgba(10, 9, 8, 0.96), rgba(22, 20, 17, 0.96));
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hero-container {
+            opacity: 0;
+            animation: fadeInUp 1.2s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero-image-frame {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.08), transparent 40%, rgba(255,255,255,0.02));
+            pointer-events: none;
+            transform: translate3d(-20%, -20%, 0);
+            opacity: 0.8;
+        }
+
+        .hero-image-frame img {
+            transition: transform 0.8s ease;
+        }
+
+        .hero-image-frame:hover img {
+            transform: scale(1.05) rotate(0.2deg);
+        }
+
+        section {
+            padding: 120px 4%;
+            border-bottom: 1px solid rgba(212,177,110,0.12);
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header h2 {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 70px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(212,177,110,0.8), transparent);
+        }
+
+        .event-row {
+            transition: transform 0.35s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.35s ease;
+        }
+
+        .event-row:hover {
+            transform: translateX(8px);
+            background: rgba(28, 26, 22, 0.88);
+            box-shadow: 0 36px 90px rgba(0,0,0,0.32);
+        }
+
+        .tier-card {
+            background: linear-gradient(180deg, rgba(18, 16, 13, 0.95), rgba(15, 13, 11, 0.92));
+            backdrop-filter: blur(8px);
+        }
+
+        .tier-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 40px 110px rgba(0,0,0,0.32);
+        }
+
+        .directory-item {
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .directory-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212,177,110,0.28);
+            box-shadow: 0 40px 110px rgba(0,0,0,0.35);
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(212,177,110,0.24);
+            box-shadow: 0 28px 90px rgba(0,0,0,0.20);
+        }
+
+        .gallery-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(12,12,12,0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2100;
+            padding: 20px;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+        }
+
+        .gallery-modal-inner {
+            position: relative;
+            max-width: min(90vw, 1000px);
+            width: 100%;
+            max-height: 90vh;
+            overflow: hidden;
+            border-radius: 24px;
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 30px 120px rgba(0,0,0,0.5);
+        }
+
+        .gallery-modal-inner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 24px;
+        }
+
+        .gallery-modal .modal-close {
+            color: #fff;
+            right: 20px;
+            top: 20px;
+            z-index: 5;
+        }
+
+        .social-links {
+            display: grid;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .social-links {
+            display: grid;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .social-links {
+            display: grid;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .social-links p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .social-links .social-icon {
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.4rem;
+            color: var(--accent-gold);
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(26px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, .nav-link, .label, button, .tag {
+            text-transform: uppercase;
+            letter-spacing: var(--font-tracking);
+            font-weight: 300;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+            color: var(--text-main);
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            background-color: rgba(16, 15, 12, 0.92);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(212,177,110,0.12);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4%;
+            z-index: 1000;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-image {
+            width: 72px;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.18em;
+        }
+
+        .logo-text strong {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: rgba(200, 183, 136, 0.88);
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-gold);
+        }
+
+        /* --- BASE CONTENT SECTIONS --- */
+        section {
+            padding: 120px 4%;
+            border-bottom: 1px solid rgba(212,177,110,0.12);
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            max-width: 600px;
+        }
+
+        .section-header .label {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 14px;
+            letter-spacing: 0.28em;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            margin-bottom: 18px;
+            letter-spacing: 0.03em;
+            line-height: 1.1;
+        }
+
+        /* --- SECTION 1: HOME (HERO) --- */
+        #home {
+            height: calc(100vh - 90px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4%;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            width: 100%;
+            height: 85%;
+            align-items: center;
+            gap: var(--grid-gap);
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.6rem;
+            line-height: 1.05;
+            margin-bottom: 28px;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+            color: var(--text-muted);
+            max-width: 520px;
+        }
+
+        .hero-image-frame {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255,245,225,0.12), rgba(18,16,13,0.62));
+            border: 1px solid rgba(212,177,110,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 40px 90px rgba(0,0,0,0.22);
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 28px;
+        }
+
+        /* --- SECTION 2: ABOUT (THE MANIFESTO) --- */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--grid-gap);
+        }
+
+        .about-statement {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-weight: 300;
+            color: var(--text-main);
+        }
+
+        /* --- SECTION 3: UPCOMING EVENTS (UTILITY LIST) --- */
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .event-row {
+            display: grid;
+            grid-template-columns: 1.5fr 3fr 1.5fr 1.5fr;
+            padding: 32px 30px;
+            border-bottom: 1px solid rgba(212,177,110,0.14);
+            align-items: center;
+            gap: 22px;
+            transition: transform 0.25s ease, border-color 0.3s ease, background 0.3s ease;
+            background: rgba(18, 16, 13, 0.74);
+            border-radius: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 24px 70px rgba(0,0,0,0.24);
+        }
+
+        .event-row:hover {
+            transform: translateX(4px);
+            border-bottom-color: rgba(28,26,22,0.18);
+        }
+
+        .event-date {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .event-title h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .event-title p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .event-venue {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* --- SECTION 4: MEMBERSHIP CARDS --- */
+        .membership-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--grid-gap);
+        }
+
+        .tier-card {
+            border: 1px solid rgba(212,177,110,0.16);
+            padding: 50px;
+            background-color: rgba(18, 16, 13, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 450px;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 28px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.24);
+        }
+
+        .tier-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .tier-card:hover {
+            border-color: var(--text-main);
+        }
+
+        .tier-card.premium {
+            border-color: var(--accent-gold);
+            position: relative;
+        }
+
+        .tier-card.premium .tag {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 0.6rem;
+            background-color: var(--accent-gold);
+            color: #fff;
+            padding: 4px 10px;
+        }
+
+        .tier-name {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .tier-price {
+            font-size: 1.8rem;
+            font-weight: 200;
+            margin-bottom: 30px;
+        }
+
+        .tier-perks {
+            list-style: none;
+            margin-bottom: 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tier-perks li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* --- SECTION 5: THE INNER CIRCLE (MEMBER DIRECTORY ADDITION) --- */
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .directory-item {
+            border: 1px solid rgba(212,177,110,0.16);
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            background-color: rgba(18, 16, 13, 0.94);
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 28px 80px rgba(0,0,0,0.30);
+        }
+
+        .directory-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin-bottom: 16px;
+            border-radius: 20px;
+            filter: saturate(0.95) contrast(1.05);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .directory-item h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .directory-item p {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        /* --- SECTION 6: GALLERY (TOTEME MOSAIC GRID) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 100%;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4 / 3;
+            background-color: rgba(255,255,255,0.04);
+            border: 1px solid rgba(212,177,110,0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            letter-spacing: var(--font-tracking);
+            color: rgba(255,255,255,0.72);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+            aspect-ratio: 2 / 3;
+        }
+
+        .event-details-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-main);
+            text-decoration: underline;
+            font: inherit;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .event-details-btn.btn {
+            background-color: transparent;
+            color: var(--accent-gold);
+            border: 1px solid rgba(212,177,110,0.16);
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            border-radius: 999px;
+            text-transform: uppercase;
+        }
+
+        .event-details-btn.btn:hover {
+            background-color: rgba(212,177,110,0.12);
+            color: var(--accent-gold);
+            opacity: 1;
+        }
+
+        .event-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 17, 17, 0.92);
+            color: #ffffff;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .event-modal.active {
+            display: flex;
+        }
+
+        .event-modal-inner {
+            width: min(980px, 100%);
+            max-height: min(90vh, 100%);
+            background: #111;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: auto;
+            position: relative;
+        }
+
+        .event-modal-content h2 {
+            margin: 0 0 25px;
+            font-size: 2rem;
+            line-height: 1.1;
+        }
+
+        .event-modal-content p {
+            margin-bottom: 20px;
+            color: #ddd;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: none;
+            background: transparent;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+        }
+
+        /* --- SECTION 7: REVIEWS --- */
+        .reviews-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--grid-gap);
+        }
+
+        .review-card {
+            padding-right: var(--grid-gap);
+        }
+
+        .review-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .review-author {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: var(--font-tracking);
+            color: var(--accent-gold);
+        }
+
+        /* --- SECTION 8: CONTACT / APPLICATION FORM --- */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: var(--grid-gap);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: var(--font-tracking);
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        form input, form select {
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 0;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background: transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        form input:focus {
+            border-bottom: 1px solid var(--text-main);
+        }
+
+        /* BUTTON LAYOUTS */
+        button, .btn {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: #111;
+            border: none;
+            padding: 18px 45px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            text-decoration: none;
+            width: fit-content;
+            border-radius: 999px;
+            box-shadow: 0 22px 50px rgba(0,0,0,0.25);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        button:hover, .btn:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid rgba(212,177,110,0.16);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(212,177,110,0.12);
+            color: var(--accent-gold);
+            opacity: 1;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px 4%;
+            text-align: center;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: var(--font-tracking);
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* --- RESPONSIVE CALIBRATIONS --- */
+        @media (max-width: 992px) {
+            .hero-container, .about-layout, .membership-grid, .reviews-layout, .contact-layout {
+                grid-template-columns: 1fr;
+            }
+            .directory-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .event-row { grid-template-columns: 1fr 1fr; gap: 15px; }
+            #home { height: auto; padding: 100px 4%; }
+            .hero-image-frame { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY LUXURY HEADER -->
+    <header>
+        <a href="#home" class="logo" aria-label="WWI Networking Group logo">
+            <svg class="logo-image" viewBox="0 0 260 260" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <rect width="260" height="260" fill="#000" rx="18"/>
+                <text x="30" y="82" font-family="'Playfair Display', serif" font-size="82" font-weight="700" letter-spacing="-10" fill="#fff">W</text>
+                <text x="104" y="82" font-family="'Playfair Display', serif" font-size="82" font-weight="700" letter-spacing="-10" fill="#fff">W</text>
+                <text x="188" y="82" font-family="'Playfair Display', serif" font-size="82" font-weight="700" fill="#fff">I</text>
+                <rect x="0" y="102" width="260" height="38" fill="#000"/>
+                <text x="130" y="129" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" letter-spacing="0.35em" fill="#fff">NETWORKING GROUP</text>
+                <text x="30" y="218" font-family="'Playfair Display', serif" font-size="82" font-weight="700" letter-spacing="-10" fill="#fff">W</text>
+                <text x="104" y="218" font-family="'Playfair Display', serif" font-size="82" font-weight="700" letter-spacing="-10" fill="#fff">W</text>
+                <text x="188" y="218" font-family="'Playfair Display', serif" font-size="82" font-weight="700" fill="#fff">I</text>
+            </svg>
+        </a>
+        <nav>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#events" class="nav-link">Events</a>
+            <a href="#membership" class="nav-link">Membership</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#reviews" class="nav-link">Reviews</a>
+            <a href="#connect" class="nav-link">Connect</a>
+        </nav>
+    </header>
+
+    <!-- SECTION: HERO -->
+    <section id="home">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Where Curated Strategy Meets High-Energy Connection.</h1>
+                <p>A refined, luxury business network engineered exclusively for forward-thinking entrepreneurs, executives, and innovators who reject standard corporate formulas.</p>
+                <a href="#connect" class="btn">Request Invitation</a>
+            </div>
+            <div class="hero-image-frame">
+                <img src="https://images.unsplash.com/photo-1762517141861-acd7a11c7d42?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="WING networking event">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ABOUT (MANIFESTO) -->
+    <section id="about">
+        <div class="section-header">
+            <span class="label">01 / Identity</span>
+            <h2>Our Collective Philosophy</h2>
+        </div>
+        <div class="about-layout">
+            <div class="about-statement">
+                We believe that business networking should feel like walking into an elite boutique club—high style, atmospheric locations, and unscripted, powerful room caliber.
+            </div>
+            <div>
+                <p style="margin-bottom: 20px;">We intentionally step away from awkward pitches, stiff name tags, and ordinary conference spaces. Our soirées are strictly hosted in curated environments—modern art galleries, bespoke private gardens, and design-forward lounges.</p>
+                <p>We blend uncompromising visual elegance with open, dynamic, and collaborative fun. Here, business assets grow because genuine relationships come first.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: UPCOMING EVENTS -->
+    <section id="events">
+        <div class="section-header">
+            <span class="label">02 / Calendar</span>
+            <h2>Upcoming Experiences</h2>
+        </div>
+        <div class="events-list">
+            <!-- Event 1 -->
+            <div class="event-row">
+                <div class="event-date">June 15, 2026</div>
+                <div class="event-title">
+                    <h3>Café O'Shea's Caife & Tae</h3>
+                    <p>Join local business networkers for a relaxed morning of coffee, conversation, and meaningful connections. This is a welcoming space to meet other local professionals, share what you do, exchange ideas, and build genuine relationships within the community. Whether you’re growing a business, exploring collaborations, or simply looking to connect with like-minded people, come as you are and enjoy an easy, friendly start to your day.</p>
+                    <button type="button" class="event-details-btn btn btn-outline" data-event="cafe">View details</button>
+                </div>
+                <div class="event-value event-venue">Amherst, NH                <button type="button" class="event-details-btn btn btn-outline" data-event="bridgerton">View details</button>                <button type="button" class="event-details-btn btn btn-outline" data-event="bridgerton">View details</button>                <button type="button" class="event-details-btn btn btn-outline" data-event="bridgerton">View details</button></div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a></div>
+            </div>
+            <!-- Event 2 -->
+            <div class="event-row">
+                <div class="event-date">June 20, 2026</div>
+                <div class="event-title">
+                    <h3>Bridgerton Garden Experience</h3>
+                    <p>An elegant private soirée for ambitious, stylish women. <button type="button" class="event-details-btn" data-event="bridgerton">View details</button></p>
+                </div>
+                <div class="event-value event-venue">Manchester, NH</div>
+                <div><a href="https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">Buy tickets</a></div>
+            </div>
+            <!-- Event 3 -->
+            <div class="event-row">
+                <div class="event-date">August TBD, 2026</div>
+                <div class="event-title">
+                    <h3>TBD</h3>
+                    <p>Curated champagne pairing, and light jazz.</p>
+                </div>
+                <div class="event-value event-venue">Manchester, NH</div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">Register</a></div>
+            </div>
+        </div>
+        <div class="event-modal" id="event-modal" aria-hidden="true">
+            <div class="event-modal-inner" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
+                <button type="button" class="modal-close event-close" aria-label="Close event details">&times;</button>
+                <div class="event-modal-content">
+                    <span class="label">Bridgerton Garden Experience</span>
+                    <h2 id="event-modal-title">Step into an evening of elegance, connection, and inspiration</h2>
+                    <p>Step into an evening of elegance, connection, and inspiration at our exclusive Bridgerton Garden Experience — a refined social soirée designed for ambitious, stylish, and inspiring women. Set within a beautifully curated private venue in Manchester, NH, this immersive experience blends luxury, creativity, and meaningful networking in an atmosphere inspired by the charm of an English royal garden.</p>
+                    <p>What to expect: 
+                        • ✨ Exquisite Bridgerton-inspired décor and ambiance 
+                        • 🧵 A sophisticated accessories workshop presented by our featured partner, Raisa’s Sewing & Accessories 
+                        • 🥂 Champagne and elegant light refreshments 
+                        • 📸 A beautifully styled photo experience 
+                        • 🎻 Romantic music and an intimate high-society atmosphere 
+                        • 🤝 Meaningful conversations and connections with like-minded women.</p>
+                    <p><strong>Dress Code:</strong> Elegant & Chic — timeless glamour, pearls, flowing dresses, and refined sophistication. Embrace your inner queen with fascinators, elegant tea hats, lace gloves, satin gloves, and vintage-inspired accessories.</p>
+                    <p><strong>Tickets:</strong> 
+                        Early Access — $65 (through June 3); 
+                        General Admission — $95 (after June 3). 
+                        Location details shared with confirmed attendees only.</p>
+                    <p><a href="https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 12px 32px; font-size: 0.85rem;">Purchase tickets on Eventbrite</a></p>
+                    <p><strong>Refund policy:</strong> Full refunds available for cancellations made at least 7 days prior. Within 7 days, tickets are non-refundable but may be transferred with prior notice. If the organizer cancels, a full refund or credit will be issued.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gallery-modal" id="gallery-modal" aria-hidden="true">
+        <div class="gallery-modal-inner" role="dialog" aria-modal="true">
+            <button type="button" class="modal-close gallery-close" aria-label="Close gallery">&times;</button>
+            <img id="gallery-modal-image" src="" alt="Gallery preview">
+        </div>
+    </div>
+
+    <!-- SECTION: MEMBERSHIP -->
+    <section id="membership">
+        <div class="section-header">
+            <span class="label">03 / Tiers</span>
+            <h2>Select Your Circle</h2>
+        </div>
+        <div class="membership-grid">
+            <!-- Tier 1 -->
+            <div class="tier-card">
+                <div>
+                    <h3 class="tier-name">The Preview Pass</h3>
+                    <div class="tier-price">FREE <span style="font-size: 0.9rem; color: var(--text-muted);">/ month</span></div>
+                    <ul class="tier-perks">
+                        <li>Email Notifications about Monthly events</li>                    </ul>
+                </div>
+                <a href="#connect" class="btn btn-outline" style="width: 100%;">Apply For Pass</a>
+            </div>
+             <!-- Tier 2 -->
+            <div class="tier-card">
+                <div>
+                    <h3 class="tier-name">The Collective Pass</h3>
+                    <div class="tier-price">$39 <span style="font-size: 0.9rem; color: var(--text-muted);">/ month</span></div>
+                    <ul class="tier-perks">
+                        <li>Discounted entry to all Monthly Soirées</li>
+                        <li>Access to the Private Digital Member Index</li>
+                        <li>Strategic introductions to local founders</li>                    </ul>
+                </div>
+                <a href="#connect" class="btn btn-outline" style="width: 100%;">Apply For Pass</a>
+            </div>
+            <!-- Tier 3 -->
+            <div class="tier-card premium">
+                <span class="tag">Most Coveted</span>
+                <div>
+                    <h3 class="tier-name">The Private Circle (VIP)</h3>
+                    <div class="tier-price">$149 <span style="font-size: 0.9rem; color: var(--text-muted);">/ month</span></div>
+                    <ul class="tier-perks">
+                        <li>All Collective tier benefits included</li>
+                        <li>Dedicated Spotlight Feature on the website frontpage</li>
+                        <li>Quarterly private executive dinners with Keynote Speakers</li>
+                        <li>Quarterly private executive dinners with Keynote Speakers</li>
+                        <li>A dedicated premium video feature profiling you and your brand logo on the network's homepage for high-level traffic exposure.</li>
+                    </ul>
+                </div>
+                <a href="#connect" class="btn" style="width: 100%;">Apply For VIP Status</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRATEGIC ADDITION: THE INNER CIRCLE DIRECTORY -->
+    <section id="directory">
+        <div class="section-header">
+            <span class="label">04 / Roster</span>
+            <h2>The Inner Circle Showcase</h2>
+        </div>
+        <div class="directory-grid">
+            <div class="directory-item">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQFZaA1prOa0cw/profile-displayphoto-crop_800_800/B4EZst4HGqIUAI-/0/1766001245456?e=1781740800&v=beta&t=-Yc57YCr3cwfCtQaPOT7uW3-MmSIS-mtVuG2HYk_FsM" alt="Natalia Markelova">
+                <div>
+                    <h4>Natalia Markelova</h4>
+                    <p>Founder, Web Developer</p>
+                </div>
+            </div>
+            <div class="directory-item">
+                <img src="https://scontent-iad3-2.cdninstagram.com/v/t51.82787-19/624247139_18553814230033560_9090203965788948873_n.jpg?_nc_cat=103&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MTEuQzMifQ%3D%3D&_nc_ohc=oUM69LYTXLYQ7kNvwF_yRuW&_nc_oc=AdooKgSyz1oj9uSkGVifiHQ-KbvZCqTpd-79GR1VE0Q3IGL1QXOYMdd9ylue97lTq-w&_nc_zt=24&_nc_ht=scontent-iad3-2.cdninstagram.com&_nc_gid=5ya_VGfKiZIAFw1eRuCIOQ&_nc_ss=7b6a8&oh=00_Af-IKajNrHaeDdSTJHwY4ysiLqpCr1LCWhExQHU0mCWUPQ&oe=6A282A8A" alt="Kateryna Demers">
+                <div>
+                    <h4>Kateryna Demers</h4>
+                    <p>Realtor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: GALLERY -->
+    <section id="gallery">
+        <div class="section-header">
+            <span class="label">05 / Atmosphere</span>
+            <h2>The Social Archive</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1762517104454-c80a756f25d3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Luxury women networking event"></div>
+            <div class="gallery-item"><img src="https://plus.unsplash.com/premium_photo-1723773614061-03914c8d1334?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Elegant women at a network event"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1561928070-590b9c48f0bb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Champagne toast at a luxury event"></div>
+            <div class="gallery-item"><img src="https://plus.unsplash.com/premium_photo-1706005684813-bb175669291a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Luxury networking lounge decor"></div>
+            <div class="gallery-item"><img src="https://plus.unsplash.com/premium_photo-1667514648343-f36fe9b8654e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D" alt="Outdoor garden evening soirée"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: REVIEWS -->
+    <section id="reviews">
+        <div class="section-header">
+            <span class="label">06 / Endorsements</span>
+            <h2>What Founders Say</h2>
+        </div>
+        <div class="reviews-layout">
+            <div class="review-card">
+                <div class="review-text">"This network transformed how I look at collaborative growth. The events feel like high-end holiday socials, yet the business closed from these connections surpasses any corporate mixer I've ever attended."</div>
+                <div class="review-author">— Sarah Jenkins, Creative Principal</div>
+            </div>
+            <div class="review-card">
+                <div class="review-text">"Uncompromisingly beautiful locations, exceptional guest caliber, and an energy that is completely addictive. The Exchange masterfully blends luxury structure with pure, authentic fun."</div>
+                <div class="review-author">— Kate Miller, Venture Partner</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CONNECT / FORM -->
+    <section id="connect">
+        <div class="section-header">
+            <span class="label">07 / Verification</span>
+            <h2>Request Your Seat</h2>
+        </div>
+        <div class="contact-layout">
+            <div>
+                <p style="color: var(--text-muted); margin-bottom: 25px;">To guard the high-caliber environment of our network rooms, membership and individual event entry require code approval.</p>
+                <p style="color: var(--text-muted);">Please log your business coordinates. Our network coordinator will review your profile and reach out within 48 hours.</p>
+                <p style="color: var(--text-muted);">Email us at: wingllcnh@gmail.com</p>
+                <div class="social-links">
+                    <p><span class="social-icon">🌐</span>Website: <a href="https://www.wingllcnh.com" target="_blank" rel="noopener noreferrer"><strong>www.wingllcnh.com</strong></a></p>
+                    <p><span class="social-icon">📘</span>Facebook: <a href="https://www.facebook.com/profile.php?id=100092039947752" target="_blank" rel="noopener noreferrer"><strong>facebook.com/wingllcnh</strong></a></p>
+                    <p><span class="social-icon">📷</span>Instagram: <a href="https://www.instagram.com/wingllcnh" target="_blank" rel="noopener noreferrer"><strong>instagram.com/wingllcnh</strong></a></p>
+                    <p><span class="social-icon">🔗</span>LinkedIn: <a href="https://www.linkedin.com/company/wingllc" target="_blank" rel="noopener noreferrer"><strong>linkedin.com/company/wingllc</strong></a></p>
+                </div>
+            </div>
+            <div>
+                <form onsubmit="event.preventDefault(); alert('Application logged successfully. Our network coordinator will reach out shortly.'); this.reset();">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" required autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailaddress">Email</label>
+                        <input type="email" id="emailaddress" required autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company / Industry Track</label>
+                        <input type="text" id="company" placeholder="e.g., Tech Venture / Creative Studio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Instagram link</label>
+                        <input type="url" id="instagram" placeholder="https://www.instagram.com/yourprofile" autocomplete="url">
+                    </div>
+                    <div class="form-group">
+                        <label for="facebook">Facebook link</label>
+                        <input type="url" id="facebook" placeholder="https://www.facebook.com/yourprofile" autocomplete="url">
+                    </div>
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="url" id="website" placeholder="https://www.yoursite.com" autocomplete="url">
+                    </div>
+                    <div class="form-group">
+                        <label for="tier-select">Desired Engagement Track</label>
+                        <select id="tier-select">
+                            <option>The Preview Pass — FREE</option>
+                            <option>The Collective Pass — $49/mo</option>
+                            <option>The Private Circle VIP — $149/mo</option>
+                            <option>Single Event Guest Pass Request</option>
+                            <option>Venue Partnership Inquiry</option>
+                        </select>
+                    </div>
+                    <button type="submit">Submit Membership Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2026 Worlds Influencers Networking Group LLC. All Rights Reserved.
+    </footer>
+
+    <!-- DYNAMIC SCROLL LOGIC FOR MENUS -->
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 130)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        const eventModal = document.getElementById('event-modal');
+        const eventClose = document.querySelector('.event-close');
+        const galleryModal = document.getElementById('gallery-modal');
+        const galleryImage = document.getElementById('gallery-modal-image');
+        const galleryClose = document.querySelector('.gallery-close');
+
+        const revealSections = () => {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= window.innerHeight * 0.85) {
+                    section.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('load', revealSections);
+
+        const eventDetails = {
+            bridgerton: {
+                label: 'Bridgerton Garden Experience',
+                title: 'Step into an evening of elegance, connection, and inspiration',
+                copy: `
+                    <p>Step into an evening of elegance, connection, and inspiration at our exclusive Bridgerton Garden Experience — a refined social soirée designed for ambitious, stylish, and inspiring women. Set within a beautifully curated private venue in Manchester, NH, this immersive experience blends luxury, creativity, and meaningful networking in an atmosphere inspired by the charm of an English royal garden.</p>
+                    <p>What to expect:
+                        • ✨ Exquisite Bridgerton-inspired décor and ambiance
+                        • 🧵 A sophisticated accessories workshop presented by our featured partner, Raisa’s Sewing & Accessories
+                        • 🥂 Champagne and elegant light refreshments
+                        • 📸 A beautifully styled photo experience
+                        • 🎻 Romantic music and an intimate high-society atmosphere
+                        • 🤝 Meaningful conversations and connections with like-minded women.</p>
+                    <p><strong>Dress Code:</strong> Elegant & Chic — timeless glamour, pearls, flowing dresses, and refined sophistication. Embrace your inner queen with fascinators, elegant tea hats, lace gloves, satin gloves, and vintage-inspired accessories.</p>
+                    <p><strong>Tickets:</strong> Early Access — $65 (through June 3); General Admission — $95 (after June 3). Location details shared with confirmed attendees only.</p>
+                    <p><strong>Refund policy:</strong> Full refunds available for cancellations made at least 7 days prior. Within 7 days, tickets are non-refundable but may be transferred with prior notice. If the organizer cancels, a full refund or credit will be issued.</p>
+                `,
+                actionText: 'Purchase tickets on Eventbrite',
+                actionHref: 'https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator'
+            },
+            cafe: {
+                label: 'Café O\'Shea\'s Caife & Tae',
+                title: 'Morning Coffee, Connection & Community',
+                copy: `
+                    <p>Join local business networkers for a relaxed morning of coffee, conversation, and meaningful connections. This is a welcoming space to meet other local professionals, share what you do, exchange ideas, and build genuine relationships within the community.</p>
+                    <p>Whether you’re growing a business, exploring collaborations, or simply looking to connect with like-minded people, come as you are and enjoy an easy, friendly start to your day.</p>
+                    <p><strong>When:</strong> June 15, 2026 at 11:00 AM</p>
+                    <p><strong>Where:</strong> 135 NH-101A, Amherst, NH 03031</p>
+                `,
+                actionText: 'Request your seat',
+                actionHref: '#connect'
+            }
+        };
+
+        document.querySelectorAll('.event-details-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const details = eventDetails[btn.dataset.event || 'bridgerton'];
+                if (!details) return;
+
+                document.getElementById('event-modal-label').textContent = details.label;
+                document.getElementById('event-modal-title').textContent = details.title;
+                document.getElementById('event-modal-copy').innerHTML = details.copy;
+
+                const actionLink = document.getElementById('event-modal-action');
+                actionLink.textContent = details.actionText;
+                actionLink.href = details.actionHref;
+                if (details.actionHref && details.actionHref.startsWith('#')) {
+                    actionLink.target = '_self';
+                    actionLink.rel = '';
+                } else {
+                    actionLink.target = '_blank';
+                    actionLink.rel = 'noopener noreferrer';
+                }
+                actionLink.style.display = details.actionHref ? 'inline-flex' : 'none';
+
+                eventModal.classList.add('active');
+                eventModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const closeEventModal = () => {
+            eventModal.classList.remove('active');
+            eventModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
+
+        eventClose.addEventListener('click', closeEventModal);
+        eventModal.addEventListener('click', event => {
+            if (event.target === eventModal) {
+                closeEventModal();
+            }
+        });
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const image = item.querySelector('img');
+                galleryImage.src = image.src;
+                galleryImage.alt = image.alt;
+                galleryModal.classList.add('active');
+                galleryModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const closeGalleryModal = () => {
+            galleryModal.classList.remove('active');
+            galleryModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            galleryImage.src = '';
+        };
+
+        galleryClose.addEventListener('click', closeGalleryModal);
+        galleryModal.addEventListener('click', event => {
+            if (event.target === galleryModal) {
+                closeGalleryModal();
+            }
+        });
+    </script>
+</body>
+</html>
