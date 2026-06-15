@@ -566,10 +566,24 @@
             border-top: 1px solid var(--border-color);
         }
 
+        .event-thumb {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .event-row:hover .event-thumb {
+            opacity: 1;
+        }
+
         .event-row {
             display: grid;
-            grid-template-columns: 1.5fr 3fr 1.5fr 1.5fr;
-            padding: 38px 36px;
+            grid-template-columns: 120px 1.5fr 3fr 1.5fr 1.5fr;
+            padding: 28px 36px;
             border-bottom: 1px solid var(--border-color);
             align-items: center;
             gap: 26px;
@@ -970,6 +984,15 @@
             line-height: 1.8;
         }
 
+        .event-modal-content a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+
+        .event-modal-content a:hover {
+            color: var(--accent-gold-bright);
+        }
+
         .modal-close {
             position: absolute;
             top: 25px;
@@ -1060,6 +1083,11 @@
             background: transparent;
             transition: var(--transition-smooth);
             position: relative;
+        }
+
+        form select option {
+            background-color: #2a2420;
+            color: var(--text-main);
         }
 
         form input:focus,
@@ -1214,6 +1242,10 @@
                 gap: 15px;
             }
 
+            .event-thumb {
+                display: none;
+            }
+
             #home {
                 height: auto;
                 padding: 100px 4%;
@@ -1242,6 +1274,7 @@
             <a href="#membership" class="nav-link">Membership</a>
             <a href="#gallery" class="nav-link">Gallery</a>
             <a href="#reviews" class="nav-link">Reviews</a>
+            <a href="event-collaborations.html" class="nav-link">Community</a>
             <a href="#connect" class="nav-link">Connect</a>
         </nav>
     </header>
@@ -1292,6 +1325,7 @@
         <div class="events-list">
             <!-- Event 1 -->
             <div class="event-row">
+                <img src="images/event-cafe.jpg" alt="Buckleys Bakery & Cafe event" class="event-thumb">
                 <div class="event-date">June 10, 2026</div>
                 <div class="event-title">
                     <h3>Buckleys Backery & Cafe</h3>
@@ -1306,6 +1340,21 @@
             </div>
             <!-- Event 2 -->
             <div class="event-row">
+                <img src="images/event-coffee19.jpg" alt="Morning Coffee Connection & Community event"
+                    class="event-thumb">
+                <div class="event-date">June 19, 2026</div>
+                <div class="event-title">
+                    <h3>Coffee, Connections &amp; Community</h3>
+                    <p>An intimate morning gathering to connect, share, and grow together. <button type="button"
+                            class="event-details-btn" data-event="coffee19">View details</button></p>
+                </div>
+                <div class="event-value event-venue">Revere Beach, MA</div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Event 3 -->
+            <div class="event-row">
+                <img src="images/event-bridgerton.jpg" alt="Bridgerton Garden Experience event" class="event-thumb">
                 <div class="event-date">June 20, 2026</div>
                 <div class="event-title">
                     <h3>Bridgerton Garden Experience</h3>
@@ -1316,17 +1365,6 @@
                 <div><a href="https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator"
                         target="_blank" rel="noopener noreferrer" class="btn btn-outline"
                         style="padding: 10px 20px; font-size: 0.65rem;">Buy tickets</a></div>
-            </div>
-            <!-- Event 3 -->
-            <div class="event-row">
-                <div class="event-date">August TBD, 2026</div>
-                <div class="event-title">
-                    <h3>TBD</h3>
-                    <p>Curated champagne pairing, and light jazz.</p>
-                </div>
-                <div class="event-value event-venue">Manchester, NH</div>
-                <div><a href="#connect" class="btn btn-outline"
-                        style="padding: 10px 20px; font-size: 0.65rem;">Register</a></div>
             </div>
         </div>
         <div class="event-modal" id="event-modal" aria-hidden="true">
@@ -1619,6 +1657,18 @@
                         <li><strong>Body & Sole Wellness Spa</strong> (<a href="http://bodyandsolewellnessspa.com/" target="_blank" rel="noopener noreferrer">bodyandsolewellnessspa.com</a>) — An intimate, vital conversation surrounding divine feminine longevity, women's holistic health, and navigating menopause with grace.</li>
                     </ol>
                     
+                    <h3>Featured Culinary Experience</h3>
+                    <p>We are honored to welcome Private Chef Jonathan of <strong>Elevated Eats</strong>, who will be curating an exceptional selection of elegant seasonal bites exclusively for our guests. Known for transforming locally sourced ingredients into unforgettable culinary experiences, Chef Jonathan's creations are designed to complement the sophistication and charm of the evening.</p>
+                    <p>Guests will enjoy a thoughtfully crafted menu featuring refined flavors, artistic presentation, and a true taste of luxury throughout the event. (<a href="https://elevatedeatsnh.com/" target="_blank" rel="noopener noreferrer">elevatedeatsnh.com</a>)</p>
+                    
+                    <h3>Featured Photography Experience</h3>
+                    <p>Capturing the beauty, elegance, and memorable moments of the evening will be renowned photographer <strong>Heidi Young</strong> of <strong>Fearless Photography</strong>.</p>
+                    <p>The Portrait Pavilion will offer guests the opportunity to step into a beautifully styled setting inspired by the romance and grandeur of the Regency era. Heidi's artistic eye and storytelling approach ensure that every guest leaves with timeless images reflecting confidence, sophistication, and the spirit of the occasion. (<a href="https://www.fearlesspersonaphotography.com/" target="_blank" rel="noopener noreferrer">fearlesspersonaphotography.com</a>)</p>
+                    
+                    <h3>Live Musical Performance</h3>
+                    <p>Enhancing the ambiance of the evening will be a live acoustic guitar performance by <strong>Eric Baldwin</strong>. His captivating melodies and sophisticated repertoire will provide the perfect soundtrack to an evening of elegance, conversation, and connection.</p>
+                    <p>As guests mingle throughout the garden-inspired setting, Eric's music will create an atmosphere of warmth, romance, and timeless charm—bringing an extra layer of refinement to this unforgettable experience.</p>
+                    
                     <h3>Attire: Haute Couture & Timeless Elegance</h3>
                     <p>We request the honor of your presence in your finest sartorial expressions. Think flowing silhouettes, lustrous pearls, and unapologetic glamour. To fully embrace the Regency aesthetic, guests are highly encouraged to adorn themselves in fascinators, structured tea hats, delicate lace or satin gloves, and vintage-inspired heirlooms. Arrive ready to embody your inner queen.</p>
                     
@@ -1657,6 +1707,31 @@
                 `,
                 actionText: 'Request your seat',
                 actionHref: '#connect'
+            },
+            coffee19: {
+                label: 'Morning Coffee, Connection & Community',
+                title: 'Morning Coffee, Connection & Community ☕',
+                copy: `
+                    <p>Start your day with meaningful conversations, fresh coffee, and valuable local connections.</p>
+                    <p>Join fellow business owners, entrepreneurs, professionals, and community leaders for a relaxed morning of networking in a welcoming coffee shop atmosphere. Whether you're looking to grow your business, build partnerships, exchange ideas, or simply meet inspiring people from the local community, this event is designed to help you connect authentically.</p>
+                    <h3>✨ What to Expect</h3>
+                    <ul>
+                        <li>Casual networking with local professionals and business owners</li>
+                        <li>Opportunities to build new partnerships and collaborations</li>
+                        <li>Meaningful conversations beyond traditional networking</li>
+                        <li>A supportive community focused on growth and connection</li>
+                        <li>Great coffee and a welcoming atmosphere</li>
+                    </ul>
+                    <p>Bring your business cards, your story, and your smile. Come meet new people, strengthen existing relationships, and become part of a growing New Hampshire business community.</p>
+                    <p><strong>📅 Date:</strong> June 19, 2026 (Tuesday) at 11 AM</p>
+                    <p><strong>📍 Location:</strong> BLVD at Revere Beach, Conference Room — Revere, MA</p>
+                    <p><strong>🎟 Open to:</strong> Business owners, entrepreneurs, professionals, and community members. Coffee provided.</p>
+                    <p><em>Good Coffee. Great People. Stronger Together.</em></p>
+                    <p>Hosted by Natalia Markelova, WING LLC</p>
+                    <p><strong>SPACE is LIMITED.</strong> Please share your business info to be included.</p>
+                `,
+                actionText: 'Share your business info',
+                actionHref: 'https://forms.gle/RzhpDD8T4pgiBgCM7'
             }
         };
 
