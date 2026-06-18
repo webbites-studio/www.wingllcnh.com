@@ -606,6 +606,162 @@
                 max-width: 420px;
             }
         }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 480px) {
+            body {
+                padding-top: 70px;
+            }
+
+            header {
+                height: 70px;
+                padding: 0 3%;
+            }
+
+            .logo {
+                gap: 10px;
+            }
+
+            .logo-image {
+                height: 50px;
+            }
+
+            .logo-text span {
+                font-size: 0.75rem;
+                letter-spacing: 0.2em;
+            }
+
+            .host-card {
+                padding: 30px 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .host-avatar {
+                width: 110px;
+                height: 110px;
+            }
+
+            .host-name {
+                font-size: 1.4rem;
+            }
+
+            .host-title {
+                font-size: 0.85rem;
+            }
+
+            .page-section {
+                padding: 60px 5% 80px;
+            }
+
+            .section-header {
+                margin-bottom: 50px;
+            }
+
+            .section-header h1 {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+            }
+
+            .section-header p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .collaborator-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .collaborator-card {
+                padding: 28px 20px;
+            }
+
+            .avatar-ring {
+                width: 110px;
+                height: 110px;
+                margin-bottom: 18px;
+            }
+
+            .collaborator-name {
+                font-size: 1.15rem;
+            }
+
+            .collaborator-title {
+                font-size: 0.8rem;
+                min-height: 36px;
+                margin-bottom: 20px;
+            }
+
+            .website-btn {
+                padding: 10px 0;
+                font-size: 0.75rem;
+                margin-bottom: 14px;
+            }
+
+            .social-links {
+                gap: 16px;
+            }
+
+            .social-links a {
+                font-size: 1rem;
+            }
+
+            .event-tabs {
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+
+            .event-tab {
+                padding: 8px 16px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            header {
+                height: 65px;
+                padding: 0 2%;
+            }
+
+            .logo-image {
+                height: 45px;
+            }
+
+            .logo-text span {
+                font-size: 0.65rem;
+            }
+
+            .host-card {
+                padding: 25px 15px;
+            }
+
+            .host-avatar {
+                width: 100px;
+                height: 100px;
+            }
+
+            .avatar-ring {
+                width: 100px;
+                height: 100px;
+            }
+
+            .collaborator-name {
+                font-size: 1.05rem;
+            }
+
+            .section-header h1 {
+                font-size: 1.4rem;
+            }
+
+            .event-tab {
+                padding: 6px 12px;
+                font-size: 0.65rem;
+            }
+        }
     </style>
 </head>
 
@@ -693,11 +849,14 @@
                 <h3 class="collaborator-name">Jonathan Vogt</h3>
                 <p class="collaborator-title">Chef — Elevated Eats NH</p>
                 <div class="card-actions">
-                    <a href="https://www.elevatedeatsnh.com" target="_blank" rel="noopener noreferrer"
+                    <a href="https://elevatedeatsnh.com/" target="_blank" rel="noopener noreferrer"
                         class="website-btn">Visit Website</a>
                     <div class="social-links">
                         <a href="https://www.instagram.com/elevatedeatsnh" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61571257831276&rdid=wzN5hznyfoidA3nK&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1CtuTh8CfT"
+                            target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
@@ -740,6 +899,21 @@
                 </div>
             </div>
 
+            <!-- Card: Eric Baldwin -->
+            <div class="collaborator-card">
+                <div class="avatar-ring">
+                    <img src="images/eric-baldwin.jpg" alt="Eric Baldwin">
+                </div>
+                <h3 class="collaborator-name">Eric Baldwin</h3>
+                <p class="collaborator-title">Musician — Quiet Music</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/eric.baldwin.315" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -769,8 +943,15 @@
                     <img src="images/ecaterina-garabedian.jpg" alt="Ecaterina Garabedian">
                 </div>
                 <h3 class="collaborator-name">Ecaterina Garabedian</h3>
-                <p class="collaborator-title">&nbsp;</p>
-                <div class="card-actions"></div>
+                <p class="collaborator-title">Artist &amp; Creative</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/ecaterina.garabedian" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/ecaterinagarabedian/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
 
             <!-- Card: Yulia Garvanovic -->
@@ -779,7 +960,7 @@
                     <img src="images/yulia-garvanovic.jpg" alt="Yulia Garvanovic">
                 </div>
                 <h3 class="collaborator-name">Yulia Garvanovic</h3>
-                <p class="collaborator-title">&nbsp;</p>
+                <p class="collaborator-title">TOEFL, IELTS, Duolingo English Test, SAT, ACT, SSAT, and ISEE</p>
                 <div class="card-actions">
                     <a href="https://garvanovic.com" target="_blank" rel="noopener noreferrer" class="website-btn">Visit
                         Website</a>
@@ -798,8 +979,14 @@
                     <img src="images/valentina-naumenko.jpg" alt="Valentina Naumenko">
                 </div>
                 <h3 class="collaborator-name">Valentina Naumenko</h3>
-                <p class="collaborator-title">&nbsp;</p>
-                <div class="card-actions"></div>
+                <p class="collaborator-title">Wine Expert &amp; Travel Agent</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/naumenko.valentina?igsh=MWpmbDdmNTN5dnRuZg%3D%3D&utm_source=qr"
+                            target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
 
             <!-- Card: Kateryna Demers -->
@@ -808,18 +995,35 @@
                     <img src="images/kateryna-demers.jpg" alt="Kateryna Demers">
                 </div>
                 <h3 class="collaborator-name">Kateryna Demers</h3>
-                <p class="collaborator-title">&nbsp;</p>
-                <div class="card-actions"></div>
+                <p class="collaborator-title">Real Estate Investor &amp; Creative Portrait Photographer</p>
+                <div class="card-actions">
+                    <a href="https://www.photolique.net/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/kateryna.demers/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1JwtzYuNEb/?mibextid=wwXIfr" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Card: Anastasia Andreeva -->
+            <!-- Card: Anastasiia Vlasiuk -->
             <div class="collaborator-card">
                 <div class="avatar-ring">
-                    <img src="images/anastasia-andreeva.jpg" alt="Anastasia Andreeva">
+                    <img src="images/anastasia-andreeva.jpg" alt="Anastasiia Vlasiuk">
                 </div>
-                <h3 class="collaborator-name">Anastasia Andreeva</h3>
+                <h3 class="collaborator-name">Anastasiia Vlasiuk</h3>
                 <p class="collaborator-title">&nbsp;</p>
-                <div class="card-actions"></div>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/vlasyuchka36?igsh=MTE0Yzl3YnhsOTN5Mw%3D%3D&utm_source=qr"
+                            target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1F1naDewDk/?mibextid=wwXIfr" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
             </div>
 
             <!-- Card: Viktoria Budkov -->
@@ -828,8 +1032,16 @@
                     <img src="images/viktoria-budkov.jpg" alt="Viktoria Budkov">
                 </div>
                 <h3 class="collaborator-name">Viktoria Budkov</h3>
-                <p class="collaborator-title">Artist</p>
-                <div class="card-actions"></div>
+                <p class="collaborator-title">Art, Photography &amp; Architecture</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/victoria_vic_art?igsh=MTA4cnE2ODJlaDYxaQ%3D%3D&utm_source=qr"
+                            target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1Ef55AbRiX/?mibextid=wwXIfr" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
             </div>
 
             <!-- Card: Arju Parajuli -->
@@ -865,7 +1077,8 @@
             <!-- Card: Beth O'Dell -->
             <div class="collaborator-card">
                 <div class="avatar-ring">
-                    <img src="https://via.placeholder.com/150" alt="Beth O'Dell">
+                    <img src="https://scontent-iad6-1.cdninstagram.com/v/t51.82787-19/640594574_17851651695635934_220994523444294428_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-iad6-1.cdninstagram.com&_nc_cat=106&_nc_oc=Q6cZ2gErLa7v08PJlBWGR7_BFizpTFKX7MCd1LHtQJkJoSXebtOH4jvlkHKwdYsdnTJSS9g&_nc_ohc=RSM48ydp3YgQ7kNvwHuPXDC&_nc_gid=q8Bdfs1VgsYlQMsoYjMP5g&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af9Mx0WunjmaXxXcNuvjvHXBMhev6HbO43SCJqjzldFN8g&oe=6A38A589&_nc_sid=7a9f4b"
+                        alt="Beth O'Dell">
                 </div>
                 <h3 class="collaborator-name">Beth O'Dell</h3>
                 <p class="collaborator-title">&nbsp;</p>
@@ -919,6 +1132,16 @@
                 </div>
             </div>
 
+            <!-- Card: Anastasia Siemienowicz -->
+            <div class="collaborator-card">
+                <div class="avatar-ring">
+                    <img src="images/anastasia-siemienowicz.jpg" alt="Anastasia Siemienowicz">
+                </div>
+                <h3 class="collaborator-name">Anastasia Siemienowicz</h3>
+                <p class="collaborator-title">&nbsp;</p>
+                <div class="card-actions"></div>
+            </div>
+
         </div>
     </section>
 
@@ -935,6 +1158,7 @@
             <button class="event-tab active" data-event="all">All Events</button>
             <button class="event-tab" data-event="may16">May 16, 2025</button>
             <button class="event-tab" data-event="jun10">June 10, 2025</button>
+            <button class="event-tab" data-event="jun19">June 19, 2025</button>
         </div>
 
         <div class="collaborator-grid" id="past-grid">
@@ -1046,7 +1270,7 @@
             <div class="collaborator-card" data-event="jun10">
                 <div class="avatar-ring"><img src="images/eric-baldwin.jpg" alt="Eric Baldwin"></div>
                 <h3 class="collaborator-name">Eric Baldwin</h3>
-                <p class="collaborator-title">Musician — Jazz Guitar</p>
+                <p class="collaborator-title">Musician — Quiet Music</p>
                 <div class="card-actions">
                     <div class="social-links">
                         <a href="https://www.facebook.com/eric.baldwin.315" target="_blank" rel="noopener noreferrer"
@@ -1055,8 +1279,31 @@
                 </div>
             </div>
 
+            <!-- JUNE 19 -->
+            <div class="collaborator-card" data-event="jun19">
+                <div class="avatar-ring"><img src="images/gami-alieva.jpg" alt="Gami Alieva"></div>
+                <h3 class="collaborator-name">Gami Alieva</h3>
+                <p class="collaborator-title">Content Creator</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/gamiialv?igsh=MTJiNTRqeHA1MHcwNw%3D%3D&utm_source=qr"
+                            target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer
+        style="text-align: center; padding: 40px 20px; border-top: 1px solid rgba(212, 177, 110, 0.25); margin-top: 60px;">
+        <p style="font-size: 0.85rem; color: rgba(212, 197, 169, 0.7); margin: 0;">
+            Web designed and prepared by <a href="https://www.webbites.dev" target="_blank" rel="noopener noreferrer"
+                style="color: rgba(232, 199, 138, 0.9); text-decoration: none; transition: color 0.3s ease;">WebBites.dev</a>
+        </p>
+    </footer>
 
 </body>
 
