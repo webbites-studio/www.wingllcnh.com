@@ -44,6 +44,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         @keyframes gradientShift {
@@ -452,6 +453,7 @@
             line-height: 1.5;
             min-height: 42px;
             margin-bottom: 28px;
+            overflow-wrap: anywhere;
         }
 
         /* --- ACTIONS --- */
@@ -593,8 +595,29 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
+            header {
+                height: auto;
+                padding: 10px 4%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
             nav {
-                display: none;
+                display: flex;
+                width: 100%;
+                gap: 14px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                padding-bottom: 4px;
+            }
+
+            .nav-link {
+                flex: 0 0 auto;
+                font-size: 0.68rem;
             }
 
             .page-section {
@@ -610,12 +633,11 @@
         /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 480px) {
             body {
-                padding-top: 70px;
+                padding-top: 150px;
             }
 
             header {
-                height: 70px;
-                padding: 0 3%;
+                padding: 8px 3%;
             }
 
             .logo {
@@ -722,9 +744,12 @@
         }
 
         @media (max-width: 360px) {
+            body {
+                padding-top: 145px;
+            }
+
             header {
-                height: 65px;
-                padding: 0 2%;
+                padding: 8px 2%;
             }
 
             .logo-image {
@@ -907,6 +932,8 @@
                 <h3 class="collaborator-name">Eric Baldwin</h3>
                 <p class="collaborator-title">Musician — Quiet Music</p>
                 <div class="card-actions">
+                    <a href="https://quietjazz.llc" target="_blank" rel="noopener noreferrer" class="website-btn">Visit
+                        Website</a>
                     <div class="social-links">
                         <a href="https://www.facebook.com/eric.baldwin.315" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1132,6 +1159,27 @@
                 </div>
             </div>
 
+            <!-- Card: Amylee -->
+            <div class="collaborator-card">
+                <div class="avatar-ring">
+                    <img src="https://via.placeholder.com/150" alt="Amylee">
+                </div>
+                <h3 class="collaborator-name">Amylee</h3>
+                <p class="collaborator-title">&nbsp;</p>
+                <div class="card-actions"></div>
+            </div>
+
+            <!-- Card: Tamara Grinenko -->
+            <div class="collaborator-card">
+                <div class="avatar-ring">
+                    <img src="https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/122939276_102505228331092_3585809669105576524_n.jpg?stp=dst-jpg_tt6&cstp=mx1856x1402&ctp=s1856x1402&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ZmuC4JGbBCoQ7kNvwHuiHDe&_nc_oc=Adqq69O2oALnqfAvpwsIfXWuBLYO3Ubs2P4SOE9WGHcPz_ZCyMYLU71ClSa1g181r_o&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=vWtBhvCiKrK9KZc6fsZuRA&_nc_ss=7a289&oh=00_Af-5ibz2PWocY_teyDNCVlptkvRS2p85XBbRicyFU9H9Nw&oe=6A5D97D0"
+                        alt="Tamara Grinenko">
+                </div>
+                <h3 class="collaborator-name">Tamara Grinenko</h3>
+                <p class="collaborator-title">&nbsp;</p>
+                <div class="card-actions"></div>
+            </div>
+
             <!-- Card: Anastasia Siemienowicz -->
             <div class="collaborator-card">
                 <div class="avatar-ring">
@@ -1272,6 +1320,8 @@
                 <h3 class="collaborator-name">Eric Baldwin</h3>
                 <p class="collaborator-title">Musician — Quiet Music</p>
                 <div class="card-actions">
+                    <a href="https://quietjazz.llc" target="_blank" rel="noopener noreferrer" class="website-btn">Visit
+                        Website</a>
                     <div class="social-links">
                         <a href="https://www.facebook.com/eric.baldwin.315" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>

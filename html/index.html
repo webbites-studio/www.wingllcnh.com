@@ -46,6 +46,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         @keyframes gradientShift {
@@ -573,6 +574,22 @@
             border-radius: 10px;
             opacity: 0.85;
             transition: opacity 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .event-thumb-placeholder {
+            width: 120px;
+            height: 80px;
+            border-radius: 10px;
+            border: 1px dashed var(--border-highlight);
+            background: rgba(212, 177, 110, 0.08);
+            color: var(--text-muted);
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
         }
 
@@ -1255,6 +1272,73 @@
                 height: 350px;
             }
         }
+
+        @media (max-width: 768px) {
+            header {
+                height: auto;
+                padding: 10px 4%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav {
+                width: 100%;
+                gap: 14px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                padding-bottom: 4px;
+            }
+
+            .nav-link {
+                flex: 0 0 auto;
+                font-size: 0.68rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 150px;
+            }
+
+            header {
+                padding: 8px 3%;
+            }
+
+            .logo {
+                gap: 10px;
+            }
+
+            .logo-image {
+                height: 50px;
+            }
+
+            .logo-text span {
+                font-size: 0.75rem;
+                letter-spacing: 0.2em;
+            }
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding-top: 145px;
+            }
+
+            header {
+                padding: 8px 2%;
+            }
+
+            .logo-image {
+                height: 45px;
+            }
+
+            .logo-text span {
+                font-size: 0.65rem;
+            }
+        }
     </style>
 </head>
 
@@ -1365,6 +1449,106 @@
                 <div><a href="https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator"
                         target="_blank" rel="noopener noreferrer" class="btn btn-outline"
                         style="padding: 10px 20px; font-size: 0.65rem;">Buy tickets</a></div>
+            </div>
+            <!-- Event 4 -->
+            <div class="event-row">
+                <img src="images/event-coffee19.jpg" alt="Coffee, Connections & Community event" class="event-thumb">
+                <div class="event-date">July 8, 2026</div>
+                <div class="event-title">
+                    <h3>Coffee, Connections &amp; Community</h3>
+                    <p>A relaxed networking morning focused on authentic conversations and business growth. <button
+                            type="button" class="event-details-btn" data-event="coffee08">View details</button></p>
+                </div>
+                <div class="event-value event-venue">Manchester, NH (TBD)</div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Event 5 -->
+            <div class="event-row">
+                <img src="images/event-coffee19.jpg" alt="Coffee, Connections & Community event" class="event-thumb">
+                <div class="event-date">July 9, 2026</div>
+                <div class="event-title">
+                    <h3>Coffee, Connections &amp; Community</h3>
+                    <p>A welcoming morning to connect with local entrepreneurs and professionals. <button type="button"
+                            class="event-details-btn" data-event="coffee09">View details</button></p>
+                </div>
+                <div class="event-value event-venue">Revere, MA</div>
+                <div><a href="https://forms.gle/RzhpDD8T4pgiBgCM7" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Event 6 -->
+            <div class="event-row">
+                <img src="images/event-coffee19.jpg" alt="Virtual Coffee, Community & Connection event"
+                    class="event-thumb">
+                <div class="event-date">July 14, 2026</div>
+                <div class="event-title">
+                    <h3>Coffee, Community &amp; Connection</h3>
+                    <p>A virtual meetup to build meaningful relationships and support each other in business growth.
+                        <button type="button" class="event-details-btn" data-event="coffee14virtual">View
+                            details</button>
+                    </p>
+                </div>
+                <div class="event-value event-venue">Virtual Event</div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Event 7 -->
+            <div class="event-row">
+                <img src="images/event-coffee19.jpg" alt="Coffee, Connections & Community event" class="event-thumb">
+                <div class="event-date">July 29, 2026</div>
+                <div class="event-title">
+                    <h3>Coffee, Connections &amp; Community</h3>
+                    <p>Connect with local entrepreneurs and professionals in an inviting morning meetup. <button
+                            type="button" class="event-details-btn" data-event="coffee29">View details</button></p>
+                </div>
+                <div class="event-value event-venue">Manchester, NH (TBD)</div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Event 8 -->
+            <div class="event-row">
+                <img src="images/event-coffee19.jpg" alt="Coffee, Connections & Community event" class="event-thumb">
+                <div class="event-date">July 30, 2026</div>
+                <div class="event-title">
+                    <h3>Coffee, Connections &amp; Community</h3>
+                    <p>Build new partnerships and strengthen your local network over coffee. <button type="button"
+                            class="event-details-btn" data-event="coffee30">View details</button></p>
+                </div>
+                <div class="event-value event-venue">Revere, MA</div>
+                <div><a href="https://forms.gle/RzhpDD8T4pgiBgCM7" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Event 9 -->
+            <div class="event-row">
+                <img src="images/event-coffee19.jpg" alt="Virtual Coffee, Community & Connection event"
+                    class="event-thumb">
+                <div class="event-date">August 4, 2026</div>
+                <div class="event-title">
+                    <h3>Coffee, Community &amp; Connection</h3>
+                    <p>Join online for a relaxed networking session designed for real conversations and collaboration.
+                        <button type="button" class="event-details-btn" data-event="coffee04virtual">View
+                            details</button>
+                    </p>
+                </div>
+                <div class="event-value event-venue">Virtual Event</div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Event 10 -->
+            <div class="event-row">
+                <div class="event-thumb-placeholder" aria-label="Roof Lounge Party image coming soon">Image TBD</div>
+                <div class="event-date">August 22, 2026</div>
+                <div class="event-title">
+                    <h3>Roof Lounge Party</h3>
+                    <p>An elevated summer networking evening with music, skyline vibes, and curated connections.
+                        <button type="button" class="event-details-btn" data-event="rooflounge">View details</button>
+                    </p>
+                </div>
+                <div class="event-value event-venue">Revere, MA</div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
             </div>
         </div>
         <div class="event-modal" id="event-modal" aria-hidden="true">
@@ -1706,6 +1890,90 @@
                 `,
                 actionText: 'Share your business info',
                 actionHref: 'https://forms.gle/RzhpDD8T4pgiBgCM7'
+            },
+            coffee09: {
+                label: 'Coffee, Connections & Community',
+                title: 'Coffee, Connections & Community ☕',
+                copy: `
+                    <p>Join us for a relaxed networking morning focused on genuine conversations and community-building.</p>
+                    <p>Meet entrepreneurs, creatives, and professionals in a friendly setting designed for meaningful connections and collaboration.</p>
+                    <p><strong>📅 Date:</strong> July 9, 2026</p>
+                    <p><strong>📍 Location:</strong> Revere, MA</p>
+                `,
+                actionText: 'RSVP now',
+                actionHref: 'https://forms.gle/RzhpDD8T4pgiBgCM7'
+            },
+            coffee08: {
+                label: 'Coffee, Connections & Community',
+                title: 'Coffee, Connections & Community ☕',
+                copy: `
+                    <p>Start your morning with meaningful conversations and fresh local connections in a welcoming environment.</p>
+                    <p>This meetup is designed for entrepreneurs, professionals, and creatives who want to grow through collaboration and community.</p>
+                    <p><strong>📅 Date:</strong> July 8, 2026</p>
+                    <p><strong>📍 Location:</strong> Manchester, NH (TBD)</p>
+                `,
+                actionText: 'Request event update',
+                actionHref: '#connect'
+            },
+            coffee29: {
+                label: 'Coffee, Connections & Community',
+                title: 'Coffee, Connections & Community ☕',
+                copy: `
+                    <p>Join us for another connection-focused morning and build relationships that turn into real opportunities.</p>
+                    <p>Come ready to share ideas, meet new people, and strengthen your local network.</p>
+                    <p><strong>📅 Date:</strong> July 29, 2026</p>
+                    <p><strong>📍 Location:</strong> Manchester, NH (TBD)</p>
+                `,
+                actionText: 'Request event update',
+                actionHref: '#connect'
+            },
+            coffee14virtual: {
+                label: 'Coffee, Community & Connection',
+                title: 'Coffee, Community & Connection (Virtual) ☕',
+                copy: `
+                    <p>Connect virtually with entrepreneurs, professionals, and creatives in a warm and collaborative setting.</p>
+                    <p>This online event focuses on meaningful introductions, shared ideas, and genuine community support.</p>
+                    <p><strong>📅 Date:</strong> July 14, 2026</p>
+                    <p><strong>📍 Location:</strong> Virtual Event</p>
+                `,
+                actionText: 'Request meeting link',
+                actionHref: '#connect'
+            },
+            coffee30: {
+                label: 'Coffee, Connections & Community',
+                title: 'Coffee, Connections & Community ☕',
+                copy: `
+                    <p>Close out the month by growing your network with inspiring people from the local business community.</p>
+                    <p>This morning meetup is perfect for sharing ideas, finding partners, and building lasting relationships.</p>
+                    <p><strong>📅 Date:</strong> July 30, 2026</p>
+                    <p><strong>📍 Location:</strong> Revere, MA</p>
+                `,
+                actionText: 'RSVP now',
+                actionHref: 'https://forms.gle/RzhpDD8T4pgiBgCM7'
+            },
+            coffee04virtual: {
+                label: 'Coffee, Community & Connection',
+                title: 'Coffee, Community & Connection (Virtual) ☕',
+                copy: `
+                    <p>Start your day online with thoughtful conversations and new connections across the community.</p>
+                    <p>Bring your ideas, goals, and questions to a supportive virtual networking room.</p>
+                    <p><strong>📅 Date:</strong> August 4, 2026</p>
+                    <p><strong>📍 Location:</strong> Virtual Event</p>
+                `,
+                actionText: 'Request meeting link',
+                actionHref: '#connect'
+            },
+            rooflounge: {
+                label: 'Roof Lounge Party',
+                title: 'Roof Lounge Party',
+                copy: `
+                    <p>Join us for a stylish rooftop networking evening designed for meaningful conversation, fresh collaborations, and summer energy.</p>
+                    <p>Enjoy a relaxed upscale atmosphere while connecting with entrepreneurs, professionals, and creatives from across the community.</p>
+                    <p><strong>📅 Date:</strong> August 22, 2026</p>
+                    <p><strong>📍 Location:</strong> Revere, MA</p>
+                `,
+                actionText: 'Request details',
+                actionHref: '#connect'
             }
         };
 
