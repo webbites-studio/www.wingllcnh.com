@@ -666,7 +666,7 @@
         /* --- SECTION 4: MEMBERSHIP CARDS --- */
         .membership-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: var(--grid-gap);
         }
 
@@ -1038,13 +1038,43 @@
 
         /* --- SECTION 7: REVIEWS --- */
         .reviews-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--grid-gap);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-track {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .review-card {
-            padding-right: var(--grid-gap);
+            min-width: 50%;
+            padding: 0 60px;
+            box-sizing: border-box;
+        }
+
+        .reviews-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 36px;
+        }
+
+        .reviews-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-highlight);
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            border: none;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .reviews-dot.active {
+            background: var(--accent-gold);
+            transform: scale(1.4);
         }
 
         .review-text {
@@ -1409,49 +1439,6 @@
         <div class="events-list">
             <!-- Event 1 -->
             <div class="event-row">
-                <img src="images/event-cafe.jpg" alt="Buckleys Bakery & Cafe event" class="event-thumb">
-                <div class="event-date">June 10, 2026</div>
-                <div class="event-title">
-                    <h3>Buckleys Backery & Cafe</h3>
-                    <p>A relaxed morning of coffee, conversation, and meaningful connections. <button type="button"
-                            class="event-details-btn" data-event="cafe">View details</button></p>
-                </div>
-                <div class="event-value event-venue">Merrimack, NH</div>
-                <div><a href="https://www.eventbrite.com/e/morning-coffee-connection-community-tickets-1991197859399"
-                        target="_blank" rel="noopener noreferrer" class="btn btn-outline"
-                        style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
-                </div>
-            </div>
-            <!-- Event 2 -->
-            <div class="event-row">
-                <img src="images/event-coffee19.jpg" alt="Morning Coffee Connection & Community event"
-                    class="event-thumb">
-                <div class="event-date">June 19, 2026</div>
-                <div class="event-title">
-                    <h3>Coffee, Connections &amp; Community</h3>
-                    <p>An intimate morning gathering to connect, share, and grow together. <button type="button"
-                            class="event-details-btn" data-event="coffee19">View details</button></p>
-                </div>
-                <div class="event-value event-venue">Revere Beach, MA</div>
-                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
-                </div>
-            </div>
-            <!-- Event 3 -->
-            <div class="event-row">
-                <img src="images/event-bridgerton.jpg" alt="Bridgerton Garden Experience event" class="event-thumb">
-                <div class="event-date">June 20, 2026</div>
-                <div class="event-title">
-                    <h3>Bridgerton Garden Experience</h3>
-                    <p>An elegant private soirée for ambitious, stylish women. <button type="button"
-                            class="event-details-btn" data-event="bridgerton">View details</button></p>
-                </div>
-                <div class="event-value event-venue">Manchester, NH</div>
-                <div><a href="https://www.eventbrite.com/e/bridgerton-garden-experience-tickets-1990190806276?aff=oddtdtcreator"
-                        target="_blank" rel="noopener noreferrer" class="btn btn-outline"
-                        style="padding: 10px 20px; font-size: 0.65rem;">Buy tickets</a></div>
-            </div>
-            <!-- Event 4 -->
-            <div class="event-row">
                 <img src="images/event-coffee19.jpg" alt="Coffee, Connections & Community event" class="event-thumb">
                 <div class="event-date">July 8, 2026</div>
                 <div class="event-title">
@@ -1459,7 +1446,7 @@
                     <p>A relaxed networking morning focused on authentic conversations and business growth. <button
                             type="button" class="event-details-btn" data-event="coffee08">View details</button></p>
                 </div>
-                <div class="event-value event-venue">Manchester, NH (TBD)</div>
+                <div class="event-value event-venue">Goffstown, NH</div>
                 <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
                 </div>
             </div>
@@ -1502,7 +1489,7 @@
                     <p>Connect with local entrepreneurs and professionals in an inviting morning meetup. <button
                             type="button" class="event-details-btn" data-event="coffee29">View details</button></p>
                 </div>
-                <div class="event-value event-venue">Manchester, NH (TBD)</div>
+                <div class="event-value event-venue">Milford, NH</div>
                 <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
                 </div>
             </div>
@@ -1538,15 +1525,16 @@
             </div>
             <!-- Event 10 -->
             <div class="event-row">
-                <div class="event-thumb-placeholder" aria-label="Roof Lounge Party image coming soon">Image TBD</div>
+                <div class="event-thumb-placeholder" aria-label="Woman's Business impact image coming soon">Image TBD
+                </div>
                 <div class="event-date">August 22, 2026</div>
                 <div class="event-title">
-                    <h3>Roof Lounge Party</h3>
+                    <h3>Location TBD (Manchester, NH)</h3>
                     <p>An elevated summer networking evening with music, skyline vibes, and curated connections.
                         <button type="button" class="event-details-btn" data-event="rooflounge">View details</button>
                     </p>
                 </div>
-                <div class="event-value event-venue">Revere, MA</div>
+                <div class="event-value event-venue">Manchester, NH</div>
                 <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
                 </div>
             </div>
@@ -1586,7 +1574,9 @@
                     <div class="tier-price">FREE <span style="font-size: 0.9rem; color: var(--text-muted);">/
                             month</span></div>
                     <ul class="tier-perks">
-                        <li>Email Notifications about Monthly events</li>
+                        <li>First time free Coffee Meetups</li>
+                        <li>Email Notifications about Monthly Experiences</li>
+
                     </ul>
                 </div>
                 <a href="#connect" class="btn btn-outline" style="width: 100%;">Apply For Pass</a>
@@ -1595,10 +1585,11 @@
             <div class="tier-card">
                 <div>
                     <h3 class="tier-name">The Collective Pass</h3>
-                    <div class="tier-price">$39 <span style="font-size: 0.9rem; color: var(--text-muted);">/
+                    <div class="tier-price">$25 <span style="font-size: 0.9rem; color: var(--text-muted);">/
                             month</span></div>
                     <ul class="tier-perks">
-                        <li>Discounted entry to all Monthly Soirées</li>
+                        <li>The Preview Pass Benefits/li>
+                        <li>Discounted entry to all Monthly Experiences</li>
                         <li>Access to the Private Digital Member Index</li>
                         <li>Strategic introductions to local founders</li>
                     </ul>
@@ -1610,14 +1601,16 @@
                 <span class="tag">Most Coveted</span>
                 <div>
                     <h3 class="tier-name">The Private Circle (VIP)</h3>
-                    <div class="tier-price">$149 <span style="font-size: 0.9rem; color: var(--text-muted);">/
+                    <div class="tier-price">$100 <span style="font-size: 0.9rem; color: var(--text-muted);">/
                             month</span></div>
                     <ul class="tier-perks">
-                        <li>All Collective tier benefits included</li>
+                        <li>The Collective pass benefits</li>
                         <li>Dedicated Spotlight Feature on the website frontpage</li>
                         <li>Quarterly private executive dinners with Keynote Speakers</li>
-                        <li>A dedicated premium video feature profiling you and your brand logo on the network's
+                        <li>Monthly dedicated premium video marketing feature profiling you and your brand logo on the
+                            network's
                             homepage for high-level traffic exposure.</li>
+                        <li>4 hours of VA (Virtual Assistant) support per month</li>
                     </ul>
                 </div>
                 <a href="#connect" class="btn" style="width: 100%;">Apply For VIP Status</a>
@@ -1657,18 +1650,34 @@
             <h2>What Founders Say</h2>
         </div>
         <div class="reviews-layout">
-            <div class="review-card">
-                <div class="review-text">"This network transformed how I look at collaborative growth. The events feel
-                    like high-end holiday socials, yet the business closed from these connections surpasses any
-                    corporate mixer I've ever attended."</div>
-                <div class="review-author">— Sarah Jenkins, Creative Principal</div>
+            <div class="reviews-track" id="reviews-track">
+                <div class="review-card">
+                    <div class="review-text">"Words can't describe how special and intimate this event was. Starting
+                        with the red carpet entrance to beautiful music playing, walking into a beautiful venue like
+                        going back in time and we all dressed the part. I met some amazing, beautiful and talented women
+                        who really made me feel welcome and took time out for themselves to attend."</div>
+                    <div class="review-author">— Dawn Durocher, Body & Soul Wellness Spa</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"Thank you Natalia, everything was amazing! Can't wait to join the next
+                        event."</div>
+                    <div class="review-author">— Marina Karteva, Artist</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"Thank you so much Natalia! It was an amazing event, I have met so many
+                        nice people."</div>
+                    <div class="review-author">— Tamara Grinenko, Nutritionost</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"Even though I had to drive from far it definitely was worth it! The place
+                        was so beautiful with windows to the ceiling and view over the Manchester river — I was amazed!
+                        Thank you so much for the organisation! Everything was thought through to the little details.
+                        Very beautiful atmosphere. Additionally I love the special English tea cups you had at
+                        Bridgerton event with their vibe."</div>
+                    <div class="review-author">— Viktoria Budkov, Artist</div>
+                </div>
             </div>
-            <div class="review-card">
-                <div class="review-text">"Uncompromisingly beautiful locations, exceptional guest caliber, and an energy
-                    that is completely addictive. The Exchange masterfully blends luxury structure with pure, authentic
-                    fun."</div>
-                <div class="review-author">— Kate Miller, Venture Partner</div>
-            </div>
+            <div class="reviews-dots" id="reviews-dots"></div>
         </div>
     </section>
 
@@ -1731,10 +1740,11 @@
                         <label for="tier-select">Desired Engagement Track</label>
                         <select id="tier-select">
                             <option>The Preview Pass — FREE</option>
-                            <option>The Collective Pass — $49/mo</option>
-                            <option>The Private Circle VIP — $149/mo</option>
-                            <option>Single Event Guest Pass Request</option>
-                            <option>Venue Partnership Inquiry</option>
+                            <option>The Collective Pass — $25/mo</option>
+                            <option>The Private Circle VIP — $100/mo</option>
+                            <option>Podcast Inquiry</option>
+                            <option>Branding Inquiry</option>
+
                         </select>
                     </div>
                     <button type="submit">Submit Membership Request</button>
@@ -1910,7 +1920,8 @@
                     <p>Start your morning with meaningful conversations and fresh local connections in a welcoming environment.</p>
                     <p>This meetup is designed for entrepreneurs, professionals, and creatives who want to grow through collaboration and community.</p>
                     <p><strong>📅 Date:</strong> July 8, 2026</p>
-                    <p><strong>📍 Location:</strong> Manchester, NH (TBD)</p>
+                    <p><strong>📍 Location:</strong> Goffstown Hometown Coffee Roasters (571 Mast Rd)</p>
+                    <p><strong>🎤 Featured Speaker:</strong> Dagny Hedbert — Human Design</p>
                 `,
                 actionText: 'Request event update',
                 actionHref: '#connect'
@@ -1922,7 +1933,7 @@
                     <p>Join us for another connection-focused morning and build relationships that turn into real opportunities.</p>
                     <p>Come ready to share ideas, meet new people, and strengthen your local network.</p>
                     <p><strong>📅 Date:</strong> July 29, 2026</p>
-                    <p><strong>📍 Location:</strong> Manchester, NH (TBD)</p>
+                    <p><strong>📍 Location:</strong> Union Coffee Company, 42 South St., Milford, NH</p>
                 `,
                 actionText: 'Request event update',
                 actionHref: '#connect'
@@ -1964,13 +1975,60 @@
                 actionHref: '#connect'
             },
             rooflounge: {
-                label: 'Roof Lounge Party',
-                title: 'Roof Lounge Party',
+                label: "Women's Business Networking, Leadership & Community",
+                title: "Women's Afternoon of Business Networking, Leadership & Community Impact",
                 copy: `
-                    <p>Join us for a stylish rooftop networking evening designed for meaningful conversation, fresh collaborations, and summer energy.</p>
-                    <p>Enjoy a relaxed upscale atmosphere while connecting with entrepreneurs, professionals, and creatives from across the community.</p>
-                    <p><strong>📅 Date:</strong> August 22, 2026</p>
-                    <p><strong>📍 Location:</strong> Revere, MA</p>
+                    <p><strong>📍 Venue:</strong> TBD, New Hampshire (Manchester area)<br>
+                    <strong>🕑 Time:</strong> 2:00 PM – 5:30 PM</p>
+                    <p>Join New Hampshire's entrepreneurs, executives, business owners, and professionals for an exclusive afternoon dedicated to building meaningful business relationships in the elegant setting of the Manchester NH area (venue TBD).</p>
+                    <p>Connect & Grow: The Granite State Business Exchange is a curated networking experience designed to bring together ambitious professionals who value authentic connections, strategic partnerships, and opportunities for growth. Whether you're looking to expand your network, exchange ideas, or meet potential collaborators, this event offers an exceptional environment to build relationships that extend beyond the event itself.</p>
+                    <p>Unlike traditional networking mixers, every aspect of the experience is thoughtfully designed to encourage purposeful conversations and lasting professional connections.</p>
+
+                    <h3>🤝 What to Expect</h3>
+                    <ul>
+                        <li>Curated networking with business owners and professionals from across New Hampshire & Massachusetts</li>
+                        <li>Guided networking sessions that make introductions natural and productive</li>
+                        <li>A featured speaker sharing practical insights for business growth and leadership</li>
+                        <li>Opportunities to introduce yourself and your business</li>
+                        <li>Meaningful conversations designed to foster referrals, partnerships, and collaboration</li>
+                        <li>An exciting raffle featuring prizes generously donated by our local business sponsors</li>
+                        <li>A refined atmosphere with light refreshments in one of New Hampshire's premier private clubs</li>
+                    </ul>
+
+                    <h3>💼 Who Should Attend</h3>
+                    <p>This event is ideal for:</p>
+                    <ul>
+                        <li>Business owners and entrepreneurs</li>
+                        <li>Executives and business leaders</li>
+                        <li>Real estate professionals</li>
+                        <li>Financial advisors and insurance professionals</li>
+                        <li>Attorneys and accountants</li>
+                        <li>Marketing professionals and consultants</li>
+                        <li>Coaches and service providers</li>
+                        <li>Startup founders</li>
+                        <li>Professionals seeking to expand their network throughout New Hampshire</li>
+                    </ul>
+                    <p>If you're committed to growing your business through quality relationships and collaboration, this event is designed for you.</p>
+
+                    <h3>❤️ Community Impact</h3>
+                    <p>Business success is even more meaningful when it creates a positive impact. A portion of every ticket sold will be donated to a local New Hampshire charitable organization, allowing us to strengthen both our business community and the communities we serve.</p>
+
+                    <h3>🎁 Exclusive Raffle</h3>
+                    <p>Every registered guest will have the opportunity to participate in our raffle featuring products, services, gift certificates, and experiences donated by local businesses. It's our way of celebrating and supporting the outstanding businesses within our community while adding an exciting element to the afternoon.</p>
+
+                    <h3>👔 Dress Code: Business Chic / Smart Elegant Attire (white color)</h3>
+                    <p>Dress to make a lasting first impression while enjoying an afternoon of high-quality networking in an elegant country club setting.</p>
+
+                    <h3>📋 Important Information</h3>
+                    <ul>
+                        <li>Attendance is intentionally limited to create a more personal and productive networking experience.</li>
+                        <li>Advance registration is required.</li>
+                        <li>Tickets are expected to sell out.</li>
+                        <li>Walk-in registrations will not be available.</li>
+                    </ul>
+
+                    <h3>📩 Questions</h3>
+                    <p>Email: <a href="mailto:wingllcnh@gmail.com">wingllcnh@gmail.com</a></p>
                 `,
                 actionText: 'Request details',
                 actionHref: '#connect'
@@ -2041,6 +2099,39 @@
                 closeGalleryModal();
             }
         });
+
+        // Reviews carousel
+        const track = document.getElementById('reviews-track');
+        const dotsContainer = document.getElementById('reviews-dots');
+        const cards = track ? track.querySelectorAll('.review-card') : [];
+        let current = 0;
+        let autoSlide;
+
+        if (cards.length) {
+            const visible = 2;
+            const totalSlides = cards.length - visible + 1;
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', 'Review ' + (i + 1));
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            function goTo(index) {
+                current = index;
+                track.style.transform = `translateX(-${current * 50}%)`;
+                dotsContainer.querySelectorAll('.reviews-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === current);
+                });
+            }
+
+            function next() { goTo((current + 1) % totalSlides); }
+
+            autoSlide = setInterval(next, 4000);
+            track.closest('.reviews-layout').addEventListener('mouseenter', () => clearInterval(autoSlide));
+            track.closest('.reviews-layout').addEventListener('mouseleave', () => { autoSlide = setInterval(next, 4000); });
+        }
     </script>
 </body>
 
