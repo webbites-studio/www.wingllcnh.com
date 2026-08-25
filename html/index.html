@@ -839,10 +839,10 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 20px;
             max-width: 100%;
+            align-items: start;
         }
 
         .gallery-item {
-            aspect-ratio: 4 / 3;
             background: linear-gradient(135deg, rgba(40, 35, 30, 0.7), rgba(35, 30, 25, 0.85));
             border: 1px solid var(--border-color);
             display: flex;
@@ -871,8 +871,9 @@
 
         .gallery-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            max-height: none;
+            object-fit: contain;
             display: block;
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -892,8 +893,7 @@
         }
 
         .gallery-item.tall {
-            grid-row: span 2;
-            aspect-ratio: 2 / 3;
+            grid-row: auto;
         }
 
         .event-details-btn {
@@ -990,15 +990,42 @@
 
         .event-modal-content h2 {
             margin: 0 0 25px;
+            font-family: 'Playfair Display', serif;
             font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
             line-height: 1.1;
         }
 
         .event-modal-content p {
             margin-bottom: 20px;
             color: #ddd;
+            font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
-            line-height: 1.8;
+            letter-spacing: 0.01em;
+            line-height: 1.85;
+        }
+
+        .event-modal-content h3 {
+            margin: 32px 0 12px;
+            color: var(--accent-gold-bright);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+        }
+
+        .event-modal-content ul {
+            margin: 0 0 24px 22px;
+            color: #ddd;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            line-height: 1.75;
+        }
+
+        .event-modal-content li {
+            margin-bottom: 10px;
+            padding-left: 6px;
         }
 
         .event-modal-content a {
@@ -1437,6 +1464,29 @@
             <h2>Upcoming Experiences</h2>
         </div>
         <div class="events-list">
+            <!-- Event 10 -->
+            <div class="event-row">
+                <a href="https://www.facebook.com/photo/?fbid=999008256510497&set=gm.2324306361640561" target="_blank"
+                    rel="noopener noreferrer" class="event-thumb-placeholder"
+                    aria-label="View August 22 event photo"><img src="images/white-experience.jpg"
+                        alt="The White Experience event announcement" class="event-thumb"></a>
+                <div class="event-date">August 22, 2026</div>
+                <div class="event-title">
+                    <h3>The White Experience</h3>
+                    <p>An elevated summer networking evening with music, skyline vibes, and curated connections.
+                        <button type="button" class="event-details-btn" data-event="rooflounge">View details</button>
+                    </p>
+                </div>
+                <div class="event-value event-venue">Manchester Country Club</div>
+                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+        </div>
+        <div class="section-header">
+            <span class="label">Past Events</span>
+            <h2>Past Experiences</h2>
+        </div>
+        <div class="events-list">
             <!-- Event 1 -->
             <div class="event-row">
                 <img src="images/event-coffee19.jpg" alt="Coffee, Connections & Community event" class="event-thumb">
@@ -1523,21 +1573,6 @@
                 <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
                 </div>
             </div>
-            <!-- Event 10 -->
-            <div class="event-row">
-                <div class="event-thumb-placeholder" aria-label="Woman's Business impact image coming soon">Image TBD
-                </div>
-                <div class="event-date">August 22, 2026</div>
-                <div class="event-title">
-                    <h3>Location TBD (Manchester, NH)</h3>
-                    <p>An elevated summer networking evening with music, skyline vibes, and curated connections.
-                        <button type="button" class="event-details-btn" data-event="rooflounge">View details</button>
-                    </p>
-                </div>
-                <div class="event-value event-venue">Manchester, NH</div>
-                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
-                </div>
-            </div>
         </div>
         <div class="event-modal" id="event-modal" aria-hidden="true">
             <div class="event-modal-inner" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
@@ -1584,8 +1619,8 @@
             <!-- Tier 2 -->
             <div class="tier-card">
                 <div>
-                    <h3 class="tier-name">The Collective Pass</h3>
-                    <div class="tier-price">$25 <span style="font-size: 0.9rem; color: var(--text-muted);">/
+                    <h3 class="tier-name">WING Founding 25</h3>
+                    <div class="tier-price">$49 <span style="font-size: 0.9rem; color: var(--text-muted);">/
                             month</span></div>
                     <ul class="tier-perks">
                         <li>The Preview Pass Benefits/li>
@@ -1625,6 +1660,33 @@
             <h2>The Social Archive</h2>
         </div>
         <div class="gallery-grid">
+            <div class="gallery-item"><img src="images/BGE-9.jpg"
+                    alt="WING networking event guests enjoying an elegant gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-5.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-16.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-19.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-20.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-31.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-37.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-38.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-45.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-52.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-57.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-65.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-80.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-124.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-128.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-130.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-131.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-133.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-135.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-137.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-140.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-141.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-142.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-146.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-159.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-161.jpg" alt="WING networking event gathering"></div>
             <div class="gallery-item tall"><img
                     src="https://images.unsplash.com/photo-1762517104454-c80a756f25d3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
                     alt="Luxury women networking event"></div>
@@ -1740,7 +1802,7 @@
                         <label for="tier-select">Desired Engagement Track</label>
                         <select id="tier-select">
                             <option>The Preview Pass — FREE</option>
-                            <option>The Collective Pass — $25/mo</option>
+                            <option>WING Founding 25 — $49/mo</option>
                             <option>The Private Circle VIP — $100/mo</option>
                             <option>Podcast Inquiry</option>
                             <option>Branding Inquiry</option>
@@ -1975,10 +2037,11 @@
                 actionHref: '#connect'
             },
             rooflounge: {
-                label: "Women's Business Networking, Leadership & Community",
-                title: "Women's Afternoon of Business Networking, Leadership & Community Impact",
+                label: 'The White Experience',
+                title: 'The White Experience — Business Networking, Leadership & Community Impact',
                 copy: `
-                    <p><strong>📍 Venue:</strong> TBD, New Hampshire (Manchester area)<br>
+                    <p><strong>📍 Venue:</strong> Manchester Country Club<br>
+                    <strong>📫 Address:</strong> 180 South River Road, Bedford, NH 03110<br>
                     <strong>🕑 Time:</strong> 2:00 PM – 5:30 PM</p>
                     <p>Join New Hampshire's entrepreneurs, executives, business owners, and professionals for an exclusive afternoon dedicated to building meaningful business relationships in the elegant setting of the Manchester NH area (venue TBD).</p>
                     <p>Connect & Grow: The Granite State Business Exchange is a curated networking experience designed to bring together ambitious professionals who value authentic connections, strategic partnerships, and opportunities for growth. Whether you're looking to expand your network, exchange ideas, or meet potential collaborators, this event offers an exceptional environment to build relationships that extend beyond the event itself.</p>
@@ -2015,6 +2078,34 @@
 
                     <h3>🎁 Exclusive Raffle</h3>
                     <p>Every registered guest will have the opportunity to participate in our raffle featuring products, services, gift certificates, and experiences donated by local businesses. It's our way of celebrating and supporting the outstanding businesses within our community while adding an exciting element to the afternoon.</p>
+                    <ol>
+                        <li><strong>$500 gift certificate</strong> from <a href="https://www.amandamarquisphotography.com/"
+                            target="_blank" rel="noopener noreferrer">Luxury Boudoir Photography</a></li>
+                        <li><strong>Gift certificate</strong> from <a href="http://www.elitemedspanh.com/" target="_blank"
+                            rel="noopener noreferrer">Bedford Elite Medical Spa and Educational Institute</a></li>
+                        <li><strong>Auburn silver sprayers</strong> by <a href="https://angelicassilvertherapeutics.com/"
+                            target="_blank" rel="noopener noreferrer">Angelica's Silver Therapeutics LLC</a></li>
+                        <li><strong>Earrings and necklace</strong> giveaway from <a href="https://forherjewelry.com/"
+                            target="_blank" rel="noopener noreferrer">For Her Jewelry</a></li>
+                    </ol>
+
+                    <h3>Featured Speaker</h3>
+                        <p><strong><a href="https://jenniferjaskal.com/" target="_blank"
+                            rel="noopener noreferrer">Jennifer Jaskal</a></strong><br>
+                    <strong>The Leadership Shift: How to Stop Self-Abandoning and Start</strong></p>
+
+                    <h3>What's on the Menu</h3>
+                    <p>We've prepared a delicious selection for you to enjoy throughout the event:</p>
+                    <ul>
+                        <li><strong>Artisan Cheese &amp; Crudite Display:</strong> Assorted cheeses, seasonal vegetable crudite, assorted crackers, sliced baguette, French onion dip, grapes, and strawberries</li>
+                        <li><strong>Salad Bar:</strong> Mixed greens, cherry tomatoes, shaved carrots, cucumber, red onion, dried cranberries, sliced almonds, shredded cheese, and crumbled bacon, with ranch and Brown Derby dressing. Served with freshly baked dinner rolls.</li>
+                        <li><strong>Pasta Bar:</strong> Penne pasta with marinara and cheese ravioli with Alfredo sauce. Served with freshly baked dinner rolls.</li>
+                        <li><strong>Italian Meatballs</strong></li>
+                        <li><strong>Bruschetta:</strong> Grilled garlic-rubbed baguette with tomato and mozzarella salad</li>
+                        <li><strong>Coconut Chicken Tenders:</strong> Served with sweet Thai chili sauce</li>
+                        <li><strong>Mini Cannolis:</strong> Traditional shells with ricotta filling and toppings including plain, chocolate chips, toffee, and toasted coconut</li>
+                        <li><strong>Beverages:</strong> Lemonade and unsweetened iced tea, coffee, and tea. Cash bar available.</li>
+                    </ul>
 
                     <h3>👔 Dress Code: Business Chic / Smart Elegant Attire (white color)</h3>
                     <p>Dress to make a lasting first impression while enjoying an afternoon of high-quality networking in an elegant country club setting.</p>
