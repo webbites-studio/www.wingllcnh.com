@@ -1112,6 +1112,37 @@
             position: relative;
         }
 
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .review-link {
+            display: inline-flex;
+            align-items: center;
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .review-link:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .review-avatar {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(232, 199, 138, 0.8);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+            background: rgba(255, 255, 255, 0.04);
+            flex-shrink: 0;
+        }
+
         .review-author {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -1411,7 +1442,7 @@
         </a>
         <nav>
             <a href="#about" class="nav-link">About</a>
-            <a href="#events" class="nav-link">Events</a>
+            <a href="#events" class="nav-link">Experiences</a>
             <a href="#membership" class="nav-link">Membership</a>
             <a href="#gallery" class="nav-link">Gallery</a>
             <a href="#reviews" class="nav-link">Reviews</a>
@@ -1457,19 +1488,44 @@
         </div>
     </section>
 
-    <!-- SECTION: UPCOMING EVENTS -->
+    <!-- SECTION: UPCOMING EXPERIENCES -->
     <section id="events">
         <div class="section-header">
             <span class="label">02 / Calendar</span>
             <h2>Upcoming Experiences</h2>
         </div>
         <div class="events-list">
-            <!-- Event 10 -->
+            <!-- The Beach Experience -->
+            <div class="event-row">
+                <img src="images/BeachExperience.PNG" alt="The Beach Experience beach event poster" class="event-thumb">
+                <div class="event-date">12 September</div>
+                <div class="event-title">
+                    <h3>The Beach Experience</h3>
+                    <p>Join us by the shore for an elegant summer gathering with music, light snacks, and refreshing
+                        drinks, where meaningful conversations, fresh ideas, and new connections unfold against the
+                        energy of Revere Beach.
+                        <button type="button" class="event-details-btn" data-event="beach">View details</button>
+                    </p>
+                </div>
+                <div class="event-value event-venue">Revere Beach</div>
+                <div><a href="https://www.eventbrite.com/e/the-beach-experience-tickets-1998915121939" target="_blank"
+                        rel="noopener noreferrer" class="btn btn-outline"
+                        style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
+                </div>
+            </div>
+        </div>
+        <div class="section-header">
+            <span class="label">Past Experiences</span>
+            <h2>Past Experiences</h2>
+            <a href="event-collaborations.html#past-coffee" class="btn btn-outline">See All Past Coffee Meetups</a>
+        </div>
+        <div class="events-list">
+            <!-- The White Experience -->
             <div class="event-row">
                 <a href="https://www.facebook.com/photo/?fbid=999008256510497&set=gm.2324306361640561" target="_blank"
                     rel="noopener noreferrer" class="event-thumb-placeholder"
-                    aria-label="View August 22 event photo"><img src="images/white-experience.jpg"
-                        alt="The White Experience event announcement" class="event-thumb"></a>
+                    aria-label="View August 22 experience photo"><img src="images/white-experience.jpg"
+                        alt="The White Experience announcement" class="event-thumb"></a>
                 <div class="event-date">August 22, 2026</div>
                 <div class="event-title">
                     <h3>The White Experience</h3>
@@ -1478,15 +1534,7 @@
                     </p>
                 </div>
                 <div class="event-value event-venue">Manchester Country Club</div>
-                <div><a href="#connect" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.65rem;">RSVP</a>
-                </div>
             </div>
-        </div>
-        <div class="section-header">
-            <span class="label">Past Events</span>
-            <h2>Past Experiences</h2>
-        </div>
-        <div class="events-list">
             <!-- Event 1 -->
             <div class="event-row">
                 <img src="images/event-coffee19.jpg" alt="Coffee, Connections & Community event" class="event-thumb">
@@ -1663,11 +1711,11 @@
             <div class="gallery-item"><img src="images/BGE-9.jpg"
                     alt="WING networking event guests enjoying an elegant gathering"></div>
             <div class="gallery-item"><img src="images/BGE-5.jpg" alt="WING networking event gathering"></div>
+            <div class="gallery-item"><img src="images/BGE-7.jpg" alt="WING networking event gathering"></div>
             <div class="gallery-item"><img src="images/BGE-16.jpg" alt="WING networking event gathering"></div>
             <div class="gallery-item"><img src="images/BGE-19.jpg" alt="WING networking event gathering"></div>
             <div class="gallery-item"><img src="images/BGE-20.jpg" alt="WING networking event gathering"></div>
             <div class="gallery-item"><img src="images/BGE-31.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-37.jpg" alt="WING networking event gathering"></div>
             <div class="gallery-item"><img src="images/BGE-38.jpg" alt="WING networking event gathering"></div>
             <div class="gallery-item"><img src="images/BGE-45.jpg" alt="WING networking event gathering"></div>
             <div class="gallery-item"><img src="images/BGE-52.jpg" alt="WING networking event gathering"></div>
@@ -1699,17 +1747,13 @@
             <div class="gallery-item"><img
                     src="https://plus.unsplash.com/premium_photo-1706005684813-bb175669291a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
                     alt="Luxury networking lounge decor"></div>
-            <div class="gallery-item"><img
-                    src="https://plus.unsplash.com/premium_photo-1667514648343-f36fe9b8654e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTd8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
-                    alt="Outdoor garden evening soirée"></div>
         </div>
     </section>
 
     <!-- SECTION: REVIEWS -->
-    <section id="reviews">
-        <div class="section-header">
-            <span class="label">06 / Endorsements</span>
-            <h2>What Founders Say</h2>
+    <section id="reviews" <div class="section-header">
+        <span class="label">06 / Endorsements</span>
+        <h2>What Founders Say</h2>
         </div>
         <div class="reviews-layout">
             <div class="reviews-track" id="reviews-track">
@@ -1718,17 +1762,35 @@
                         with the red carpet entrance to beautiful music playing, walking into a beautiful venue like
                         going back in time and we all dressed the part. I met some amazing, beautiful and talented women
                         who really made me feel welcome and took time out for themselves to attend."</div>
-                    <div class="review-author">— Dawn Durocher, Body & Soul Wellness Spa</div>
+                    <a class="review-link" href="event-collaborations.html#dawn-durocher-community"
+                        aria-label="View Dawn Durocher in the community page">
+                        <div class="review-header">
+                            <img class="review-avatar" src="images/dawn.jpg" alt="Dawn Durocher">
+                            <div class="review-author">— Dawn Durocher, Body &amp; Soul Wellness Spa</div>
+                        </div>
+                    </a>
                 </div>
                 <div class="review-card">
                     <div class="review-text">"Thank you Natalia, everything was amazing! Can't wait to join the next
                         event."</div>
-                    <div class="review-author">— Marina Karteva, Artist</div>
+                    <a class="review-link" href="event-collaborations.html#marina-karteva-community"
+                        aria-label="View Marina Karteva in the community page">
+                        <div class="review-header">
+                            <img class="review-avatar" src="images/marina-karteva.jpg" alt="Marina Karteva">
+                            <div class="review-author">— Marina Karteva, Artist</div>
+                        </div>
+                    </a>
                 </div>
                 <div class="review-card">
                     <div class="review-text">"Thank you so much Natalia! It was an amazing event, I have met so many
                         nice people."</div>
-                    <div class="review-author">— Tamara Grinenko, Nutritionost</div>
+                    <a class="review-link" href="event-collaborations.html#tamara-grinenko-community"
+                        aria-label="View Tamara Grinenko in the community page">
+                        <div class="review-header">
+                            <img class="review-avatar" src="images/tamara-grinenko.jpg" alt="Tamara Grinenko">
+                            <div class="review-author">— Tamara Grinenko, Nutritionost</div>
+                        </div>
+                    </a>
                 </div>
                 <div class="review-card">
                     <div class="review-text">"Even though I had to drive from far it definitely was worth it! The place
@@ -1736,7 +1798,37 @@
                         Thank you so much for the organisation! Everything was thought through to the little details.
                         Very beautiful atmosphere. Additionally I love the special English tea cups you had at
                         Bridgerton event with their vibe."</div>
-                    <div class="review-author">— Viktoria Budkov, Artist</div>
+                    <a class="review-link" href="event-collaborations.html#viktoria-budkov-community"
+                        aria-label="View Viktoria Budkov in the community page">
+                        <div class="review-header">
+                            <img class="review-avatar" src="images/viktoria-budkov.jpg" alt="Viktoria Budkov">
+                            <div class="review-author">— Viktoria Budkov, Artist</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">"Вчера я ехала на The White Experience в Нью-Гэмпшир практически без сил.
+                        После пяти дней ежедневных поездок в Бостон, по полтора часа в одну сторону, 7-ми часов ожидания
+                        ребёнка и работы из Starbucks или из машины, я чувствовала себя лимоном, который выжали уже раз
+                        пять. И если бы это мероприятие не было запланировано заранее, я, скорее всего, никуда бы не
+                        поехала. Думала: ‘Побуду часик и домой’. А осталась до самого конца. Потому что это был тот
+                        самый вечер, который неожиданно меня перезарядил. В очередной раз убедилась: женщина
+                        действительно заряжается от женщины. Было уютно, красиво, изысканно и при этом очень тепло.
+                        Нетворкинг, разговоры, смех, бинго, подарки — я даже выиграла красивые серьги. И столько
+                        внимания к деталям: организатор действительно пошла above and beyond, чтобы каждой было
+                        комфортно. Даже для меня, как для вегана, было приготовлено отдельное блюдо. Казалось бы,
+                        мелочь, а именно из таких мелочей и складывается ощущение, что о тебе подумали. Я приехала туда
+                        совершенно опустошённой, а уехала наполненной. И, наверное, это для меня лучший показатель
+                        хорошего женского мероприятия. Спасибо @wingllcnh за ивент. Если вам иногда хочется просто
+                        оказаться среди женщин, красиво провести время, познакомиться с новыми людьми и зарядиться —
+                        очень рекомендую. 🤍"</div>
+                    <a class="review-link" href="event-collaborations.html#oksana-krasulya-community"
+                        aria-label="View Oksana Krasulya in the community page">
+                        <div class="review-header">
+                            <img class="review-avatar" src="images/oksana-krasulya.jpg" alt="Oksana Krasulya">
+                            <div class="review-author">— Oksana Krasulya</div>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="reviews-dots" id="reviews-dots"></div>
@@ -1771,7 +1863,7 @@
             </div>
             <div>
                 <form
-                    onsubmit="event.preventDefault(); alert('Application logged successfully. Our network coordinator will reach out shortly.'); this.reset();">
+                    onsubmit="event.preventDefault(); alert('Request submitted successfully. Our network coordinator will reach out shortly.'); this.reset();">
                     <div class="form-group">
                         <label for="fullname">Full Name</label>
                         <input type="text" id="fullname" required autocomplete="name">
@@ -1806,10 +1898,13 @@
                             <option>The Private Circle VIP — $100/mo</option>
                             <option>Podcast Inquiry</option>
                             <option>Branding Inquiry</option>
+                            <option>Future Event</option>
+                            <option>Sponsor</option>
+                            <option>Partner</option>
 
                         </select>
                     </div>
-                    <button type="submit">Submit Membership Request</button>
+                    <button type="submit">Submit Request</button>
                 </form>
             </div>
         </div>
@@ -2035,6 +2130,44 @@
                 `,
                 actionText: 'Request meeting link',
                 actionHref: '#connect'
+            },
+            beach: {
+                label: 'The Beach Experience',
+                title: 'The Beach Experience — Revere Beach',
+                copy: `
+                    <p>Dive into sun, sand, and good vibes at The Beach Experience—your ultimate chill day by the shore!</p>
+                    <p>While the weather is still beautiful and summer is still in the air, there’s no better time to get together, enjoy the sunshine, and connect with amazing people!</p>
+                    <p>Join WING for a relaxing and vibrant Beach Experience at Revere Beach, MA, on Saturday, September 12th, from 2:00 PM to 6:00 PM.</p>
+                    <p>Spend the afternoon enjoying the beautiful beachfront setting, good music, refreshing drinks, delicious light bites, and genuine conversations with a diverse group of professionals and community members. Whether you’re looking to expand your network, meet new people, strengthen existing relationships, or simply enjoy a great afternoon by the water, this event is the perfect opportunity.</p>
+                    <h3>🎵 Music &amp; Atmosphere</h3>
+                    <p>Enjoy good music throughout the afternoon while taking in the beach views, relaxing, mingling, and enjoying the laid-back atmosphere.</p>
+                    <h3>🍹 Drinks &amp; Refreshments</h3>
+                    <p>Stay refreshed with a selection of drinks and beverages to enjoy while you socialize and take in the scenery.</p>
+                    <h3>🥪 Light Food &amp; Bites</h3>
+                    <p>We’ll have a variety of easy-to-enjoy light bites, including:</p>
+                    <ul>
+                        <li>Fresh fruit &amp; berries</li>
+                        <li>Cheese &amp; crackers</li>
+                        <li>Veggie cups with dip</li>
+                        <li>Mini wraps &amp; sandwiches</li>
+                        <li>Assorted pastries</li>
+                    </ul>
+                    <h3>🤝 People &amp; Connections</h3>
+                    <p>Most importantly, this is about people and connections. Meet women professionals, entrepreneurs, friends, and new faces in a relaxed environment where conversations can happen naturally. Come ready to introduce yourself, exchange ideas, build relationships, and enjoy meaningful conversations.</p>
+                    <p><strong>📅 Date:</strong> Saturday, September 12th</p>
+                    <p><strong>⏰ Time:</strong> 2:00 PM – 6:00 PM</p>
+                    <p><strong>📍 Location:</strong> Revere Beach, Revere, Massachusetts</p>
+                    <p><strong>👗 Dress Code:</strong> Dress to impress. Think elevated beach chic, sophisticated, stylish, and polished.</p>
+                    <p>Come for the beach, music, food, and drinks—stay for the people, conversations, and connections.</p>
+                    <p><strong>Good vibes. Great people. Unforgettable moments.</strong></p>
+                    <p><strong>📩 Sponsorship or questions:</strong> wingllcnh@gmail.com</p>
+                    <p><strong>Website:</strong> <a href="https://www.wingllcnh.com/" target="_blank" rel="noopener noreferrer">www.wingllcnh.com</a></p>
+                    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/share/1Dm1PgDxTj/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">https://www.facebook.com/share/1Dm1PgDxTj/?mibextid=wwXIfr</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/wingllcnh" target="_blank" rel="noopener noreferrer">https://www.instagram.com/wingllcnh</a></p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/wingllc/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/company/wingllc/</a></p>
+                `,
+                actionText: 'Get tickets on Eventbrite',
+                actionHref: 'https://www.eventbrite.com/e/the-beach-experience-tickets-1998915121939'
             },
             rooflounge: {
                 label: 'The White Experience',

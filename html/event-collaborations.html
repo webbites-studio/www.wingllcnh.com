@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Collaborations | The WING LLC</title>
+    <title>Experience Collaborations | The WING LLC</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -222,10 +222,11 @@
             background: linear-gradient(135deg, rgba(50, 42, 35, 0.95), rgba(40, 35, 30, 0.98));
             border: 1px solid var(--accent-gold);
             border-radius: 24px;
-            padding: 48px 56px;
-            display: flex;
+            padding: 56px;
+            display: grid;
+            grid-template-columns: 190px minmax(0, 1fr);
             align-items: center;
-            gap: 48px;
+            gap: 44px;
             max-width: 780px;
             width: 100%;
             box-shadow: 0 0 60px rgba(232, 199, 138, 0.15), var(--shadow-luxury);
@@ -276,6 +277,9 @@
 
         .host-info {
             flex: 1;
+            min-width: 0;
+            border-left: 1px solid var(--border-highlight);
+            padding-left: 44px;
         }
 
         .host-label {
@@ -307,7 +311,16 @@
             display: inline-block;
             width: auto;
             padding: 11px 28px;
-            margin-bottom: 14px;
+            margin-bottom: 0;
+        }
+
+        .host-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-color);
         }
 
         .host-actions .social-links {
@@ -316,9 +329,19 @@
 
         @media (max-width: 600px) {
             .host-card {
-                flex-direction: column;
+                grid-template-columns: 1fr;
                 text-align: center;
                 padding: 40px 28px;
+            }
+
+            .host-info {
+                border-left: 0;
+                border-top: 1px solid var(--border-highlight);
+                padding: 28px 0 0;
+            }
+
+            .host-actions {
+                flex-direction: column;
             }
 
             .host-actions .social-links {
@@ -567,6 +590,72 @@
             background-clip: text;
         }
 
+        .sponsors-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 100px;
+        }
+
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto 42px;
+        }
+
+        .sponsor-artwork {
+            display: block;
+            width: min(100%, 900px);
+            max-height: 420px;
+            object-fit: contain;
+            margin: 0 auto 42px;
+            border: 1px solid var(--border-color);
+            background: rgba(40, 35, 30, 0.72);
+        }
+
+        .sponsor-card {
+            padding: 30px 26px;
+            border: 1px solid var(--border-color);
+            background: linear-gradient(135deg, rgba(50, 42, 35, 0.8), rgba(40, 35, 30, 0.92));
+            text-align: center;
+        }
+
+        .sponsor-card h2 {
+            margin-bottom: 12px;
+            color: var(--accent-gold-bright);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+        }
+
+        .sponsor-card p,
+        .sponsor-cta p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .sponsor-card p {
+            font-size: 0.85rem;
+        }
+
+        .sponsor-cta {
+            text-align: center;
+        }
+
+        .collaboration-cta {
+            text-align: center;
+            margin: -28px auto 60px;
+        }
+
+        .collaboration-cta .website-btn {
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .sponsor-cta p {
+            max-width: 620px;
+            margin: 0 auto 24px;
+        }
+
         /* --- EVENT TABS --- */
         .event-tabs {
             display: flex;
@@ -576,6 +665,20 @@
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        .event-tab-group-label {
+            flex-basis: 100%;
+            margin-top: 14px;
+            color: var(--accent-gold);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .event-tab-group-label:first-of-type {
+            margin-top: 0;
         }
 
         .event-tab {
@@ -640,6 +743,11 @@
             }
 
             .collaborator-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+            }
+
+            .sponsor-grid {
                 grid-template-columns: 1fr;
                 max-width: 420px;
             }
@@ -822,6 +930,7 @@
             <a href="index.html#gallery" class="nav-link">Gallery</a>
             <a href="index.html#reviews" class="nav-link">Reviews</a>
             <a href="event-collaborations.html" class="nav-link active">Community</a>
+            <a href="#experience-sponsors" class="nav-link">Sponsors</a>
             <a href="index.html#connect" class="nav-link">Connect</a>
         </nav>
     </header>
@@ -834,9 +943,9 @@
                 <img src="images/natalia-markelova.jpg" alt="Natalia Markelova">
             </div>
             <div class="host-info">
-                <span class="host-label">Event Host</span>
+                <span class="host-label">Experience Host</span>
                 <h2 class="host-name">Natalia Markelova</h2>
-                <p class="host-title">Web Developer &amp; Event Planner — WeBBites / Inspire Me Event Planner</p>
+                <p class="host-title">Web Developer &amp; Experience Planner — WeBBites / Inspire Me Event Planner</p>
                 <div class="host-actions">
                     <a href="https://webbites.dev" target="_blank" rel="noopener noreferrer" class="website-btn">Visit
                         Website</a>
@@ -855,11 +964,53 @@
     <section class="page-section">
         <div class="section-header">
             <span class="label">Our Community</span>
-            <h1>Event Collaborations</h1>
-            <p>Connect with the featured speakers, partners, and professionals attending our upcoming events.</p>
+            <h1>Experience Collaborations</h1>
+            <p>Connect with the featured speakers, partners, and professionals attending our upcoming experiences.</p>
+        </div>
+
+        <div class="collaboration-cta">
+            <a href="https://forms.gle/QhX5s3jWRMLJgPzv7" target="_blank" rel="noopener noreferrer"
+                class="website-btn">Become a Partner or Sponsor</a>
         </div>
 
         <div class="collaborator-grid">
+
+            <!-- Card: Marlena Reed -->
+            <div class="collaborator-card">
+                <div class="avatar-ring"><img
+                        src="https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-1/623209187_10163998689648390_2210816450736811395_n.jpg?stp=dst-jpg_tt6&cstp=mx1210x1203&ctp=s480x480&_nc_cat=102&ccb=1-7&_nc_sid=1d2534&_nc_ohc=V-TxcdhqHUkQ7kNvwE2Nzy8&_nc_oc=AdokBKIkcYtv_5UM-f8_beqNcIxDyvLhYlpJRUSzPn_YI-IIMGT0Mw4Pm8UMcc7HOg0&_nc_zt=24&_nc_ht=scontent-iad6-1.xx&_nc_gid=a5uCIFENaiTzi6ja4UpN2w&_nc_ss=7b289&oh=00_AQHSbkH1Fs8SwmaMEe6aYYaFKR2-dRDNHbHEKNBtJqLgUA&oe=6A9149E4"
+                        alt="Marlena Reed"></div>
+                <h3 class="collaborator-name">Marlena Reed</h3>
+                <p class="collaborator-title">Photographer — Mixed Moons Media</p>
+                <div class="card-actions">
+                    <a href="https://mixedmoonsmedia.mypixieset.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/mixedmoonsmedia/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/mixedmoonsmedia" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Jennifer Jaskal -->
+            <div class="collaborator-card">
+                <div class="avatar-ring">
+                    <img src="images/jennifer-jaskal.jpg" alt="Jennifer Jaskal">
+                </div>
+                <h3 class="collaborator-name">Jennifer Jaskal</h3>
+                <p class="collaborator-title">Unapologetic Leadership Expert — Speaker, Coach</p>
+                <div class="card-actions"><a href="https://jenniferjaskal.com/" target="_blank"
+                        rel="noopener noreferrer" class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://instagram.com/Jennifer_jaskal" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/jennifer.jaskal/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
 
             <!-- Card: Heidi Young -->
             <div class="collaborator-card">
@@ -921,7 +1072,7 @@
             </div>
 
             <!-- Card: Dawn Durocher -->
-            <div class="collaborator-card">
+            <div class="collaborator-card" id="dawn-durocher-community">
                 <div class="avatar-ring">
                     <img src="images/dawn.jpg" alt="Dawn Durocher">
                 </div>
@@ -956,26 +1107,10 @@
                 </div>
             </div>
 
-            <!-- Card: Jennifer Jaskal -->
-            <div class="collaborator-card">
-                <a class="avatar-ring"
-                    href="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/FbZsLR7Wf1r7XiF3OM0a/media/69d7e6ee74d020e518ec8e21.jpg"
-                    target="_blank" rel="noopener noreferrer" aria-label="View Jennifer Jaskal photo"><img
-                        src="images/jennifer-jaskal.jpg" alt="Jennifer Jaskal"></a>
-                <h3 class="collaborator-name">Jennifer Jaskal</h3>
-                <p class="collaborator-title">Unapologetic Leadership Expert</p>
-                <div class="card-actions"><a href="https://jenniferjaskal.com/" target="_blank"
-                        rel="noopener noreferrer" class="website-btn">Visit Website</a>
-                    <div class="social-links">
-                        <a href="https://instagram.com/Jennifer_jaskal" target="_blank" rel="noopener noreferrer"
-                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/jennifer.jaskal/" target="_blank" rel="noopener noreferrer"
-                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="mailto:Info@jenniferjaskal.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
-
+        </div>
+        <div class="collaboration-cta">
+            <a href="https://forms.gle/QhX5s3jWRMLJgPzv7" target="_blank" rel="noopener noreferrer"
+                class="website-btn">Become a Partner or Sponsor</a>
         </div>
     </section>
 
@@ -983,21 +1118,28 @@
     <section class="page-section attendees-section">
         <div class="section-header">
             <span class="label">Who's Coming</span>
-            <h1>Event Attendees</h1>
-            <p>Professionals and community members joining us at our upcoming events.</p>
+            <h1>Experience Attendees</h1>
+            <p>Professionals and community members joining us at our upcoming experiences.</p>
         </div>
 
         <!-- EVENT FILTER TABS -->
         <div class="event-tabs">
-            <button class="event-tab" data-event="all">All Events</button>
-            <button class="event-tab" data-event="jul4">July 4, 2025</button>
-            <button class="event-tab" data-event="jul8">July 8, 2025</button>
-            <button class="event-tab" data-event="jul9">July 9, 2025</button>
-            <button class="event-tab" data-event="jul14">July 14, 2025</button>
-            <button class="event-tab" data-event="jul15">July 15, 2025</button>
-            <button class="event-tab" data-event="jul29">July 29, 2025</button>
+            <button class="event-tab active" data-event="all">All Events</button>
+            <span class="event-tab-group-label">Past Experiences</span>
+            <button class="event-tab" data-event="aug22">August 22, 2026 — The White Experience</button>
+            <button class="event-tab" data-event="jun20">June 20, 2025 — The Bridgerton Garden Experience</button>
+            <button class="event-tab" data-event="may16">May 16, 2025 — The Flower Experience</button>
+            <span class="event-tab-group-label">Past Coffee Meetups</span>
+            <button class="event-tab" data-event="past-coffee">All Past Coffee Meetups</button>
             <button class="event-tab" data-event="jul30">July 30, 2025</button>
-            <button class="event-tab active" data-event="aug22">August 22, 2026</button>
+            <button class="event-tab" data-event="jul29">July 29, 2025</button>
+            <button class="event-tab" data-event="jul15">July 15, 2025</button>
+            <button class="event-tab" data-event="jul14">July 14, 2025</button>
+            <button class="event-tab" data-event="jul9">July 9, 2025</button>
+            <button class="event-tab" data-event="jul8">July 8, 2025</button>
+            <button class="event-tab" data-event="jul4">July 4, 2025</button>
+            <button class="event-tab" data-event="jun19">June 19, 2025</button>
+            <button class="event-tab" data-event="jun10">June 10, 2025</button>
         </div>
 
         <div class="collaborator-grid" id="upcoming-grid">
@@ -1043,7 +1185,7 @@
             <!-- JULY 9 -->
             <!-- Card: Daniel Perez -->
             <div class="collaborator-card" data-event="jul9">
-                <div class="avatar-ring"><img src="https://via.placeholder.com/150" alt="Daniel Perez"></div>
+                <div class="avatar-ring"><img src="images/logo.png" alt="The WING LLC logo for Daniel Perez"></div>
                 <h3 class="collaborator-name">Daniel Perez</h3>
                 <p class="collaborator-title">&nbsp;</p>
                 <div class="card-actions"></div>
@@ -1069,7 +1211,7 @@
             <!-- Card: Nathan Nichols -->
             <div class="collaborator-card" data-event="jul29">
                 <div class="avatar-ring">
-                    <img src="https://via.placeholder.com/150" alt="Nathan Nichols">
+                    <img src="images/logo.png" alt="The WING LLC logo for Nathan Nichols">
                 </div>
                 <h3 class="collaborator-name">Nathan Nichols</h3>
                 <p class="collaborator-title">Tree Services</p>
@@ -1094,7 +1236,7 @@
             <!-- Card: Joede Brown -->
             <div class="collaborator-card" data-event="jul8">
                 <div class="avatar-ring">
-                    <img src="https://via.placeholder.com/150" alt="Joede Brown">
+                    <img src="images/logo.png" alt="The WING LLC logo for Joede Brown">
                 </div>
                 <h3 class="collaborator-name">Joede Brown</h3>
                 <p class="collaborator-title">Bookkeeping — Brown &amp; Associates LLC</p>
@@ -1112,7 +1254,7 @@
             <!-- Card: Sarah Lipnica -->
             <div class="collaborator-card" data-event="jul14">
                 <div class="avatar-ring">
-                    <img src="https://via.placeholder.com/150" alt="Sarah Lipnica">
+                    <img src="images/logo.png" alt="The WING LLC logo for Sarah Lipnica">
                 </div>
                 <h3 class="collaborator-name">Sarah Lipnica</h3>
                 <p class="collaborator-title">VA — Pro Level Support</p>
@@ -1130,7 +1272,7 @@
             <!-- Card: Faramade Adeleye -->
             <div class="collaborator-card" data-event="jul15">
                 <div class="avatar-ring">
-                    <img src="https://via.placeholder.com/150" alt="Faramade Adeleye">
+                    <img src="images/logo.png" alt="The WING LLC logo for Faramade Adeleye">
                 </div>
                 <h3 class="collaborator-name">Faramade Adeleye</h3>
                 <p class="collaborator-title">&nbsp;</p>
@@ -1140,7 +1282,7 @@
             <!-- Card: Favour O -->
             <div class="collaborator-card" data-event="jul15">
                 <div class="avatar-ring">
-                    <img src="https://via.placeholder.com/150" alt="Favour O">
+                    <img src="images/logo.png" alt="The WING LLC logo for Favour O">
                 </div>
                 <h3 class="collaborator-name">Favour O</h3>
                 <p class="collaborator-title">&nbsp;</p>
@@ -1150,7 +1292,7 @@
             <!-- Card: Tamysha Carrasquillo -->
             <div class="collaborator-card" data-event="jul15">
                 <div class="avatar-ring">
-                    <img src="https://via.placeholder.com/150" alt="Tamysha Carrasquillo">
+                    <img src="images/logo.png" alt="The WING LLC logo for Tamysha Carrasquillo">
                 </div>
                 <h3 class="collaborator-name">Tamysha Carrasquillo</h3>
                 <p class="collaborator-title">&nbsp;</p>
@@ -1215,8 +1357,25 @@
                             rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/yulia.garvanovic" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="mailto:yulia_garvanovic@yahoo.com" aria-label="Email"><i
-                                class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: Evgeniia Pukhova -->
+            <div class="collaborator-card" data-event="aug22">
+                <div class="avatar-ring"><img
+                        src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-1/734768484_3462880440538035_6727795511473495228_n.jpg?stp=dst-jpg_tt6&cstp=mx774x774&ctp=s480x480&_nc_cat=105&ccb=1-7&_nc_sid=1d2534&_nc_ohc=fq87Tzk-wfsQ7kNvwH5AbX5&_nc_oc=AdoNS6kBx60Giuan-TCsIKJC3Wg-noabKNR3Xbwvx8kpmKM2iQP2wPf5P6CDT43qJaU&_nc_zt=24&_nc_ht=scontent-iad3-2.xx&_nc_gid=-MVys8ffIY-U37AJ8q7kig&_nc_ss=7b2a8&oh=00_AQE0LZB1caqhFSdd2YxbWwQCd0ACCGfm0UlJ-WU7JY36zQ&oe=6A916D2B"
+                        alt="Evgeniia Pukhova"></div>
+                <h3 class="collaborator-name">Evgeniia Pukhova</h3>
+                <p class="collaborator-title">Affordable Builders</p>
+                <div class="card-actions">
+                    <a href="https://1affordablebuilders.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/wellness_eve/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/tosinapux" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
@@ -1232,7 +1391,6 @@
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/share/1Ef55AbRiX/" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="mailto:victoriamit85@mail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -1248,13 +1406,12 @@
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/share/1F1naDewDk/" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="mailto:Aavlasyuck90@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Marina Karteva -->
-            <div class="collaborator-card" data-event="aug22">
+            <div class="collaborator-card" data-event="aug22" id="marina-karteva-community">
                 <div class="avatar-ring"><img src="images/marina-karteva.jpg" alt="Marina Karteva"></div>
                 <h3 class="collaborator-name">Marina Karteva</h3>
                 <p class="collaborator-title">Art - Artland</p>
@@ -1265,22 +1422,18 @@
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/MarinArtLand/" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="mailto:mareena.kartseva@gmail.com" aria-label="Email"><i
-                                class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Marijana Bozic Andonovic -->
             <div class="collaborator-card" data-event="aug22">
-                <div class="avatar-ring"><img src="https://via.placeholder.com/150" alt="Marijana Bozic Andonovic">
+                <div class="avatar-ring"><img src="images/logo.png"
+                        alt="The WING LLC logo for Marijana Bozic Andonovic">
                 </div>
                 <h3 class="collaborator-name">Marijana Bozic Andonovic</h3>
                 <p class="collaborator-title">Yellow Elephant LLC</p>
                 <div class="card-actions">
-                    <a href="mailto:xmas.maja@gmail.com" class="website-btn">Contact Email</a>
-                    <div class="social-links"><a href="mailto:xmas.maja@gmail.com" aria-label="Email"><i
-                                class="fas fa-envelope"></i></a></div>
                 </div>
             </div>
 
@@ -1295,52 +1448,48 @@
                     <div class="social-links">
                         <a href="https://www.instagram.com/kieniai/" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="mailto:irynakiyenia@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Meghan Rohde -->
             <div class="collaborator-card" data-event="aug22">
-                <div class="avatar-ring"><img src="images/meghan-rohde.jpg" alt="Meghan Rohde"></div>
+                <div class="avatar-ring"><a
+                        href="https://www.facebook.com/photo/?fbid=10223799636533666&set=a.1305108962608&__tn__=%3C"
+                        target="_blank" rel="noopener noreferrer" aria-label="View Meghan Rohde photo"><img
+                            src="images/meghan-rohde.jpg" alt="Meghan Rohde"></a></div>
                 <h3 class="collaborator-name">Meghan Rohde</h3>
                 <p class="collaborator-title">Revolution Wellness Collective</p>
                 <div class="card-actions">
+                    <a href="https://revolutionwellnesscollective.com/home" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61556483024307" target="_blank"
                             rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/revolutionwellpt" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="mailto:meghan@revolutionwellnesscollective.com" aria-label="Email"><i
-                                class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Grace Gallaher -->
             <div class="collaborator-card" data-event="aug22">
-                <div class="avatar-ring"><img src="https://via.placeholder.com/150" alt="Grace Gallaher"></div>
+                <div class="avatar-ring"><img src="images/logo.png" alt="The WING LLC logo for Grace Gallaher"></div>
                 <h3 class="collaborator-name">Grace Gallaher</h3>
                 <p class="collaborator-title">North Ember Goods</p>
                 <div class="card-actions">
-                    <a href="https://www.instagram.com/northembergoods" target="_blank" rel="noopener noreferrer"
-                        class="website-btn">View on Instagram</a>
                     <div class="social-links">
                         <a href="https://www.instagram.com/northembergoods" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="mailto:grace.gallaher04@icloud.com" aria-label="Email"><i
-                                class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Oksana Krasulya -->
-            <div class="collaborator-card" data-event="aug22">
-                <div class="avatar-ring"><a
-                        href="https://www.facebook.com/photo/?fbid=122117669186531628&set=a.122105251214531628&__tn__=%3C"
-                        target="_blank" rel="noopener noreferrer" aria-label="View Oksana Krasulya photo"><img
-                            src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/464773791_122117669198531628_7350326190913583571_n.jpg?stp=dst-jpg_tt6&cstp=mx945x960&ctp=s945x960&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=RYwtC2U82GYQ7kNvwGU5chD&_nc_oc=AdrkZy2r7Kqh3EI8ENhiEhNli6orJJ6B32mMbZZT_HHioyTINAIaQ59ZFVfvvW_Xk0c&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=Lu_rrOO89pj1aLUQIWbX_A&_nc_ss=79289&oh=00_AQEHDIil6xSKIglqqkKMhzXEET8IuKvDL53X9PnKn1crlQ&oe=6A8EF1F3"
-                            alt="Oksana Krasulya"></a></div>
+            <div class="collaborator-card" data-event="aug22" id="oksana-krasulya-community">
+                <div class="avatar-ring"><img
+                        src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/464773791_122117669198531628_7350326190913583571_n.jpg?stp=dst-jpg_tt6&cstp=mx945x960&ctp=s945x960&_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=RYwtC2U82GYQ7kNvwGU5chD&_nc_oc=AdrkZy2r7Kqh3EI8ENhiEhNli6orJJ6B32mMbZZT_HHioyTINAIaQ59ZFVfvvW_Xk0c&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=Lu_rrOO89pj1aLUQIWbX_A&_nc_ss=79289&oh=00_AQEHDIil6xSKIglqqkKMhzXEET8IuKvDL53X9PnKn1crlQ&oe=6A8EF1F3"
+                        alt="Oksana Krasulya"></div>
                 <h3 class="collaborator-name">Oksana Krasulya</h3>
                 <p class="collaborator-title">Business Consulting - ThrivePoint Consulting LLC</p>
                 <div class="card-actions">
@@ -1350,35 +1499,34 @@
                         <a href="https://www.facebook.com/photo/?fbid=122117669186531628&set=a.122105251214531628&__tn__=%3C"
                             target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a href="mailto:okrasulya28@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Maria Tchernova -->
             <div class="collaborator-card" data-event="aug22">
-                <div class="avatar-ring"><img src="https://via.placeholder.com/150" alt="Maria Tchernova"></div>
+                <div class="avatar-ring"><a href="https://www.facebook.com/maria.runes.raven" target="_blank"
+                        rel="noopener noreferrer" aria-label="View Maria Tchernova profile"><img src="images/logo.png"
+                            alt="The WING LLC logo for Maria Tchernova"></a></div>
                 <h3 class="collaborator-name">Maria Tchernova</h3>
                 <p class="collaborator-title">Runes Raven</p>
                 <div class="card-actions"><a href="https://www.runesraven.com/" target="_blank"
-                        rel="noopener noreferrer" class="website-btn">Visit Website</a><a
-                        href="https://www.instagram.com/mariarunesraven_us" target="_blank" rel="noopener noreferrer"
-                        class="website-btn">View Profile</a>
+                        rel="noopener noreferrer" class="website-btn">Visit Website</a>
                     <div class="social-links">
                         <a href="https://www.instagram.com/mariarunesraven_us" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="mailto:msouvorova@yahoo.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.facebook.com/photo/?fbid=122099947550113337&set=a.122099947598113337&__tn__=%3C"
+                            target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Natalia Ovcharova -->
             <div class="collaborator-card" data-event="aug22">
-                <div class="avatar-ring"><a
-                        href="https://www.facebook.com/photo/?fbid=7059187564208696&set=a.105316469595875&__tn__=%3C"
-                        target="_blank" rel="noopener noreferrer" aria-label="View Natalia Ovcharova photo"><img
-                            src="https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/432907787_7059187550875364_7526125834303668703_n.jpg?stp=dst-jpg_tt6&cstp=mx960x958&ctp=s960x958&_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=bLTrDzG-fCcQ7kNvwFj_e8H&_nc_oc=AdoEVqaKr9R2vHAeVUxnqxav--v_a_LsrTA4PVZWGpvcUnREbzHPLQhNrn05YxqQoHE&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=W5x779GiqurwsiogWBDSog&_nc_ss=79289&oh=00_AQHFJyfPgDSAGSrYS9gliPXOyGRM8SZUOjKyx1IzNEkOaQ&oe=6A8EE384"
-                            alt="Natalia Ovcharova"></a></div>
+                <div class="avatar-ring"><img
+                        src="https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/432907787_7059187550875364_7526125834303668703_n.jpg?stp=dst-jpg_tt6&cstp=mx960x958&ctp=s960x958&_nc_cat=100&ccb=1-7&_nc_sid=1d2534&_nc_ohc=bLTrDzG-fCcQ7kNvwFj_e8H&_nc_oc=AdoEVqaKr9R2vHAeVUxnqxav--v_a_LsrTA4PVZWGpvcUnREbzHPLQhNrn05YxqQoHE&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=W5x779GiqurwsiogWBDSog&_nc_ss=79289&oh=00_AQHFJyfPgDSAGSrYS9gliPXOyGRM8SZUOjKyx1IzNEkOaQ&oe=6A8EE384"
+                        alt="Natalia Ovcharova"></div>
                 <h3 class="collaborator-name">Natalia Ovcharova</h3>
                 <p class="collaborator-title">Content Creator - NDM Agency</p>
                 <div class="card-actions"><a href="http://ndm-agency.com/" target="_blank" rel="noopener noreferrer"
@@ -1388,21 +1536,15 @@
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/natalja.ovcharova" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.facebook.com/photo/?fbid=7059187564208696&set=a.105316469595875&__tn__=%3C"
-                            target="_blank" rel="noopener noreferrer" aria-label="Photo"><i
-                                class="fas fa-image"></i></a>
-                        <a href="mailto:natka_1993@inbox.ru" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Yuliya Reynolds -->
             <div class="collaborator-card" data-event="aug22">
-                <div class="avatar-ring"><a
-                        href="https://www.facebook.com/photo/?fbid=10156047999911697&set=a.440863241696&__tn__=%3C"
-                        target="_blank" rel="noopener noreferrer" aria-label="View Yuliya Reynolds photo"><img
-                            src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/480795725_10160689152736697_7601492304139084083_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Yow4baRfaP8Q7kNvwFY_JRE&_nc_oc=AdrK0VzCiX63LgOeCDsfslTnIV-pjhLyBqHAbRJZngfLoILVR4JR_-y2k43mjW28ue8&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=JxXqbQRNHPC7P9HpMtOM_A&_nc_ss=79289&oh=00_AQHIqCHxktHgX5M6qrp0VHvs_R_Yp3TiK2joaEA23Rj32g&oe=6A8ED9AD"
-                            alt="Yuliya Reynolds"></a></div>
+                <div class="avatar-ring"><img
+                        src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/480795725_10160689152736697_7601492304139084083_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Yow4baRfaP8Q7kNvwFY_JRE&_nc_oc=AdrK0VzCiX63LgOeCDsfslTnIV-pjhLyBqHAbRJZngfLoILVR4JR_-y2k43mjW28ue8&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=JxXqbQRNHPC7P9HpMtOM_A&_nc_ss=79289&oh=00_AQHIqCHxktHgX5M6qrp0VHvs_R_Yp3TiK2joaEA23Rj32g&oe=6A8ED9AD"
+                        alt="Yuliya Reynolds"></div>
                 <h3 class="collaborator-name">Yuliya Reynolds</h3>
                 <p class="collaborator-title">Finances</p>
                 <div class="card-actions">
@@ -1410,18 +1552,15 @@
                         <a href="https://www.facebook.com/photo/?fbid=10156047999911697&set=a.440863241696&__tn__=%3C"
                             target="_blank" rel="noopener noreferrer" aria-label="Photo"><i
                                 class="fas fa-image"></i></a>
-                        <a href="mailto:luckygirl575@yahoo.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Card: Lisa Vuich -->
             <div class="collaborator-card" data-event="aug22">
-                <div class="avatar-ring"><a
-                        href="https://www.facebook.com/photo/?fbid=122097765015269325&set=a.122097763317269325&__tn__=%3C"
-                        target="_blank" rel="noopener noreferrer" aria-label="View Lisa Vuich photo"><img
-                            src="https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/634904287_10226979092818372_837168652995915487_n.jpg?stp=dst-jpg_tt6&cstp=mx1024x1536&ctp=s1024x1536&_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=TUHfPDyGDmIQ7kNvwGjAovH&_nc_oc=AdqnDUV4CV9HECxx-Uy9c4Z2zRLaCSi2gQTESm2v0PgjMZo1ZT_virhcX96fDFiP8C8&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=BVZfhIyC0ENg1VPyE3BCjg&_nc_ss=79289&oh=00_AQFs4OH79S1PTA1gNBBOKTjHwEuBRRDziGI1vX9ek4_-fg&oe=6A8EF76A"
-                            alt="Lisa Vuich"></a></div>
+                <div class="avatar-ring"><img
+                        src="https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/634904287_10226979092818372_837168652995915487_n.jpg?stp=dst-jpg_tt6&cstp=mx1024x1536&ctp=s1024x1536&_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=TUHfPDyGDmIQ7kNvwGjAovH&_nc_oc=AdqnDUV4CV9HECxx-Uy9c4Z2zRLaCSi2gQTESm2v0PgjMZo1ZT_virhcX96fDFiP8C8&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=BVZfhIyC0ENg1VPyE3BCjg&_nc_ss=79289&oh=00_AQFs4OH79S1PTA1gNBBOKTjHwEuBRRDziGI1vX9ek4_-fg&oe=6A8EF76A"
+                        alt="Lisa Vuich"></div>
                 <h3 class="collaborator-name">Lisa Vuich</h3>
                 <p class="collaborator-title">Midlife Medicine - Renew Medispa</p>
                 <div class="card-actions"><a href="https://www.renewmedispa.com/" target="_blank"
@@ -1431,30 +1570,10 @@
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/profile.php?id=61588079766263" target="_blank"
                             rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.facebook.com/photo/?fbid=122097765015269325&set=a.122097763317269325&__tn__=%3C"
-                            target="_blank" rel="noopener noreferrer" aria-label="Photo"><i
-                                class="fas fa-image"></i></a>
-                        <a href="mailto:lisa@renewmedispa.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
 
-        </div>
-    </section>
-    <section class="page-section past-section">
-        <div class="section-header">
-            <span class="label">Our History</span>
-            <h1>Past Event Attendees</h1>
-            <p>Talented professionals who joined and enriched our previous events.</p>
-        </div>
-
-        <!-- EVENT FILTER TABS -->
-        <div class="event-tabs">
-            <button class="event-tab active" data-event="all">All Events</button>
-            <button class="event-tab" data-event="may16">May 16, 2025</button>
-            <button class="event-tab" data-event="jun10">June 10, 2025</button>
-            <button class="event-tab" data-event="jun19">June 19, 2025</button>
-            <button class="event-tab" data-event="jun20">June 20, 2025</button>
         </div>
 
         <div class="collaborator-grid" id="past-grid">
@@ -1674,7 +1793,7 @@
                     </div>
                 </div>
             </div>
-            <div class="collaborator-card" data-event="jun20">
+            <div class="collaborator-card" data-event="jun20" id="viktoria-budkov-community">
                 <div class="avatar-ring"><img src="images/viktoria-budkov.jpg" alt="Viktoria Budkov"></div>
                 <h3 class="collaborator-name">Viktoria Budkov</h3>
                 <p class="collaborator-title">Art, Photography &amp; Architecture</p>
@@ -1689,7 +1808,7 @@
                 </div>
             </div>
             <div class="collaborator-card" data-event="jun20">
-                <div class="avatar-ring"><img src="https://via.placeholder.com/150" alt="Arju Parajuli"></div>
+                <div class="avatar-ring"><img src="images/logo.png" alt="The WING LLC logo for Arju Parajuli"></div>
                 <h3 class="collaborator-name">Arju Parajuli</h3>
                 <p class="collaborator-title">&nbsp;</p>
                 <div class="card-actions"></div>
@@ -1760,7 +1879,7 @@
                     </div>
                 </div>
             </div>
-            <div class="collaborator-card" data-event="jun20">
+            <div class="collaborator-card" data-event="jun20" id="tamara-grinenko-community">
                 <div class="avatar-ring"><img src="images/tamara-grinenko.jpg" alt="Tamara Grinenko"></div>
                 <h3 class="collaborator-name">Tamara Grinenko</h3>
                 <p class="collaborator-title">&nbsp;</p>
@@ -1785,6 +1904,76 @@
         </div>
     </section>
 
+    <!-- EXPERIENCE SPONSORS SECTION -->
+    <section class="page-section sponsors-section" id="experience-sponsors">
+        <div class="section-header">
+            <span class="label">Experience Partners</span>
+            <h1>Partners Behind the Experiences</h1>
+            <p>Our curated Experience events are made possible through thoughtful partnerships with businesses that
+                value connection, creativity, and community impact.</p>
+        </div>
+        <div class="sponsor-grid">
+            <div class="sponsor-card">
+                <h2>Amanda Marquis Photography</h2>
+                <p>Photography partner for The White Experience</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/amandamarquisphotography" target="_blank"
+                        rel="noopener noreferrer" aria-label="Amanda Marquis Photography Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/amandamarquisboudoir" target="_blank" rel="noopener noreferrer"
+                        aria-label="Amanda Marquis Photography Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <a href="http://www.amandamarquisphotography.com/" target="_blank" rel="noopener noreferrer"
+                    class="website-btn">Amanda Marquis Website</a>
+            </div>
+            <div class="sponsor-card">
+                <h2>Angelica's Silver Therapeutics</h2>
+                <p>Wellness partner for The White Experience</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/angelicas_silver_therapeutics/" target="_blank"
+                        rel="noopener noreferrer" aria-label="Angelica's Silver Therapeutics Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/AngelicasSilverTherapeuticsLLC/" target="_blank"
+                        rel="noopener noreferrer" aria-label="Angelica's Silver Therapeutics Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                </div>
+                <a href="https://angelicassilvertherapeutics.com/" target="_blank" rel="noopener noreferrer"
+                    class="website-btn">Visit Website</a>
+            </div>
+            <div class="sponsor-card">
+                <h2>For Her Jewelry</h2>
+                <p>Jewelry partner for The White Experience</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/forher_jewelry/" target="_blank" rel="noopener noreferrer"
+                        aria-label="For Her Jewelry Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/raenna.leandro" target="_blank" rel="noopener noreferrer"
+                        aria-label="For Her Jewelry Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <a href="https://forherjewelry.com/" target="_blank" rel="noopener noreferrer" class="website-btn">Visit
+                    Website</a>
+            </div>
+            <div class="sponsor-card">
+                <h2>Revolution Wellness Collective</h2>
+                <p>Wellness partner for The White Experience</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/revolutionwellpt" target="_blank" rel="noopener noreferrer"
+                        aria-label="Revolution Wellness Collective Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61556483024307" target="_blank"
+                        rel="noopener noreferrer" aria-label="Revolution Wellness Collective Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                </div>
+                <a href="https://revolutionwellnesscollective.com/home" target="_blank" rel="noopener noreferrer"
+                    class="website-btn">Visit Website</a>
+            </div>
+        </div>
+        <div class="sponsor-cta">
+            <p>Interested in supporting an upcoming WING Experience? Connect with us about sponsorship and brand
+                partnership opportunities.</p>
+            <a href="https://forms.gle/QhX5s3jWRMLJgPzv7" target="_blank" rel="noopener noreferrer" class="website-btn"
+                style="max-width: 360px; margin: 0 auto;">Become a Partner or Sponsor</a>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer
         style="text-align: center; padding: 40px 20px; border-top: 1px solid rgba(212, 177, 110, 0.25); margin-top: 60px;">
@@ -1797,16 +1986,83 @@
 </body>
 
 <script>
-    // Past events filter
+    document.querySelectorAll('.avatar-ring img').forEach(image => {
+        image.addEventListener('error', () => {
+            if (image.getAttribute('src') !== 'images/logo.png') {
+                image.src = 'images/logo.png';
+                image.alt = 'The WING LLC logo';
+            }
+        });
+    });
+
+    function combineAndSortAttendees() {
+        const attendeeGrid = document.querySelector('#upcoming-grid');
+        const pastGrid = document.querySelector('#past-grid');
+        if (!attendeeGrid || !pastGrid) return;
+
+        const eventOrder = [
+            'aug22', 'jul30', 'jul29', 'jul15', 'jul14', 'jul9', 'jul8', 'jul4',
+            'jun20', 'jun19', 'jun10', 'may16'
+        ];
+        const cards = [...attendeeGrid.children, ...pastGrid.children]
+            .filter(card => card.classList.contains('collaborator-card'))
+            .sort((firstCard, secondCard) => {
+                return eventOrder.indexOf(firstCard.dataset.event) - eventOrder.indexOf(secondCard.dataset.event);
+            });
+
+        cards.forEach(card => attendeeGrid.appendChild(card));
+        pastGrid.remove();
+    }
+
+    function applyHashFilter() {
+        const hash = window.location.hash.replace('#', '');
+        if (!hash) return;
+
+        if (hash === 'past-coffee') {
+            document.querySelector('.event-tab[data-event="past-coffee"]')?.click();
+            return;
+        }
+
+        const target = document.getElementById(hash);
+        if (!target) return;
+
+        const card = target.closest('.collaborator-card');
+        const filterEvent = card && card.dataset ? card.dataset.event : 'all';
+
+        document.querySelectorAll('.event-tab').forEach(tab => {
+            const isMatch = tab.dataset.event === filterEvent;
+            tab.classList.toggle('active', isMatch);
+        });
+
+        const coffeeEvents = ['jul30', 'jul29', 'jul15', 'jul14', 'jul9', 'jul8', 'jul4', 'jun19', 'jun10'];
+        document.querySelectorAll('.collaborator-card').forEach(item => {
+            const isCoffeeMatch = filterEvent === 'past-coffee' && coffeeEvents.includes(item.dataset.event);
+            if (filterEvent === 'all' || !item.dataset.event || item.dataset.event === filterEvent || isCoffeeMatch) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+
+        requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
+
+    combineAndSortAttendees();
+
+    // Event attendee filter
     document.querySelectorAll('.event-tabs').forEach(tabContainer => {
         tabContainer.querySelectorAll('.event-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 tabContainer.querySelectorAll('.event-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 const filter = tab.dataset.event;
-                const grid = tabContainer.nextElementSibling;
-                grid.querySelectorAll('.collaborator-card').forEach(card => {
-                    if (filter === 'all' || !card.dataset.event || card.dataset.event === filter) {
+                const attendeeSection = tab.closest('.attendees-section');
+                const coffeeEvents = ['jul30', 'jul29', 'jul15', 'jul14', 'jul9', 'jul8', 'jul4', 'jun19', 'jun10'];
+                attendeeSection.querySelectorAll('.collaborator-card').forEach(card => {
+                    const isCoffeeMatch = filter === 'past-coffee' && coffeeEvents.includes(card.dataset.event);
+                    if (filter === 'all' || !card.dataset.event || card.dataset.event === filter || isCoffeeMatch) {
                         card.classList.remove('hidden');
                     } else {
                         card.classList.add('hidden');
@@ -1817,7 +2073,9 @@
     });
 
     document.querySelector('#upcoming-grid')?.previousElementSibling
-        ?.querySelector('.event-tab[data-event="aug22"]')?.click();
+        ?.querySelector('.event-tab[data-event="all"]')?.click();
+
+    applyHashFilter();
 </script>
 
 </html>
