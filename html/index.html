@@ -1076,8 +1076,15 @@
 
         .review-card {
             min-width: 50%;
-            padding: 0 60px;
+            padding: 0 clamp(16px, 3vw, 32px);
             box-sizing: border-box;
+        }
+
+        @media (max-width: 700px) {
+            .review-card {
+                min-width: 100%;
+                padding: 0 16px;
+            }
         }
 
         .reviews-dots {
@@ -1754,9 +1761,10 @@
     </section>
 
     <!-- SECTION: REVIEWS -->
-    <section id="reviews" <div class="section-header">
-        <span class="label">06 / Endorsements</span>
-        <h2>What Founders Say</h2>
+    <section id="reviews">
+        <div class="section-header">
+            <span class="label">06 / Endorsements</span>
+            <h2>What Founders Say</h2>
         </div>
         <div class="reviews-layout">
             <div class="reviews-track" id="reviews-track">
@@ -2337,7 +2345,7 @@
         let autoSlide;
 
         if (cards.length) {
-            const visible = 2;
+            const visible = window.matchMedia('(max-width: 700px)').matches ? 1 : 2;
             const totalSlides = cards.length - visible + 1;
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('button');
@@ -2349,7 +2357,7 @@
 
             function goTo(index) {
                 current = index;
-                track.style.transform = `translateX(-${current * 50}%)`;
+                track.style.transform = `translateX(-${current * (100 / visible)}%)`;
                 dotsContainer.querySelectorAll('.reviews-dot').forEach((d, i) => {
                     d.classList.toggle('active', i === current);
                 });
