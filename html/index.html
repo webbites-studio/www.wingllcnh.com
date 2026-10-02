@@ -728,6 +728,12 @@
             opacity: 1;
         }
 
+        .events-list.featured .event-poster {
+            height: auto;
+            aspect-ratio: 3 / 2;
+            object-fit: contain;
+        }
+
         .events-list.featured .event-date {
             margin: 26px 32px 0;
             font-size: 1rem;
@@ -1001,6 +1007,43 @@
             gap: 20px;
             max-width: 100%;
             align-items: start;
+        }
+
+        .gallery-album summary {
+            display: list-item;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            color: var(--text-main);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
+        .gallery-album summary img {
+            width: 96px;
+            height: 64px;
+            object-fit: cover;
+            vertical-align: middle;
+            margin: 0 18px;
+        }
+
+        .gallery-credit {
+            margin-left: 20px;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .gallery-credit a {
+            color: var(--accent-gold);
+        }
+
+        .gallery-album .gallery-grid {
+            margin: 24px 0 40px;
+        }
+
+        .gallery-album .gallery-grid.single-image {
+            grid-template-columns: minmax(0, 640px);
         }
 
         .gallery-item {
@@ -1713,9 +1756,41 @@
             <h2>Upcoming Experiences</h2>
         </div>
         <div class="events-list featured">
+            <!-- Business & Coffee -->
+            <div class="event-row">
+                <img src="images/Coffee%26Business1.jpg" alt="Business & Coffee event poster"
+                    class="event-thumb event-poster">
+                <div class="event-date">October 2, 2026 · 9:30 AM</div>
+                <div class="event-title">
+                    <h3>Business &amp; Coffee</h3>
+                    <p>Free morning gathering at Union Coffee. RSVP required.
+                        <button type="button" class="event-details-btn" data-event="businesscoffee">View
+                            details</button>
+                    </p>
+                </div>
+                <div class="event-value event-venue">Union Coffee · Milford, NH · Second Floor</div>
+                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
+                        target="_blank" rel="noopener noreferrer" class="btn"
+                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
+                </div>
+            </div>
+            <div class="event-row">
+                <img src="images/Coffee%26Business-October12.jpg" alt="Business & Coffee October 12 event poster"
+                    class="event-thumb event-poster">
+                <div class="event-date">October 12, 2026 · 9:30 AM</div>
+                <div class="event-title">
+                    <h3>Business &amp; Coffee</h3>
+                    <p>Free morning gathering at Buckleys Bakery &amp; Cafe. RSVP required.</p>
+                </div>
+                <div class="event-value event-venue">Buckleys Bakery &amp; Cafe · Merrimack, NH</div>
+                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
+                        target="_blank" rel="noopener noreferrer" class="btn"
+                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
+                </div>
+            </div>
             <!-- The Witches Bash -->
             <div class="event-row">
-                <img src="images/Witches%20Bash.jpg" alt="The Witches Bash event" class="event-thumb">
+                <img src="images/Witches%20Bash.jpg" alt="The Witches Bash event" class="event-thumb event-poster">
                 <div class="event-date">October 25, 2026</div>
                 <div class="event-title">
                     <h3>The Witches Bash</h3>
@@ -1725,25 +1800,28 @@
                     </p>
                 </div>
                 <div class="event-value event-venue">Boston Seaport</div>
-                <div><a href="https://www.eventbrite.com/e/witches-bash-experience-tickets-2001057659326"
+                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
                         target="_blank" rel="noopener noreferrer" class="btn"
                         style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
                 </div>
             </div>
             <!-- The Elevate Experience -->
             <div class="event-row">
-                <img src="images/The%20Elevate.jpg" alt="The Elevate Experience event" class="event-thumb">
-                <div class="event-date">November 1, 2026</div>
+                <img src="images/Elevate.jpg" alt="The Elevate Experience event poster"
+                    class="event-thumb event-poster">
+                <div class="event-date">November 1, 2026 · 10:30 AM – 2:00 PM</div>
                 <div class="event-title">
                     <h3>The Elevate Experience</h3>
                     <p>An elevated brunch for 50 women who lead, build &amp; grow—curated conversations and intentional
-                        connections.
+                        connections with Dr. Karolina LaBrecque and Priya Sumputh St. Jean, plus a card-reading workshop
+                        with Colleen White.
                         <button type="button" class="event-details-btn" data-event="elevate">View details</button>
                     </p>
                 </div>
                 <div class="event-value event-venue">Nashua NH Sheraton</div>
-                <div><a href="https://www.eventbrite.com/e/the-elevate-experience-tickets-1999815114842" target="_blank"
-                        rel="noopener noreferrer" class="btn" style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
+                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
+                        target="_blank" rel="noopener noreferrer" class="btn"
+                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
                 </div>
             </div>
             <!-- Art After Dark -->
@@ -1757,7 +1835,9 @@
                     </p>
                 </div>
                 <div class="event-value event-venue">Location TBA</div>
-                <div><a href="#connect" class="btn" style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
+                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
+                        target="_blank" rel="noopener noreferrer" class="btn"
+                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
                 </div>
             </div>
             <!-- The Great Gatsby Christmas -->
@@ -1772,7 +1852,9 @@
                     </p>
                 </div>
                 <div class="event-value event-venue">Location TBA</div>
-                <div><a href="#connect" class="btn" style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
+                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
+                        target="_blank" rel="noopener noreferrer" class="btn"
+                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
                 </div>
             </div>
         </div>
@@ -1958,6 +2040,18 @@
                 <a href="#connect" class="btn btn-outline" style="width: 100%;">Apply For Pass</a>
             </div>
             <!-- Tier 2 -->
+            <div class="tier-card">
+                <div>
+                    <h3 class="tier-name">Business Listing</h3>
+                    <div class="tier-price">$5 <span style="font-size: 0.9rem; color: var(--text-muted);">/
+                            month</span></div>
+                    <ul class="tier-perks">
+                        <li>Your business added to the WING website in a listing visitors can search</li>
+                    </ul>
+                </div>
+                <a href="#connect" class="btn btn-outline" style="width: 100%;">Apply For Listing</a>
+            </div>
+            <!-- Tier 3 -->
             <div class="tier-card premium">
                 <span class="tag">Most Coveted</span>
                 <div>
@@ -1976,24 +2070,6 @@
                 </div>
                 <a href="#connect" class="btn btn-outline" style="width: 100%;">Apply For Pass</a>
             </div>
-            <!-- Tier 3 -->
-            <div class="tier-card">
-                <div>
-                    <h3 class="tier-name">The Private Circle (VIP)</h3>
-                    <div class="tier-price">$55 <span style="font-size: 0.9rem; color: var(--text-muted);">/
-                            month</span></div>
-                    <ul class="tier-perks">
-                        <li>The Collective pass benefits</li>
-                        <li>Dedicated Spotlight Feature on the website frontpage</li>
-                        <li>Quarterly private executive dinners with Keynote Speakers</li>
-                        <li>Monthly dedicated premium video marketing feature profiling you and your brand logo on the
-                            network's
-                            homepage for high-level traffic exposure.</li>
-                        <li>4 hours of VA (Virtual Assistant) support per month</li>
-                    </ul>
-                </div>
-                <a href="#connect" class="btn" style="width: 100%;">Apply For VIP Status</a>
-            </div>
         </div>
     </section>
 
@@ -2003,47 +2079,61 @@
             <span class="label">05 / Atmosphere</span>
             <h2>The Social Archive</h2>
         </div>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="images/BGE-9.jpg"
-                    alt="WING networking event guests enjoying an elegant gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-5.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-7.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-16.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-19.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-20.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-31.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-38.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-45.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-52.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-57.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-65.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-80.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-124.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-128.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-130.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-131.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-133.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-135.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-137.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-140.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-141.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-142.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-146.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-159.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item"><img src="images/BGE-161.jpg" alt="WING networking event gathering"></div>
-            <div class="gallery-item tall"><img
-                    src="https://images.unsplash.com/photo-1762517104454-c80a756f25d3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
-                    alt="Luxury women networking event"></div>
-            <div class="gallery-item"><img
-                    src="https://plus.unsplash.com/premium_photo-1723773614061-03914c8d1334?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
-                    alt="Elegant women at a network event"></div>
-            <div class="gallery-item"><img
-                    src="https://images.unsplash.com/photo-1561928070-590b9c48f0bb?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
-                    alt="Champagne toast at a luxury event"></div>
-            <div class="gallery-item"><img
-                    src="https://plus.unsplash.com/premium_photo-1706005684813-bb175669291a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
-                    alt="Luxury networking lounge decor"></div>
-        </div>
+        <details class="gallery-album">
+            <summary><img src="images/BGE-7.jpg" alt="">Bridgerton Garden Experience
+                <span class="gallery-credit">Pictures by <a href="event-collaborations.html#heidi-young">Heidi
+                        Young</a></span>
+            </summary>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/BGE-9.jpg"
+                        alt="WING networking event guests enjoying an elegant gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-5.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-7.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-16.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-19.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-20.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-31.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-38.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-45.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-52.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-57.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-65.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-80.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-124.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-128.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-130.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-131.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-133.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-135.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-137.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-140.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-141.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-142.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-146.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-159.jpg" alt="WING networking event gathering"></div>
+                <div class="gallery-item"><img src="images/BGE-161.jpg" alt="WING networking event gathering"></div>
+            </div>
+        </details>
+        <details class="gallery-album">
+            <summary><img src="images/white-experience.jpg" alt="">White Experience
+                <span class="gallery-credit">Pictures by <a href="event-collaborations.html#marlena-reed">Marlena
+                        Reed</a></span>
+            </summary>
+            <div class="gallery-grid single-image">
+                <div class="gallery-item"><img src="images/white-experience.jpg"
+                        alt="The White Experience event poster"></div>
+            </div>
+        </details>
+        <details class="gallery-album">
+            <summary><img src="images/BeachExperience.PNG" alt="">Beach Experience
+                <span class="gallery-credit">Pictures by <a href="event-collaborations.html#lara-nikolau">Lara
+                        Nikolau</a></span>
+            </summary>
+            <div class="gallery-grid single-image">
+                <div class="gallery-item"><img src="images/BeachExperience.PNG" alt="The Beach Experience event poster">
+                </div>
+            </div>
+        </details>
     </section>
 
     <!-- SECTION: REVIEWS -->
@@ -2159,40 +2249,42 @@
                 </div>
             </div>
             <div>
-                <form
-                    onsubmit="event.preventDefault(); alert('Request submitted successfully. Our network coordinator will reach out shortly.'); this.reset();">
+                <form action="https://formsubmit.co/wingllcnh@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New WING membership request">
                     <div class="form-group">
                         <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" required autocomplete="name">
+                        <input type="text" id="fullname" name="name" required autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="emailaddress">Email</label>
-                        <input type="email" id="emailaddress" required autocomplete="email">
+                        <input type="email" id="emailaddress" name="email" required autocomplete="email">
                     </div>
                     <div class="form-group">
                         <label for="company">Company / Industry Track</label>
-                        <input type="text" id="company" placeholder="e.g., Tech Venture / Creative Studio" required>
+                        <input type="text" id="company" name="company"
+                            placeholder="e.g., Tech Venture / Creative Studio" required>
                     </div>
                     <div class="form-group">
                         <label for="instagram">Instagram link</label>
-                        <input type="url" id="instagram" placeholder="https://www.instagram.com/yourprofile"
-                            autocomplete="url">
+                        <input type="url" id="instagram" name="instagram"
+                            placeholder="https://www.instagram.com/yourprofile" autocomplete="url">
                     </div>
                     <div class="form-group">
                         <label for="facebook">Facebook link</label>
-                        <input type="url" id="facebook" placeholder="https://www.facebook.com/yourprofile"
-                            autocomplete="url">
+                        <input type="url" id="facebook" name="facebook"
+                            placeholder="https://www.facebook.com/yourprofile" autocomplete="url">
                     </div>
                     <div class="form-group">
                         <label for="website">Website</label>
-                        <input type="url" id="website" placeholder="https://www.yoursite.com" autocomplete="url">
+                        <input type="url" id="website" name="website" placeholder="https://www.yoursite.com"
+                            autocomplete="url">
                     </div>
                     <div class="form-group">
                         <label for="tier-select">Desired Engagement Track</label>
-                        <select id="tier-select">
+                        <select id="tier-select" name="engagement_track">
                             <option>The Preview Pass — FREE</option>
-                            <option>WING Founding 25 — $49/mo</option>
-                            <option>The Private Circle VIP — $100/mo</option>
+                            <option>Business Listing — $5/mo</option>
+                            <option>WING Founding 25 — $35/mo</option>
                             <option>Podcast Inquiry</option>
                             <option>Branding Inquiry</option>
                             <option>Future Event</option>
@@ -2253,6 +2345,18 @@
         window.addEventListener('load', revealSections);
 
         const eventDetails = {
+            businesscoffee: {
+                label: 'October 2, 2026 · 9:30 AM',
+                title: 'Business & Coffee',
+                copy: `
+                    <p>Join WING Networking Group for Business &amp; Coffee at Union Coffee in Milford, NH.</p>
+                    <p><strong>When:</strong> October 2, 2026 at 9:30 AM</p>
+                    <p><strong>Where:</strong> Union Coffee, second floor, Milford, NH</p>
+                    <p><strong>Admission:</strong> Free; RSVP required.</p>
+                `,
+                actionText: 'RSVP',
+                actionHref: 'https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform'
+            },
             bridgerton: {
                 label: 'Bridgerton Garden Experience',
                 title: 'An Evening of Refinement, Connection, and Creative Artistry',
@@ -2365,7 +2469,7 @@
                     <p><strong>📍 Location:</strong> Revere, MA</p>
                 `,
                 actionText: 'RSVP now',
-                actionHref: 'https://forms.gle/RzhpDD8T4pgiBgCM7'
+                actionHref: 'https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform'
             },
             coffee08: {
                 label: 'Coffee, Connections & Community',
@@ -2414,7 +2518,7 @@
                     <p><strong>📍 Location:</strong> Revere, MA</p>
                 `,
                 actionText: 'RSVP now',
-                actionHref: 'https://forms.gle/RzhpDD8T4pgiBgCM7'
+                actionHref: 'https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform'
             },
             coffee04virtual: {
                 label: 'Coffee, Community & Connection',
@@ -2570,7 +2674,7 @@
                             <img class="speaker-photo" src="images/karolina-labrecque.jpg" alt="Dr. Karolina LaBrecque">
                             <div class="speaker-info">
                                 <strong>Dr. Karolina LaBrecque</strong>
-                                PhD, M.S. Psychology, founder of Help To Grow Institute LLC — expertise in human performance, leadership, behavior, capacity, and the systems that influence how we work and lead.
+                                PhD, M.S. Psychology, founder of Help To Grow Institute LLC. She explores human performance, leadership, and how to grow sustainably without sacrificing health or relationships.
                                 <div class="speaker-social">
                                     <a href="https://helptogrowinstitute.com/" target="_blank" rel="noopener noreferrer">Website</a> ·
                                     <a href="https://www.instagram.com/helptogrow/" target="_blank" rel="noopener noreferrer">Instagram</a> ·
@@ -2583,7 +2687,7 @@
                             <img class="speaker-photo" src="images/priya-sumputh.jpg" alt="Priya Sumputh St. Jean">
                             <div class="speaker-info">
                                 <strong>Priya Sumputh St. Jean</strong>
-                                Founder of Chic Happens
+                                Founder of Chic Happens. She helps women use personal style and self-expression to strengthen their presence and confidence in business and life.
                                 <div class="speaker-social">
                                     <a href="https://www.chichappensstyle.com/" target="_blank" rel="noopener noreferrer">Website</a> ·
                                     <a href="https://www.instagram.com/chichappensstylenh/" target="_blank" rel="noopener noreferrer">Instagram</a> ·
@@ -2591,8 +2695,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="speaker-card">
+                            <div class="speaker-info">
+                                <strong>Colleen White</strong>
+                                Card-reading workshop facilitator. She will guide an intuitive session for reflection, conversation, and fresh perspectives.
+                            </div>
+                        </div>
                     </div>
-                    <p>We will discuss the business style and how it affects the decision-makers.</p>
                     <p>Together, we will explore an important question: How do we build greater success without sacrificing the person—and the life—behind it?</p>
 
                     <p><strong>🤝 Intentional Connection</strong></p>
@@ -2607,7 +2716,8 @@
                     <p>Come for the experience. Stay for the conversations. Leave with new relationships, fresh perspective, and connections that extend far beyond the afternoon.</p>
 
                     <p><strong>Limited to 50 women.</strong> This is your invitation to enter the room.</p>
-                    <p><strong>📅 Date:</strong> Sunday, November 1st</p>
+                    <p><strong>📅 Date:</strong> Sunday, November 1, 2026</p>
+                    <p><strong>⏰ Time:</strong> 10:30 AM – 2:00 PM</p>
                     <p><strong>📍 Location:</strong> Nashua NH Sheraton</p>
                     <p><strong>🎟️ Tickets:</strong><br>
                         Early Bird — $95<br>
@@ -2779,6 +2889,10 @@
                 galleryModal.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden';
             });
+        });
+
+        document.querySelectorAll('.gallery-credit a').forEach(link => {
+            link.addEventListener('click', event => event.stopPropagation());
         });
 
         const closeGalleryModal = () => {
