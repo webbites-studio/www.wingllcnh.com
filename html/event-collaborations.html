@@ -273,6 +273,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
         }
 
         .host-info {
@@ -307,24 +308,44 @@
             line-height: 1.5;
         }
 
-        .host-actions .website-btn {
-            display: inline-block;
-            width: auto;
-            padding: 11px 28px;
-            margin-bottom: 0;
-        }
-
-        .host-actions {
+        .host-groups {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            padding-top: 18px;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 16px;
             border-top: 1px solid var(--border-color);
         }
 
-        .host-actions .social-links {
-            justify-content: flex-start;
+        .host-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .host-group-label {
+            flex: 0 0 104px;
+            color: var(--accent-gold);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .host-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .host-links a {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .host-links a:hover {
+            color: var(--accent-gold-bright);
+            transform: scale(1.15);
         }
 
         @media (max-width: 600px) {
@@ -340,11 +361,7 @@
                 padding: 28px 0 0;
             }
 
-            .host-actions {
-                flex-direction: column;
-            }
-
-            .host-actions .social-links {
+            .host-group {
                 justify-content: center;
             }
         }
@@ -1117,20 +1134,57 @@
         <div class="host-card">
             <span class="host-badge">Your Host</span>
             <div class="host-avatar">
-                <img src="images/natalia-markelova.jpg" alt="Natalia Markelova">
+                <img src="images/Natalia%20Markelova.jpeg" alt="Natalia Markelova">
             </div>
             <div class="host-info">
                 <span class="host-label">Experience Host</span>
                 <h2 class="host-name">Natalia Markelova</h2>
                 <p class="host-title">Web Developer &amp; Experience Planner — WeBBites / Inspire Me Event Planner</p>
-                <div class="host-actions">
-                    <a href="https://webbites.dev" target="_blank" rel="noopener noreferrer" class="website-btn">Visit
-                        Website</a>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/inspiremephotographyevents/" target="_blank"
-                            rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=100092039947752" target="_blank"
-                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <div class="host-groups">
+                    <div class="host-group">
+                        <span class="host-group-label">The WING LLC</span>
+                        <div class="host-links">
+                            <a href="https://www.instagram.com/wingllcnh/" target="_blank" rel="noopener noreferrer"
+                                aria-label="The WING LLC on Instagram" title="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/groups/565740402266590" target="_blank"
+                                rel="noopener noreferrer" aria-label="The WING LLC Facebook Group"
+                                title="Facebook Group"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                    <div class="host-group">
+                        <span class="host-group-label">WeBBites</span>
+                        <div class="host-links">
+                            <a href="https://www.instagram.com/webbites.dev/" target="_blank" rel="noopener noreferrer"
+                                aria-label="WeBBites on Instagram" title="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61591479148488" target="_blank"
+                                rel="noopener noreferrer" aria-label="WeBBites on Facebook" title="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://webbites.dev" target="_blank" rel="noopener noreferrer"
+                                aria-label="WeBBites website" title="Website"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                    <div class="host-group">
+                        <span class="host-group-label">Inspire Me</span>
+                        <div class="host-links">
+                            <a href="https://www.instagram.com/inspiremephotographyevents/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Inspire Me on Instagram" title="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100092039947752" target="_blank"
+                                rel="noopener noreferrer" aria-label="Inspire Me on Facebook" title="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.inspiremeeventplanner.com/" target="_blank" rel="noopener noreferrer"
+                                aria-label="Inspire Me website" title="Website"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                    <div class="host-group">
+                        <span class="host-group-label">Natalia</span>
+                        <div class="host-links">
+                            <a href="https://www.linkedin.com/in/natalia-markelova" target="_blank"
+                                rel="noopener noreferrer" aria-label="Natalia on LinkedIn" title="LinkedIn"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
