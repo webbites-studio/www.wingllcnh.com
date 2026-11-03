@@ -551,6 +551,10 @@
             color: #1877f2;
         }
 
+        .social-links a[aria-label="LinkedIn"]:hover {
+            color: #0a66c2;
+        }
+
         /* --- ATTENDEES SECTION DIVIDER --- */
         .attendees-section {
             border-top: 1px solid var(--border-color);
@@ -660,58 +664,189 @@
             margin: 0 auto 24px;
         }
 
-        /* --- EVENT TABS --- */
-        .event-tabs {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
+        /* --- EVENT FILTER --- */
+        .event-filter {
             max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 56px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
         }
 
-        .event-tab-group-label {
-            flex-basis: 100%;
-            margin-top: 14px;
-            color: var(--accent-gold);
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+        .event-tabs,
+        .event-subtabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
         }
 
-        .event-tab-group-label:first-of-type {
-            margin-top: 0;
+        .event-subtabs {
+            padding-top: 18px;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
         }
 
-        .event-tab {
+        .event-subtabs[hidden] {
+            display: none;
+        }
+
+        .event-tab,
+        .event-subtab {
             background: transparent;
             border: 1px solid var(--border-color);
             color: var(--text-muted);
-            padding: 10px 24px;
             border-radius: 999px;
             font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .event-tab:hover {
+        .event-tab {
+            padding: 10px 24px;
+            font-size: 0.78rem;
+        }
+
+        .event-subtab {
+            padding: 7px 18px;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+        }
+
+        .event-tab:hover,
+        .event-subtab:hover {
             border-color: var(--accent-rose);
             color: var(--accent-rose);
         }
 
-        .event-tab.active {
+        .event-tab.active,
+        .event-subtab.active {
             background: var(--accent-rose);
             border-color: var(--accent-rose);
             color: #1a1612;
             font-weight: 600;
         }
 
-        .collaborator-card.hidden {
+        /* --- EVENT GROUPS --- */
+        .event-group {
+            max-width: 1200px;
+            margin: 0 auto 64px;
+        }
+
+        .event-group[hidden] {
+            display: none;
+        }
+
+        .event-group-header {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .event-group-date {
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .event-group-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .event-group-count {
+            margin-left: auto;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+        }
+
+        /* Compact cards (collaborators and attendees) */
+        .compact-cards .collaborator-grid,
+        .event-group .collaborator-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: none;
+        }
+
+        .compact-cards .collaborator-card,
+        .event-group .collaborator-card {
+            padding: 22px 16px;
+        }
+
+        .compact-cards .avatar-ring,
+        .event-group .avatar-ring {
+            width: 84px;
+            height: 84px;
+            margin-bottom: 14px;
+        }
+
+        .compact-cards .collaborator-name,
+        .event-group .collaborator-name {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .compact-cards .collaborator-title,
+        .event-group .collaborator-title {
+            font-size: 0.78rem;
+            min-height: 0;
+            margin-bottom: 12px;
+        }
+
+        .compact-cards .website-btn,
+        .event-group .website-btn {
+            padding: 8px 0;
+            font-size: 0.68rem;
+            margin-bottom: 10px;
+        }
+
+        .compact-cards .social-links,
+        .event-group .social-links {
+            gap: 14px;
+        }
+
+        .compact-cards .social-links a,
+        .event-group .social-links a {
+            font-size: 1rem;
+        }
+
+        .event-group.collapsed .collaborator-card.extra {
+            display: none;
+        }
+
+        .event-group-toggle {
+            display: block;
+            margin: 24px auto 0;
+            padding: 9px 26px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            color: var(--accent-gold);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .event-group-toggle:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .event-group-toggle[hidden] {
             display: none;
         }
 
@@ -858,15 +993,53 @@
                 font-size: 1rem;
             }
 
-            .event-tabs {
-                flex-wrap: wrap;
+            .event-tabs,
+            .event-subtabs {
                 gap: 10px;
-                margin-bottom: 30px;
+            }
+
+            .event-filter {
+                margin-bottom: 40px;
             }
 
             .event-tab {
                 padding: 8px 16px;
                 font-size: 0.7rem;
+            }
+
+            .event-subtab {
+                padding: 6px 12px;
+                font-size: 0.65rem;
+            }
+
+            .event-group {
+                margin-bottom: 48px;
+            }
+
+            .event-group-title {
+                font-size: 1.3rem;
+            }
+
+            .event-group-count {
+                margin-left: 0;
+                flex-basis: 100%;
+            }
+
+            .compact-cards .collaborator-grid,
+            .event-group .collaborator-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .compact-cards .collaborator-card,
+            .event-group .collaborator-card {
+                padding: 18px 10px;
+            }
+
+            .compact-cards .avatar-ring,
+            .event-group .avatar-ring {
+                width: 72px;
+                height: 72px;
             }
         }
 
@@ -965,11 +1138,11 @@
     </div>
 
     <!-- PAGE CONTENT -->
-    <section class="page-section">
+    <section class="page-section compact-cards">
         <div class="section-header">
             <span class="label">Our Community</span>
             <h1>Experience Collaborations</h1>
-            <p>Connect with the featured speakers, partners, and professionals attending our upcoming experiences.</p>
+            <p>Meet the speakers and service providers who partner with us to bring each experience to life.</p>
         </div>
 
         <div class="collaboration-cta">
@@ -979,11 +1152,64 @@
 
         <div class="collaborator-grid">
 
+            <!-- The Elevate Experience collaborators -->
+            <div class="collaborator-card" id="colleen-white">
+                <div class="avatar-ring"><img src="images/Colleen%20white.jpg" alt="Colleen White"></div>
+                <h3 class="collaborator-name">Colleen White</h3>
+                <p class="collaborator-title">Medium</p>
+                <div class="card-actions">
+                    <a href="https://www.colleenwhiteholistic.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/colleen-white-agustsson-28094245/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/colleen.p.white.agustsson" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/colleenwagustsson/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" id="karolina-przewloka-labrecque">
+                <div class="avatar-ring"><img src="images/Karolina.jpg" alt="Dr. Karolina Przewłoka LaBrecque"></div>
+                <h3 class="collaborator-name">Dr. Karolina Przewłoka LaBrecque</h3>
+                <p class="collaborator-title">Human Systems Coaching</p>
+                <div class="card-actions">
+                    <a href="https://helptogrowinstitute.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/karolinalabrecque/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/karolina.przew.oka.labrecque" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/helptogrow/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" id="priya-sumputh-st-jean">
+                <div class="avatar-ring"><img src="images/priya-sumputh.jpg" alt="Priya Sumputh St. Jean"></div>
+                <h3 class="collaborator-name">Priya Sumputh St. Jean</h3>
+                <p class="collaborator-title">Personal Stylist</p>
+                <div class="card-actions">
+                    <a href="https://www.chichappensstyle.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/priyastjean/" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/priya.pierre.1" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/chichappensstylenh/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Card: Marlena Reed -->
             <div class="collaborator-card" id="marlena-reed">
-                <div class="avatar-ring"><img
-                        src="https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-6/623209187_10163998689648390_2210816450736811395_n.jpg?stp=dst-jpg_tt6&cstp=mx1210x1203&ctp=s1210x1203&_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=khTo_0LekmEQ7kNvwHJxzlB&_nc_oc=AdooLU3vvSDaQpdYgD3gEZKpqC1i8ubwn1hYS_K5WDyT5kuug1huJ9xYd1-5GQjd8sA&_nc_zt=23&_nc_ht=scontent-iad6-1.xx&_nc_gid=8aVzzohLToGPSMdm97-DpA&_nc_ss=7b2a8&oh=00_AQJcdLuBUcaKShacWoQ3qyXi2c8dvBXrJnG2V966nYqNFg&oe=6AA94914"
-                        alt="Marlena Reed"></div>
+                <div class="avatar-ring"><img src="images/Marlena%20Reed.jpg" alt="Marlena Reed"></div>
                 <h3 class="collaborator-name">Marlena Reed</h3>
                 <p class="collaborator-title">Photographer — Mixed Moons Media</p>
                 <div class="card-actions">
@@ -994,6 +1220,8 @@
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/mixedmoonsmedia" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/marlena-reed-8635142b8/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -1001,8 +1229,7 @@
             <!-- Card: Lara Nikolau -->
             <div class="collaborator-card" id="lara-nikolau">
                 <div class="avatar-ring">
-                    <img src="https://mail.google.com/mail/u/0?ui=2&ik=740a6a258b&attid=0.2&permmsgid=msg-f:1875999819059774662&th=1a08e3e55dc144c6&view=att&disp=safe&realattid=f_mtwbodry3&zw"
-                        alt="Lara Nikolau">
+                    <img src="images/Lara%20Nikolau.jpg" alt="Lara Nikolau">
                 </div>
                 <h3 class="collaborator-name">Lara Nikolau</h3>
                 <p class="collaborator-title">Photographer</p>
@@ -1139,34 +1366,224 @@
         <div class="section-header">
             <span class="label">Who's Coming</span>
             <h1>Experience Attendees</h1>
-            <p>Professionals and community members joining us at our upcoming experiences.</p>
+            <p>Browse the professionals and community members who joined us, event by event.</p>
         </div>
 
-        <!-- EVENT FILTER TABS -->
-        <div class="event-tabs">
-            <button class="event-tab active" data-event="all">All Events</button>
-            <span class="event-tab-group-label">Upcoming Experiences</span>
-            <button class="event-tab" data-event="witches-oct25">October 25, 2026 - The Witches Bash</button>
-            <button class="event-tab" data-event="elevate-nov1">November 1, 2026 - The Elevate Experience</button>
-            <span class="event-tab-group-label">Past Experiences</span>
-            <button class="event-tab" data-event="beach-sep12">September 12, 2026 - The Beach Experience</button>
-            <button class="event-tab" data-event="aug22">August 22, 2026 — The White Experience</button>
-            <button class="event-tab" data-event="jun20">June 20, 2025 — The Bridgerton Garden Experience</button>
-            <button class="event-tab" data-event="may16">May 16, 2025 — The Flower Experience</button>
-            <span class="event-tab-group-label">Past Coffee Meetups</span>
-            <button class="event-tab" data-event="past-coffee">All Past Coffee Meetups</button>
-            <button class="event-tab" data-event="jul30">July 30, 2025</button>
-            <button class="event-tab" data-event="jul29">July 29, 2025</button>
-            <button class="event-tab" data-event="jul15">July 15, 2025</button>
-            <button class="event-tab" data-event="jul14">July 14, 2025</button>
-            <button class="event-tab" data-event="jul9">July 9, 2025</button>
-            <button class="event-tab" data-event="jul8">July 8, 2025</button>
-            <button class="event-tab" data-event="jul4">July 4, 2025</button>
-            <button class="event-tab" data-event="jun19">June 19, 2025</button>
-            <button class="event-tab" data-event="jun10">June 10, 2025</button>
+        <!-- EVENT FILTER (category buttons are static; event buttons and group headings are built by the script below) -->
+        <div class="event-filter">
+            <div class="event-tabs" role="group" aria-label="Filter attendees by event type">
+                <button class="event-tab active" data-category="all">All Events</button>
+                <button class="event-tab" data-category="upcoming">Upcoming</button>
+                <button class="event-tab" data-category="past">Past Experiences</button>
+                <button class="event-tab" data-category="coffee">Coffee Meetups</button>
+            </div>
+            <div class="event-subtabs" id="event-subtabs" role="group" aria-label="Filter attendees by event" hidden>
+            </div>
         </div>
 
-        <div class="collaborator-grid" id="upcoming-grid">
+        <div id="attendee-groups"></div>
+
+        <!-- ATTENDEE CARDS: source list, regrouped by event (data-event) by the script below -->
+        <div class="collaborator-grid" id="attendee-cards">
+
+            <!-- NOVEMBER 1 - THE ELEVATE EXPERIENCE -->
+            <div class="collaborator-card" data-event="elevate-nov1" id="elevate-nov1-attendees">
+                <div class="avatar-ring"><img src="images/Colleen%20white.jpg" alt="Colleen White"></div>
+                <h3 class="collaborator-name">Colleen White</h3>
+                <p class="collaborator-title">Medium</p>
+                <div class="card-actions">
+                    <a href="https://www.colleenwhiteholistic.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/colleen-white-agustsson-28094245/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/colleen.p.white.agustsson" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/colleenwagustsson/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/Karolina.jpg" alt="Dr. Karolina Przewłoka LaBrecque"></div>
+                <h3 class="collaborator-name">Dr. Karolina Przewłoka LaBrecque</h3>
+                <p class="collaborator-title">Human Systems Coaching</p>
+                <div class="card-actions">
+                    <a href="https://helptogrowinstitute.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/karolinalabrecque/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/karolina.przew.oka.labrecque" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/helptogrow/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/Marlena%20Reed.jpg" alt="Marlena Reed"></div>
+                <h3 class="collaborator-name">Marlena Reed</h3>
+                <p class="collaborator-title">Photographer — Mixed Moons Media</p>
+                <div class="card-actions">
+                    <a href="https://mixedmoonsmedia.mypixieset.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/marlena-reed-8635142b8/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/marlena.d.reed" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/mixedmoonsmedia/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/priya-sumputh.jpg" alt="Priya Sumputh St. Jean"></div>
+                <h3 class="collaborator-name">Priya Sumputh St. Jean</h3>
+                <p class="collaborator-title">Personal Stylist</p>
+                <div class="card-actions">
+                    <a href="https://www.chichappensstyle.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/priyastjean/" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/priya.pierre.1" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/chichappensstylenh/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/Andrea.jpg" alt="Andrea Davis"></div>
+                <h3 class="collaborator-name">Andrea Davis</h3>
+                <p class="collaborator-title">Travel Agent</p>
+                <div class="card-actions">
+                    <a href="https://funshinedestinations.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/andrea-winegar-davis/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/andrea.winegar" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/funshine_destinations/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/logo.png" alt="The WING LLC logo for Becky Gage"></div>
+                <h3 class="collaborator-name">Becky Gage</h3>
+                <p class="collaborator-title">&nbsp;</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/sortandsweetnh/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/Anjel%20B%20Hartwell.jpg" alt="Anjel Hartwell"></div>
+                <h3 class="collaborator-name">Anjel Hartwell</h3>
+                <p class="collaborator-title">Wickedly Smart Women</p>
+                <div class="card-actions">
+                    <a href="https://wickedlysmartwomen.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/anjelbhartwell" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/anjelbhartwell" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/anjelbhartwell/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/logo.png" alt="The WING LLC logo for Grace Gallaher"></div>
+                <h3 class="collaborator-name">Grace Gallaher</h3>
+                <p class="collaborator-title">Candle making — North Ember Goods</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/northembergoods" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/slavitza-demaine.jpg" alt="Slavitza Demaine"></div>
+                <h3 class="collaborator-name">Slavitza Demaine</h3>
+                <p class="collaborator-title">Small Meadow Farm LLC</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/slavitza/" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/SmallMeadowFarmLLC" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/slavitza_demaine/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/Monica%20Quintal.png" alt="Monica Quintal"></div>
+                <h3 class="collaborator-name">Monica Quintal</h3>
+                <p class="collaborator-title">Insurance Agent</p>
+                <div class="card-actions">
+                    <a href="https://forms.xilo.io/form/list-all-forms?companyId=389614&amp;formGroup=Agent%20Pages&amp;agentId=4547&amp;ref=Monica%27s%20Agent%20Page"
+                        target="_blank" rel="noopener noreferrer" class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/quintalmonica/" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/monicqui" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/insurance_monicaquintal/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/Nicole%20Otis.png" alt="Nicole Otis"></div>
+                <h3 class="collaborator-name">Nicole Otis</h3>
+                <p class="collaborator-title">Mobile Bartender</p>
+                <div class="card-actions">
+                    <a href="https://www.inthemixbev.com/" target="_blank" rel="noopener noreferrer"
+                        class="website-btn">Visit Website</a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/nicoleaotis/" target="_blank" rel="noopener noreferrer"
+                            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/inthemixnh" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/in_the_mix_nh/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collaborator-card" data-event="elevate-nov1">
+                <div class="avatar-ring"><img src="images/Oxsana.jpg" alt="Oxsana Burks"></div>
+                <h3 class="collaborator-name">Oxsana Burks</h3>
+                <p class="collaborator-title">Esthetician</p>
+                <div class="card-actions">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/oxsana.burks" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/foxsana22/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
 
             <!-- SEPTEMBER 12 - THE BEACH EXPERIENCE -->
             <div class="collaborator-card" data-event="beach-sep12">
@@ -1267,7 +1684,8 @@
                 <p class="collaborator-title">Artist</p>
                 <div class="card-actions">
                     <a href="https://www.marinart.land" target="_blank" rel="noopener noreferrer"
-                        class="website-btn">Visit Website</a>
+                        class="website-btn">Visit
+                        Website</a>
                     <div class="social-links">
                         <a href="https://www.instagram.com/marinart.land" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1613,10 +2031,6 @@
                 </div>
             </div>
 
-        </div>
-
-        <div class="collaborator-grid" id="past-grid">
-
             <!-- MAY 16 -->
             <div class="collaborator-card" data-event="may16">
                 <div class="avatar-ring"><img src="images/viktoria-alkova.jpg" alt="Viktoria Alkova"></div>
@@ -1669,7 +2083,8 @@
                 <p class="collaborator-title">Photographer — Natalia Price Photography</p>
                 <div class="card-actions">
                     <a href="https://npricephoto.com/" target="_blank" rel="noopener noreferrer"
-                        class="website-btn">Visit Website</a>
+                        class="website-btn">Visit
+                        Website</a>
                     <div class="social-links">
                         <a href="https://www.instagram.com/nataliapricephoto/" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1753,7 +2168,7 @@
             <div class="collaborator-card" data-event="jun20">
                 <div class="avatar-ring"><img src="images/slavitza-demaine.jpg" alt="Slavitza Demaine"></div>
                 <h3 class="collaborator-name">Slavitza Demaine</h3>
-                <p class="collaborator-title">&nbsp;</p>
+                <p class="collaborator-title">Small Meadow Farm LLC</p>
                 <div class="card-actions">
                     <div class="social-links">
                         <a href="https://www.instagram.com/slavitza_demaine/" target="_blank" rel="noopener noreferrer"
@@ -1909,7 +2324,8 @@
                 <p class="collaborator-title">Artist</p>
                 <div class="card-actions">
                     <a href="https://www.marinart.land" target="_blank" rel="noopener noreferrer"
-                        class="website-btn">Visit Website</a>
+                        class="website-btn">Visit
+                        Website</a>
                     <div class="social-links">
                         <a href="https://www.instagram.com/marinart.land" target="_blank" rel="noopener noreferrer"
                             aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -2004,6 +2420,12 @@
                 <a href="https://revolutionwellnesscollective.com/home" target="_blank" rel="noopener noreferrer"
                     class="website-btn">Visit Website</a>
             </div>
+            <div class="sponsor-card">
+                <h2>The Travelling Bloom</h2>
+                <p>Experience partner</p>
+                <a href="https://thetravelingbloom.com/" target="_blank" rel="noopener noreferrer"
+                    class="website-btn">Visit Website</a>
+            </div>
         </div>
         <div class="sponsor-cta">
             <p>Interested in supporting an upcoming WING Experience? Connect with us about sponsorship and brand
@@ -2034,23 +2456,120 @@
         });
     });
 
-    function combineAndSortAttendees() {
-        const attendeeGrid = document.querySelector('#upcoming-grid');
-        const pastGrid = document.querySelector('#past-grid');
-        if (!attendeeGrid || !pastGrid) return;
+    // Event metadata, listed in display order (upcoming soonest first, past newest first).
+    const EVENTS = [
+        { id: 'elevate-nov1', category: 'past', title: 'The Elevate Experience', date: 'November 1, 2026' },
+        { id: 'witches-oct25', category: 'past', title: 'The Witches Bash', date: 'October 25, 2026' },
+        { id: 'beach-sep12', category: 'past', title: 'The Beach Experience', date: 'September 12, 2026' },
+        { id: 'aug22', category: 'past', title: 'The White Experience', date: 'August 22, 2026' },
+        { id: 'jun20', category: 'past', title: 'The Bridgerton Garden Experience', date: 'June 20, 2025' },
+        { id: 'may16', category: 'past', title: 'The Flower Experience', date: 'May 16, 2025' },
+        { id: 'jul30', category: 'coffee', title: 'Coffee Meetup', date: 'July 30, 2025' },
+        { id: 'jul29', category: 'coffee', title: 'Coffee Meetup', date: 'July 29, 2025' },
+        { id: 'jul15', category: 'coffee', title: 'Coffee Meetup', date: 'July 15, 2025' },
+        { id: 'jul14', category: 'coffee', title: 'Coffee Meetup', date: 'July 14, 2025' },
+        { id: 'jul9', category: 'coffee', title: 'Coffee Meetup', date: 'July 9, 2025' },
+        { id: 'jul8', category: 'coffee', title: 'Coffee Meetup', date: 'July 8, 2025' },
+        { id: 'jul4', category: 'coffee', title: 'Coffee Meetup', date: 'July 4, 2025' },
+        { id: 'jun19', category: 'coffee', title: 'Coffee Meetup', date: 'June 19, 2025' },
+        { id: 'jun10', category: 'coffee', title: 'Coffee Meetup', date: 'June 10, 2025' }
+    ];
 
-        const eventOrder = [
-            'aug22', 'jul30', 'jul29', 'jul15', 'jul14', 'jul9', 'jul8', 'jul4',
-            'jun20', 'jun19', 'jun10', 'may16'
-        ];
-        const cards = [...attendeeGrid.children, ...pastGrid.children]
-            .filter(card => card.classList.contains('collaborator-card'))
-            .sort((firstCard, secondCard) => {
-                return eventOrder.indexOf(firstCard.dataset.event) - eventOrder.indexOf(secondCard.dataset.event);
+    const attendeeCards = document.querySelector('#attendee-cards');
+    const groupsContainer = document.querySelector('#attendee-groups');
+    const subtabsContainer = document.querySelector('#event-subtabs');
+    const categoryTabs = document.querySelectorAll('.event-tab[data-category]');
+    const groups = [];
+    const expandedGroups = new Set();
+    const PREVIEW_COUNT = 5;
+    let activeCategory = 'all';
+    let activeEvent = null;
+
+    function updateGroupPreview(group) {
+        const isSingleEvent = Boolean(activeEvent);
+        const hasExtra = group.count > PREVIEW_COUNT;
+        const isCollapsed = hasExtra && !isSingleEvent && !expandedGroups.has(group.id);
+        group.element.classList.toggle('collapsed', isCollapsed);
+        group.toggle.hidden = !hasExtra || isSingleEvent;
+        group.toggle.textContent = isCollapsed ? `Show all ${group.count} attendees` : 'Show fewer';
+    }
+
+    function buildEventGroups() {
+        if (!attendeeCards || !groupsContainer) return;
+
+        const cardsByEvent = new Map();
+        attendeeCards.querySelectorAll('.collaborator-card').forEach(card => {
+            const eventId = card.dataset.event;
+            if (!cardsByEvent.has(eventId)) cardsByEvent.set(eventId, []);
+            cardsByEvent.get(eventId).push(card);
+        });
+
+        // Only events that have attendees get a group.
+        EVENTS.filter(event => cardsByEvent.has(event.id)).forEach(event => {
+            const cards = cardsByEvent.get(event.id);
+            const group = document.createElement('div');
+            group.className = 'event-group';
+            group.dataset.event = event.id;
+            group.dataset.category = event.category;
+            group.innerHTML = `
+                <div class="event-group-header">
+                    <span class="event-group-date">${event.date}</span>
+                    <h2 class="event-group-title">${event.title}</h2>
+                    <span class="event-group-count">${cards.length} ${cards.length === 1 ? 'attendee' : 'attendees'}</span>
+                </div>
+                <div class="collaborator-grid"></div>
+                <button class="event-group-toggle" hidden></button>`;
+            const grid = group.querySelector('.collaborator-grid');
+            cards.forEach((card, index) => {
+                if (index >= PREVIEW_COUNT) card.classList.add('extra');
+                grid.appendChild(card);
             });
+            groupsContainer.appendChild(group);
+            const entry = { ...event, element: group, count: cards.length, toggle: group.querySelector('.event-group-toggle') };
+            entry.toggle.addEventListener('click', () => {
+                if (expandedGroups.has(entry.id)) expandedGroups.delete(entry.id);
+                else expandedGroups.add(entry.id);
+                updateGroupPreview(entry);
+            });
+            groups.push(entry);
+        });
 
-        cards.forEach(card => attendeeGrid.appendChild(card));
-        pastGrid.remove();
+        attendeeCards.remove();
+    }
+
+    function renderSubtabs() {
+        subtabsContainer.innerHTML = '';
+        const events = groups.filter(group => group.category === activeCategory);
+        subtabsContainer.hidden = activeCategory === 'all' || events.length === 0;
+        if (subtabsContainer.hidden) return;
+
+        const addButton = (label, eventId) => {
+            const button = document.createElement('button');
+            button.className = 'event-subtab';
+            button.dataset.event = eventId || '';
+            button.textContent = label;
+            button.classList.toggle('active', (eventId || null) === activeEvent);
+            button.addEventListener('click', () => setFilter(activeCategory, eventId || null));
+            subtabsContainer.appendChild(button);
+        };
+
+        addButton('All', null);
+        events.forEach(event => {
+            addButton(event.category === 'coffee' ? event.date : `${event.title} · ${event.date}`, event.id);
+        });
+    }
+
+    function setFilter(category, eventId) {
+        activeCategory = category;
+        activeEvent = eventId;
+
+        categoryTabs.forEach(tab => tab.classList.toggle('active', tab.dataset.category === category));
+        groups.forEach(group => {
+            const inCategory = category === 'all' || group.category === category;
+            group.element.hidden = !(inCategory && (!eventId || group.id === eventId));
+            updateGroupPreview(group);
+        });
+        renderSubtabs();
     }
 
     function applyHashFilter() {
@@ -2058,62 +2577,29 @@
         if (!hash) return;
 
         if (hash === 'past-coffee') {
-            document.querySelector('.event-tab[data-event="past-coffee"]')?.click();
+            setFilter('coffee', null);
             return;
         }
 
         const target = document.getElementById(hash);
         if (!target) return;
 
-        const card = target.closest('.collaborator-card');
-        const filterEvent = card && card.dataset ? card.dataset.event : 'all';
-
-        document.querySelectorAll('.event-tab').forEach(tab => {
-            const isMatch = tab.dataset.event === filterEvent;
-            tab.classList.toggle('active', isMatch);
-        });
-
-        const coffeeEvents = ['jul30', 'jul29', 'jul15', 'jul14', 'jul9', 'jul8', 'jul4', 'jun19', 'jun10'];
-        document.querySelectorAll('.collaborator-card').forEach(item => {
-            const isCoffeeMatch = filterEvent === 'past-coffee' && coffeeEvents.includes(item.dataset.event);
-            if (filterEvent === 'all' || !item.dataset.event || item.dataset.event === filterEvent || isCoffeeMatch) {
-                item.classList.remove('hidden');
-            } else {
-                item.classList.add('hidden');
-            }
-        });
-
+        const group = target.closest('.event-group');
+        if (group) {
+            expandedGroups.add(group.dataset.event);
+            setFilter(group.dataset.category, group.dataset.event);
+        }
         requestAnimationFrame(() => {
             target.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     }
 
-    combineAndSortAttendees();
-
-    // Event attendee filter
-    document.querySelectorAll('.event-tabs').forEach(tabContainer => {
-        tabContainer.querySelectorAll('.event-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabContainer.querySelectorAll('.event-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                const filter = tab.dataset.event;
-                const attendeeSection = tab.closest('.attendees-section');
-                const coffeeEvents = ['jul30', 'jul29', 'jul15', 'jul14', 'jul9', 'jul8', 'jul4', 'jun19', 'jun10'];
-                attendeeSection.querySelectorAll('.collaborator-card').forEach(card => {
-                    const isCoffeeMatch = filter === 'past-coffee' && coffeeEvents.includes(card.dataset.event);
-                    if (filter === 'all' || !card.dataset.event || card.dataset.event === filter || isCoffeeMatch) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            });
-        });
+    buildEventGroups();
+    categoryTabs.forEach(tab => {
+        tab.hidden = tab.dataset.category !== 'all' && !groups.some(group => group.category === tab.dataset.category);
+        tab.addEventListener('click', () => setFilter(tab.dataset.category, null));
     });
-
-    document.querySelector('#upcoming-grid')?.previousElementSibling
-        ?.querySelector('.event-tab[data-event="all"]')?.click();
-
+    setFilter('all', null);
     applyHashFilter();
 </script>
 
