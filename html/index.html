@@ -728,6 +728,47 @@
             opacity: 1;
         }
 
+        .events-list .event-title .date-chips-label {
+            margin: 16px 0 0;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .date-chips {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0 0;
+            padding: 0;
+        }
+
+        .date-chips li[hidden] {
+            display: none;
+        }
+
+        .date-chips li.next {
+            background: var(--accent-gold);
+            color: #1a1612;
+        }
+
+        .date-chips li {
+            padding: 6px 14px;
+            border: 1px solid var(--border-highlight);
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-gold-bright);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .events-list .event-poster.poster-warm {
+            filter: sepia(0.85) saturate(0.85) hue-rotate(-12deg) brightness(1.08);
+        }
+
         .events-list.featured .event-poster {
             height: auto;
             aspect-ratio: 3 / 2;
@@ -1722,8 +1763,7 @@
                 <a href="#connect" class="btn">Request Invitation</a>
             </div>
             <div class="hero-image-frame">
-                <img src="https://images.unsplash.com/photo-1762517141861-acd7a11c7d42?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHdvbWFuJTIwbmV0d29ya2luZyUyMGV2ZW50fGVufDB8MHwwfHx8MA%3D%3D"
-                    alt="WING networking event">
+                <img src="images/BGE-9.jpg" alt="WING networking event">
             </div>
         </div>
     </section>
@@ -1756,71 +1796,52 @@
             <h2>Upcoming Experiences</h2>
         </div>
         <div class="events-list featured">
-            <!-- The Elevate Experience -->
+            <!-- The Moon Experience -->
             <div class="event-row">
-                <img src="images/Elevate.jpg" alt="The Elevate Experience event poster"
-                    class="event-thumb event-poster">
-                <div class="event-date">November 1, 2026 · 10:30 AM – 2:00 PM</div>
+                <img src="images/The%20Moon%20Experience.jpg" alt="The Moon Experience event" class="event-thumb event-poster">
+                <div class="event-date">December 5, 2026</div>
                 <div class="event-title">
-                    <h3>The Elevate Experience</h3>
-                    <p>An elevated brunch for 50 women who lead, build &amp; grow—curated conversations and intentional
-                        connections with Dr. Karolina LaBrecque and Priya Sumputh St. Jean, plus a card-reading workshop
-                        with Colleen White.
-                        <button type="button" class="event-details-btn" data-event="elevate">View details</button>
-                    </p>
-                    <p><a href="event-collaborations.html#elevate-nov1-attendees">Meet the attendees</a></p>
-                </div>
-                <div class="event-value event-venue">Nashua NH Sheraton</div>
-                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
-                        target="_blank" rel="noopener noreferrer" class="btn"
-                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
-                </div>
-            </div>
-            <!-- Art After Dark -->
-            <div class="event-row">
-                <div class="event-thumb-placeholder">Photo Coming Soon</div>
-                <div class="event-date">November 2026</div>
-                <div class="event-title">
-                    <h3>Art After Dark</h3>
-                    <p>An evening of curated art, creativity, and connection.
-                        <button type="button" class="event-details-btn" data-event="artafterdark">View details</button>
-                    </p>
-                </div>
-                <div class="event-value event-venue">Location TBA</div>
-                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
-                        target="_blank" rel="noopener noreferrer" class="btn"
-                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
-                </div>
-            </div>
-            <!-- The Great Gatsby Christmas -->
-            <div class="event-row">
-                <div class="event-thumb-placeholder">Photo Coming Soon</div>
-                <div class="event-date">December 2026</div>
-                <div class="event-title">
-                    <h3>The Great Gatsby Christmas</h3>
-                    <p>A dazzling holiday soirée inspired by roaring-twenties glamour and festive celebration.
-                        <button type="button" class="event-details-btn" data-event="gatsbychristmas">View
-                            details</button>
-                    </p>
-                </div>
-                <div class="event-value event-venue">Location TBA</div>
-                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
-                        target="_blank" rel="noopener noreferrer" class="btn"
-                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
-                </div>
-            </div>
-            <!-- The Witches Bash -->
-            <div class="event-row">
-                <img src="images/Witches%20Bash.jpg" alt="The Witches Bash event" class="event-thumb event-poster">
-                <div class="event-date">November 28, 2026</div>
-                <div class="event-title">
-                    <h3>The Witches Bash</h3>
+                    <h3>The Moon Experience</h3>
                     <p>An immersive fall experience of creativity, connection, and magic—create your own glowing witches
                         moon, sip drinks, and meet amazing people.
                         <button type="button" class="event-details-btn" data-event="witchesbash">View details</button>
                     </p>
                 </div>
                 <div class="event-value event-venue">Boston Seaport</div>
+                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
+                        target="_blank" rel="noopener noreferrer" class="btn"
+                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Business & Coffee series - Rochester: past dates hide automatically; add new dates as <li data-date="YYYY-MM-DD" data-poster="images/..."> -->
+            <div class="event-row coffee-series" data-time="10:00 AM">
+                <img src="images/Rochester%20Dec%207%20Spa.png" alt="Business & Coffee Rochester event poster"
+                    class="event-thumb event-poster poster-warm">
+                <div class="event-date">Monthly · 10:00 AM</div>
+                <div class="event-title">
+                    <h3>Business &amp; Coffee</h3>
+                    <p>A monthly morning gathering for local business owners and professionals. <strong>Free to visit</strong> · RSVP required.</p>
+                    <p class="date-chips-label">Upcoming dates</p>
+                    <ul class="date-chips" aria-label="Upcoming Business &amp; Coffee dates in Rochester"><li data-date="2026-12-07" data-poster="images/Rochester%20Dec%207%20Spa.png">Dec 7</li><li data-date="2027-01-04" data-poster="images/Rochester%20Jan%204.png">Jan 4</li><li data-date="2027-02-08" data-poster="images/Rochester%20Feb%208.png">Feb 8</li><li data-date="2027-03-08" data-poster="images/Rochester%20Mar%208.png">Mar 8</li><li data-date="2027-04-05" data-poster="images/Rochester%20Apr%205.png">Apr 5</li><li data-date="2027-05-03" data-poster="images/Rochester%20May%203.png">May 3</li><li data-date="2027-06-07" data-poster="images/Rochester%20Jun%207.png">Jun 7</li></ul>
+                </div>
+                <div class="event-value event-venue">Body &amp; Sole Wellness Spa · 664 Columbus Ave, Rochester, NH</div>
+                <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
+                        target="_blank" rel="noopener noreferrer" class="btn"
+                        style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
+                </div>
+            </div>
+            <!-- Business & Coffee series - Merrimack: past dates hide automatically; add new dates as <li data-date="YYYY-MM-DD" data-poster="images/..."> -->
+            <div class="event-row coffee-series" data-time="9:30 AM">
+                <img src="images/Dec%2015.png" alt="Business & Coffee event poster"
+                    class="event-thumb event-poster poster-warm">
+                <div class="event-date">Monthly · 9:30 AM</div>
+                <div class="event-title">
+                    <h3>Business &amp; Coffee</h3>
+                    <p>A monthly morning gathering for local business owners and professionals. <strong>Free to visit</strong> · RSVP required.</p>
+                    <p class="date-chips-label">Upcoming dates</p>
+                    <ul class="date-chips" aria-label="Upcoming Business &amp; Coffee dates"><li data-date="2026-12-15" data-poster="images/Dec%2015.png">Dec 15</li><li data-date="2027-01-11" data-poster="images/January%2011.png">Jan 11</li><li data-date="2027-02-15" data-poster="images/Feb%2015.png">Feb 15</li><li data-date="2027-03-15" data-poster="images/March%2015.png">Mar 15</li><li data-date="2027-04-12" data-poster="images/April%2012.png">Apr 12</li><li data-date="2027-05-10" data-poster="images/May%2010.png">May 10</li><li data-date="2027-06-14" data-poster="images/June%2014.png">Jun 14</li></ul>
+                </div>
+                <div class="event-value event-venue">Affordable Builders Office · 141 Daniel Webster Hwy, Merrimack, NH</div>
                 <div><a href="https://docs.google.com/forms/d/e/1FAIpQLSfHg_XmH-It6vedZ-Hvcm49FXi_XMnkA5ketiluBXdjC7BdUA/viewform"
                         target="_blank" rel="noopener noreferrer" class="btn"
                         style="padding: 14px 28px; font-size: 0.75rem;">RSVP</a>
@@ -1850,9 +1871,25 @@
         <div class="section-header">
             <span class="label">Past Experiences</span>
             <h2>Past Experiences</h2>
-            <a href="event-collaborations.html#past-coffee" class="btn btn-outline">See All Past Coffee Meetups</a>
+            <a href="event-collaborations.html#past-coffee" class="btn btn-outline">See All Past Coffee &amp; Business</a>
         </div>
         <div class="events-list compact">
+            <!-- The Elevate Experience -->
+            <div class="event-row">
+                <img src="images/Elevate.jpg" alt="The Elevate Experience event poster"
+                    class="event-thumb event-poster">
+                <div class="event-date">November 1, 2026</div>
+                <div class="event-title">
+                    <h3>The Elevate Experience</h3>
+                    <p>An elevated brunch for 50 women who lead, build &amp; grow—curated conversations and intentional
+                        connections with Dr. Karolina LaBrecque and Priya Sumputh St. Jean, plus a card-reading workshop
+                        with Colleen White.
+                        <button type="button" class="event-details-btn" data-event="elevate">View details</button>
+                    </p>
+                    <p><a href="event-collaborations.html#elevate-nov1-attendees">Meet the attendees</a></p>
+                </div>
+                <div class="event-value event-venue">Nashua NH Sheraton</div>
+            </div>
             <!-- Business & Coffee (October 12) -->
             <div class="event-row">
                 <img src="images/Coffee%26Business-October12.jpg" alt="Business & Coffee October 12 event poster"
@@ -2025,7 +2062,7 @@
                     <div class="tier-price">FREE <span style="font-size: 0.9rem; color: var(--text-muted);">/
                             month</span></div>
                     <ul class="tier-perks">
-                        <li>First time free Coffee Meetups</li>
+                        <li>First time free Coffee &amp; Business</li>
                         <li>Email Notifications about Monthly Experiences</li>
 
                     </ul>
@@ -2566,13 +2603,13 @@
                 actionHref: 'https://www.eventbrite.com/e/the-beach-experience-tickets-1998915121939'
             },
             witchesbash: {
-                label: 'The Witches Bash',
-                title: 'Witches Bash Experience — Boston Seaport',
+                label: 'The Moon Experience',
+                title: 'The Moon Experience — Boston Seaport',
                 copy: `
                     <p><strong>Creativity. Connection. Magic.</strong></p>
                     <p>Something a little different is happening in Boston this October…</p>
                     <p>Step into an evening where creativity meets connection, and ordinary moments become a little more magical.</p>
-                    <p>Welcome to <strong>WITCHES BASH</strong> — an immersive fall experience created for curious, creative, ambitious people who want to meet great people, make something beautiful, and experience something they'll actually remember.</p>
+                    <p>Welcome to <strong>THE MOON EXPERIENCE</strong> — an immersive fall experience created for curious, creative, ambitious people who want to meet great people, make something beautiful, and experience something they'll actually remember.</p>
 
                     <h3>✨ Your Evening Includes</h3>
                     <p><strong>🌕 Create Your Own Glowing Witches Moon</strong></p>
@@ -2609,18 +2646,18 @@
                     <p>Come for the moon. Stay for the people. Leave with a little more magic than you arrived with.</p>
 
                     <p><strong>📍 Location:</strong> Boston Seaport</p>
-                    <p><strong>📅 Date:</strong> November 28, 2026</p>
+                    <p><strong>📅 Date:</strong> December 5, 2026</p>
                     <p><strong>🕑 Time:</strong> 2:00 PM – 6:00 PM</p>
 
                     <h3>🎟️ Your Spot Is Waiting.</h3>
                     <p>Space is intentionally limited to keep the experience intimate, creative, and genuinely connected.</p>
                     <p>Come alone. Bring your favorite people. Meet your future collaborators, friends, clients, or simply someone you were meant to cross paths with.</p>
 
-                    <h3>🌙 Witches Bash — Creativity ✦ Connection ✦ Magic</h3>
+                    <h3>🌙 The Moon Experience — Creativity ✦ Connection ✦ Magic</h3>
                     <p><strong>✨ Early Magic:</strong> Sept 15 – Sept 29<br>
                         Come to Connect — Early Bird $95<br>
                         Come to Create — Early Bird $115</p>
-                    <p><strong>🌙 Witches Bash:</strong> Sept 29 – Oct 10<br>
+                    <p><strong>🌙 Moon Experience:</strong> Sept 29 – Oct 10<br>
                         Come to Connect — General $105<br>
                         Come to Create — General $125</p>
                     <p><strong>🔮 Last Call:</strong> Oct 10 – Oct 25<br>
@@ -2723,28 +2760,6 @@
                 `,
                 actionText: 'Get tickets on Eventbrite',
                 actionHref: 'https://www.eventbrite.com/e/the-elevate-experience-tickets-1999815114842'
-            },
-            artafterdark: {
-                label: 'Art After Dark',
-                title: 'Art After Dark',
-                copy: `
-                    <p>An evening of curated art, creativity, and connection — details on venue, time, and tickets are coming soon.</p>
-                    <p><strong>📅 Date:</strong> November 2026</p>
-                    <p>Request your seat to be the first to know when registration opens.</p>
-                `,
-                actionText: 'Request your seat',
-                actionHref: '#connect'
-            },
-            gatsbychristmas: {
-                label: 'The Great Gatsby Christmas',
-                title: 'The Great Gatsby Christmas',
-                copy: `
-                    <p>A dazzling holiday soirée inspired by roaring-twenties glamour — details on venue, time, and tickets are coming soon.</p>
-                    <p><strong>📅 Date:</strong> December 2026</p>
-                    <p>Request your seat to be the first to know when registration opens.</p>
-                `,
-                actionText: 'Request your seat',
-                actionHref: '#connect'
             },
             rooflounge: {
                 label: 'The White Experience',
@@ -2937,7 +2952,26 @@
             track.closest('.reviews-layout').addEventListener('mouseenter', () => clearInterval(autoSlide));
             track.closest('.reviews-layout').addEventListener('mouseleave', () => { autoSlide = setInterval(next, 4000); });
         }
-    </script>
+    
+        // Business & Coffee series: show only upcoming dates, with the next date's poster.
+        document.querySelectorAll('.coffee-series').forEach(card => {
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const upcoming = [...card.querySelectorAll('.date-chips li')].filter(chip => {
+                const [y, m, d] = chip.dataset.date.split('-').map(Number);
+                const isUpcoming = new Date(y, m - 1, d) >= today;
+                chip.hidden = !isUpcoming;
+                return isUpcoming;
+            });
+            if (!upcoming.length) { card.hidden = true; return; }
+            const next = upcoming[0];
+            const [y, m, d] = next.dataset.date.split('-').map(Number);
+            const label = new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            card.querySelector('.event-poster').src = next.dataset.poster;
+            card.querySelector('.event-date').textContent = `Next: ${label} · ${card.dataset.time}`;
+            next.classList.add('next');
+        });
+</script>
 </body>
 
 </html>
